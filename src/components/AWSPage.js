@@ -15,6 +15,11 @@ import AWS_CP_Logo from "../assets/AWS-CloudPractitioner.png";
 import AWS_Serverless from "../assets/AWS_Serverless.svg";
 import AWS_Amplify from "../assets/AWS_Amplify.svg";
 import AWS_APIGateway from "../assets/AWS_APIGateway.svg";
+import AWS_Lambda from "../assets/AWS_Lambda.svg";
+import AWS_RDS from "../assets/AWS_RDS.svg";
+import AWS_DynamoDB from "../assets/AWS_DynamoDB.svg";
+import P8RallySolution from "../assets/P8RallySolution.png";
+import MeeterSolution from "../assets/MeeterSolution.png";
 
 import mobileAppsIcon from "../assets/mobileIcon.svg";
 import websitesIcon from "../assets/websiteIcon.svg";
@@ -76,8 +81,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   techDesc: {
-    maxWidth: "500px"
-  }
+    maxWidth: "400px",
+  },
+  solutionImage: {
+    maxWidth: "350px",
+    paddingRight: "5em",
+  },
 }));
 
 export default function EngineeringPage(props) {
@@ -93,7 +102,7 @@ export default function EngineeringPage(props) {
           gutterBottom
           style={{
             marginLeft: matchesSM ? 0 : "5rem",
-            marginTop: matchesSM ? "1em" : "2em",
+            marginTop: matchesSM ? "1em" : "1em",
           }}
           align={matchesSM ? "center" : undefined}
         >
@@ -194,62 +203,148 @@ export default function EngineeringPage(props) {
             />
           </Grid>
         </Grid>
-        <Grid container>
-          <Grid>
-            <img
-              className={classes.techIcon}
-              alt="AWS Serverless"
-              src={AWS_Serverless}
-              // width="250em"
-            />
+        {/* ====================== START TECH APPS ROW 1 ================== */}
+        <Grid
+          container
+          direction="row"
+          justifyContent="space-evenly"
+          alignItems="center"
+          style={{ marginTop: "5em" }}
+        >
+          <Grid item>
+            <Grid item container>
+              <img
+                className={classes.techIcon}
+                alt="AWS Serverless1"
+                src={AWS_Serverless}
+                // width="250em"
+              />
+              <div>
+                <div className={classes.techTitle}>Serverless</div>
+                <div className={classes.techDesc}>
+                  Serverless computing offers a number of advantages over
+                  traditional cloud-based or server-centric infrastructure. For
+                  many developers, serverless architectures offer greater
+                  scalability, more flexibility, and quicker time to release,
+                  all at a reduced cost.
+                </div>
+              </div>
+            </Grid>
           </Grid>
-          <Grid>
-            <div className={classes.techTitle}>Serverless</div>
-            <div className={classes.techDesc}>
-              Serverless computing offers a number of advantages over
-              traditional cloud-based or server-centric infrastructure. For many
-              developers, serverless architectures offer greater scalability,
-              more flexibility, and quicker time to release, all at a reduced
-              cost.
-            </div>
-          </Grid>
-        </Grid>
-        <Grid container>
-          <Grid>
-            <img
-              className={classes.techIcon}
-              alt="AWS Amplify"
-              src={AWS_Amplify}
-              // width="250em"
-            />
-          </Grid>
-          <Grid>
-            <div className={classes.techTitle}>Amplify</div>
-            <div className={classes.techDesc}>
-              Certralized user management, supporting user federation authentication, across platforms and integrating backend services.
-            </div>
-          </Grid>
-        </Grid>
-        <Grid container>
-          <Grid>
-            <img
-              className={classes.techIcon}
-              alt="AWS API Gateway"
-              src={AWS_APIGateway}
-              // width="250em"
-            />
-          </Grid>
-          <Grid>
-            <div className={classes.techTitle}>API Gateway</div>
-            <div className={classes.techDesc}>
-              Certralized user management, supporting user federation authentication, across platforms and integrating backend services.
-            </div>
+          <Grid item>
+            <Grid item container>
+              <img
+                className={classes.techIcon}
+                alt="AWS Amplify1"
+                src={AWS_Amplify}
+                // width="250em"
+              />
+              <div>
+                <div className={classes.techTitle}>Amplify</div>
+                <div className={classes.techDesc}>
+                  Certralized user management, supporting user federation
+                  authentication, across platforms and integrating backend
+                  services.
+                </div>
+              </div>
+            </Grid>
           </Grid>
         </Grid>
+        {/* ===================== END OF TECH APPS ROW 1 ==================*/}
+        {/* ====================== START TECH APPS ROW 2 ================== */}
+        <Grid
+          container
+          direction="row"
+          justifyContent="space-evenly"
+          alignItems="center"
+        >
+          <Grid item>
+            <Grid item container>
+              <img
+                className={classes.techIcon}
+                alt="AWS API Gateway"
+                src={AWS_APIGateway}
+                // width="250em"
+              />
+              <div>
+                <div className={classes.techTitle}>API Gateway</div>
+                <div className={classes.techDesc}>
+                  Certralized user management, supporting user federation
+                  authentication, across platforms and integrating backend
+                  services.
+                </div>
+              </div>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid item container>
+              <img
+                className={classes.techIcon}
+                alt="AWS Lambda"
+                src={AWS_Lambda}
+                // width="250em"
+              />
+              <div>
+                <div className={classes.techTitle}>Lambdas</div>
+                <div className={classes.techDesc}>
+                  Certralized user management, supporting user federation
+                  authentication, across platforms and integrating backend
+                  services.
+                </div>
+              </div>
+            </Grid>
+          </Grid>
+        </Grid>
+        {/* ===================== END OF TECH APPS ROW 2 ==================*/}
+        {/* ====================== START TECH APPS ROW 3 ================== */}
+        <Grid
+          container
+          direction="row"
+          justifyContent="space-evenly"
+          alignItems="center"
+        >
+          <Grid item>
+            <Grid item container>
+              <img
+                className={classes.techIcon}
+                alt="AWS RDS"
+                src={AWS_RDS}
+                // width="250em"
+              />
+              <div>
+                <div className={classes.techTitle}>Relational Databases</div>
+                <div className={classes.techDesc}>
+                  Certralized user management, supporting user federation
+                  authentication, across platforms and integrating backend
+                  services.
+                </div>
+              </div>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid item container>
+              <img
+                className={classes.techIcon}
+                alt="AWS DynamoDB"
+                src={AWS_DynamoDB}
+                // width="250em"
+              />
+              <div>
+                <div className={classes.techTitle}>No-SQL Database</div>
+                <div className={classes.techDesc}>
+                  Certralized user management, supporting user federation
+                  authentication, across platforms and integrating backend
+                  services.
+                </div>
+              </div>
+            </Grid>
+          </Grid>
+        </Grid>
+        {/* ===================== END OF TECH APPS ROW 3 ==================*/}
       </Grid>
       <Grid item>
         {" "}
-        {/*-----Websites Block-----*/}
+        {/*-----Solutions Block-----*/}
         <Grid
           container
           direction="row"
@@ -264,12 +359,12 @@ export default function EngineeringPage(props) {
               width: matchesSM ? undefined : "35em",
             }}
           >
-            <Typography variant="h4">Website Development</Typography>
+            <Typography variant="h4">Real Solutions</Typography>
             <Typography variant="subtitle1" className={classes.subtitle}>
-              Reach More. Discover More. Sell More.
+              Technology and Innovation Collide
             </Typography>
             <Typography variant="subtitle1">
-              Optimized for Search Engines, built for speed.
+              Integrating serverless components to meet the business needs.
             </Typography>
             <Button
               component={Link}
@@ -297,6 +392,61 @@ export default function EngineeringPage(props) {
             />
           </Grid>
         </Grid>
+        {/* ====================== START SOLUTION 1 ================== */}
+        <Grid
+          container
+          direction="row"
+          justifyContent="space-evenly"
+          alignItems="center"
+          style={{ marginTop: "0"}}
+        >
+          <Grid item>
+            <Grid item container>
+              <img
+                className={classes.solutionImage}
+                alt="P8 Rally"
+                src={P8RallySolution}
+              />
+              <div>
+                <div className={classes.techTitle}>P8 Rally Event System</div>
+                <div className={classes.techDesc}>
+                  Full serverless solution, providing management of events,
+                  leaders and participants.
+                </div>
+              </div>
+            </Grid>
+          </Grid>
+        </Grid>
+        {/* ===================== END OF SOLUTION 1 ==================*/}
+        {/* ====================== START SOLUTION 2 ================== */}
+        <Grid
+          container
+          direction="row"
+          justifyContent="space-evenly"
+          alignItems="center"
+          style={{ marginBottom: "5em", marginTop: "5em" }}
+        >
+          <Grid item>
+            <Grid item container>
+              <div>
+                <div className={classes.techTitle}>Meeter Solution</div>
+                <div className={classes.techDesc}>
+                  Full serverless solution that allows an organization to plan,
+                  manage and support meetings, which includes all planning
+                  assignments, topical meetings during each event, as well as
+                  leadership planning and development.
+                </div>
+              </div>
+              <img
+                className={classes.solutionImage}
+                alt="Meeter Solution"
+                src={MeeterSolution}
+                // width="250em"
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+        {/* ===================== END OF SOLUTION 2 ==================*/}
       </Grid>
     </Grid>
   );
