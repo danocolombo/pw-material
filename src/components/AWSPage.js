@@ -398,7 +398,7 @@ export default function EngineeringPage(props) {
           direction="row"
           justifyContent="space-evenly"
           alignItems="center"
-          style={{ marginTop: "0"}}
+          style={{ marginTop: "0" }}
         >
           <Grid item>
             <Grid item container>
@@ -413,7 +413,25 @@ export default function EngineeringPage(props) {
                   Full serverless solution, providing management of events,
                   leaders and participants.
                 </div>
+                <Button
+                component={Link}
+                to="/websites"
+                variant="outlined"
+                className={classes.learnButton}
+                onClick={() => {
+                  props.setValue(1);
+                  props.setSelectedIndex(3);
+                }}
+              >
+                <span style={{ marginRight: 10 }}>Learn More</span>
+                <ButtonArrow
+                  width={10}
+                  height={10}
+                  fill={theme.palette.common.blue}
+                />
+              </Button>
               </div>
+              
             </Grid>
           </Grid>
         </Grid>
@@ -436,6 +454,23 @@ export default function EngineeringPage(props) {
                   assignments, topical meetings during each event, as well as
                   leadership planning and development.
                 </div>
+                <Button
+                  component={Link}
+                  to="/websites"
+                  variant="outlined"
+                  className={classes.learnButton}
+                  onClick={() => {
+                    props.setValue(1);
+                    props.setSelectedIndex(3);
+                  }}
+                >
+                  <span style={{ marginRight: 10 }}>Learn More</span>
+                  <ButtonArrow
+                    width={10}
+                    height={10}
+                    fill={theme.palette.common.blue}
+                  />
+                </Button>
               </div>
               <img
                 className={classes.solutionImage}
