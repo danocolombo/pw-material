@@ -149,9 +149,9 @@ export default function LandingPage(props) {
         <Grid container justify="flex-end" alignItems="center" direction="row">
           <Grid sm item className={classes.heroTextContainer}>
             <Typography variant="h2" align="center">
-              Bringing West Coast Technology
+              And the next thing you know,
               <br />
-              to the Midwest
+              you're not who you used to be...
             </Typography>
             <Grid
               container

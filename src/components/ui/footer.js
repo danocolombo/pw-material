@@ -4,10 +4,11 @@ import { makeStyles } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
 
-import footerAdornment from "../../assets/Footer Adornment.svg";
-import facebook from "../../assets/facebook.svg";
-import instagram from "../../assets/instagram.svg";
+import footerAdornment from "../../assets/FooterGraphic.svg";
+// import instagram from "../../assets/instagram.svg";
 import twitter from "../../assets/twitter.svg";
+import linkedIn from "../../assets/LinkedInLogo.png";
+import { withThemeCreator } from "@material-ui/styles";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -47,12 +48,24 @@ const useStyles = makeStyles((theme) => ({
         width: "2.5rem"
     }
   },
+  linkedInIcon: {
+    // height: "4rem",
+    padding: "2px",
+    width: "4rem",
+    backgroundColor: "white",
+    [theme.breakpoints.down("xs")]: {
+        // height: "2.5rem",
+        width: "2.5rem"
+    }
+  },
   socialContainer: {
       position: "absolute",
-      marginTop: "-6rem",
-      right: "1.5em",
+      marginTop: "-3rem",
+      left: ".5em",
+      justifyContent: "flex-start",
       [theme.breakpoints.down("xs")]: {
-        right:"0.6rem",
+        left: "4px",
+        marginTop: "-35px"
     }
   },
 }));
@@ -85,10 +98,10 @@ export default function Footer(props) {
                   props.setValue(1);
                   props.setSelectedIndex(0);
                 }}
-                to="/services"
+                to="/engineering"
                 className={classes.link}
               >
-                Services
+                Engineering
               </Grid>
               <Grid
                 item
@@ -97,10 +110,10 @@ export default function Footer(props) {
                   props.setValue(1);
                   props.setSelectedIndex(1);
                 }}
-                to="/customsoftware"
+                to="/aws"
                 className={classes.link}
               >
-                Custom Software Development
+                Amazon Web Services (AWS)
               </Grid>
               <Grid
                 item
@@ -109,10 +122,10 @@ export default function Footer(props) {
                   props.setValue(1);
                   props.setSelectedIndex(2);
                 }}
-                to="mobileapps"
+                to="/integrations"
                 className={classes.link}
               >
-                Mobile App Development
+                Integrations
               </Grid>
               <Grid
                 item
@@ -121,10 +134,10 @@ export default function Footer(props) {
                   props.setValue(1);
                   props.setSelectedIndex(3);
                 }}
-                to="websites"
+                to="/enterprise"
                 className={classes.link}
               >
-                Website Development
+                Enterprise & Beyond
               </Grid>
             </Grid>
           </Grid>
@@ -134,37 +147,19 @@ export default function Footer(props) {
                 item
                 component={Link}
                 onClick={() => props.setValue(2)}
-                to="/revolution"
+                to="/recovery"
                 className={classes.link}
               >
-                Revolution
+                Recovery
               </Grid>
               <Grid
                 item
                 component={Link}
                 onClick={() => props.setValue(2)}
-                to="/revolution"
+                to="/recovery"
                 className={classes.link}
               >
-                Vision
-              </Grid>
-              <Grid
-                item
-                component={Link}
-                onClick={() => props.setValue(2)}
-                to="/revolution"
-                className={classes.link}
-              >
-                Technology
-              </Grid>
-              <Grid
-                item
-                component={Link}
-                onClick={() => props.setValue(2)}
-                to="/revolution"
-                className={classes.link}
-              >
-                Process
+                Celebrate Recovery
               </Grid>
             </Grid>
           </Grid>
@@ -174,28 +169,28 @@ export default function Footer(props) {
                 item
                 component={Link}
                 onClick={() => props.setValue(3)}
-                to="/about"
+                to="/hobbies"
                 className={classes.link}
               >
-                About Us
+                Hobbies
               </Grid>
               <Grid
                 item
                 component={Link}
                 onClick={() => props.setValue(3)}
-                to="/about"
+                to="/woodshop"
                 className={classes.link}
               >
-                History
+                Woodshop
               </Grid>
               <Grid
                 item
                 component={Link}
                 onClick={() => props.setValue(3)}
-                to="/about"
+                to="/kitchen"
                 className={classes.link}
               >
-                Team
+                Kitchen & Grill
               </Grid>
             </Grid>
           </Grid>
@@ -208,7 +203,7 @@ export default function Footer(props) {
                 to="/contact"
                 className={classes.link}
               >
-                Contact Us
+                Contact Me
               </Grid>
             </Grid>
           </Grid>
@@ -219,15 +214,14 @@ export default function Footer(props) {
         alt="decorative graphic"
         src={footerAdornment}
       />
+      <img
+        style={{width: "50px"}}
+        alt="decorative graphic"
+        src={linkedIn}
+      />
       <Grid container justify="flex-end" spacing={2} className={classes.socialContainer}>
-        <Grid item component={"a"} href="http://www.facebook.com" rel="noopener noreferrer" target="_blank">
-            <img src={facebook} alt="Facebook logo" className={classes.icon}/>
-        </Grid>
-        <Grid item component={"a"} href="http://www.twitter.com" rel="noopener noreferrer" target="_blank">
-            <img src={twitter} alt="Twitter logo" className={classes.icon}/>
-        </Grid>
-        <Grid item component={"a"} href="http://www.instagram.com" rel="noopener noreferrer" target="_blank">
-            <img src={instagram} alt="Instagram logo" className={classes.icon}/>
+        <Grid item component={"a"} href="https://www.linkedin.com/in/dcolombo/" rel="noopener noreferrer" target="_blank">
+            <img src={linkedIn} alt="Linked In logo" className={classes.linkedInIcon}/>
 
         </Grid>
       </Grid>
