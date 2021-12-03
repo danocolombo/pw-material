@@ -69,16 +69,6 @@ const useStyles = makeStyles(theme => ({
     minWidth: 10,
     marginLeft: "25px"
   },
-  button: {
-    ...theme.typography.estimate,
-    borderRadius: "50px",
-    marginLeft: "50px",
-    marginRight: "25px",
-    height: "45px",
-    "&:hover": {
-      backgroundColor: theme.palette.secondary.light
-    }
-  },
   menu: {
     backgroundColor: theme.palette.common.blue,
     color: "white",
@@ -108,9 +98,6 @@ const useStyles = makeStyles(theme => ({
     ...theme.typography.tab,
     color: "white",
     opacity: 0.7
-  },
-  drawerItemEstimate: {
-    backgroundColor: theme.palette.common.orange
   },
   drawerItemSelected: {
     "& .MuiListItemText-root": {
@@ -161,14 +148,14 @@ export default function Header(props) {
       selectedIndex: 1
     },
     {
-      name: "iOS/Android App Development",
-      link: "/mobileapps",
+      name: "Integrations",
+      link: "/integrations",
       activeIndex: 1,
       selectedIndex: 2
     },
     {
-      name: "Website Development",
-      link: "/websites",
+      name: "Enterprise",
+      link: "/enterprise",
       activeIndex: 1,
       selectedIndex: 3
     }
@@ -233,16 +220,6 @@ export default function Header(props) {
           />
         ))}
       </Tabs>
-      <Button
-        component={Link}
-        to="/estimate"
-        variant="contained"
-        color="secondary"
-        className={classes.button}
-        onClick={() => props.setValue(5)}
-      >
-        Free Estimate
-      </Button>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -307,25 +284,6 @@ export default function Header(props) {
               </ListItemText>
             </ListItem>
           ))}
-          <ListItem
-            onClick={() => {
-              setOpenDrawer(false);
-              props.setValue(5);
-            }}
-            divider
-            button
-            component={Link}
-            classes={{
-              root: classes.drawerItemEstimate,
-              selected: classes.drawerItemSelected
-            }}
-            to="/estimate"
-            selected={props.value === 5}
-          >
-            <ListItemText className={classes.drawerItem} disableTypography>
-              Free Estimate
-            </ListItemText>
-          </ListItem>
         </List>
       </SwipeableDrawer>
       <IconButton

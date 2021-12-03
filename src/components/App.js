@@ -30,12 +30,13 @@ function App() {
               />
             )}
           />
-          <Route exact path="/mobileapps" component={() => <div>Mobile Apps</div>} />
-          <Route exact path="/websites" component={() => <div>Websites</div>} />
-          <Route exact path="/revolution" component={() => <div>Revolution</div>} />
-          <Route exact path="/about" component={() => <div>About</div>} />
-          <Route exact path="/contact" component={() => <div>Contact Us</div>} />
-          <Route exact path="/estimate" component={() => <div>ESTMATE</div>} />
+          <Route exact path="/integrations" component={() => <div>Integrations</div>} />
+          <Route exact path="/enterprise" component={() => <div>Enterprise</div>} />
+          <Route exact path="/recovery" component={() => <div>Recovery</div>} />
+          <Route exact path="/cr" component={() => <div>Celebrate Recovery</div>} />
+          <Route exact path="/hobbies" component={() => <div>Hobbies</div>} />
+          <Route exact path="/woodshop" component={() => <div>Woodshop</div>} />
+          <Route exact path="/kitchen" component={() => <div>Kitchen</div>} />
         </Switch>
         <Footer value={value} setValue={setValue} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} />
       </BrowserRouter>

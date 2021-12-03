@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
-import Hidden from "@material-ui/core/Hidden";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import footerAdornment from "../../assets/FooterGraphic.svg";
+import footerAdornmentShort from "../../assets/FooterGraphicShort.svg";
 // import instagram from "../../assets/instagram.svg";
 import twitter from "../../assets/twitter.svg";
 import linkedIn from "../../assets/LinkedInLogo.png";
@@ -26,6 +27,17 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       width: "15em",
     },
+  },
+  adornmentSmall: {
+    width: "25em",
+    verticalAlign: "top",
+    topMargin: 0,
+    // [theme.breakpoints.down("md")]: {
+    //   width: "21em",
+    // },
+    // [theme.breakpoints.down("xs")]: {
+    //   width: "15em",
+    // },
   },
   mainContainer: {
     position: "absolute",
@@ -71,10 +83,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Footer(props) {
   const classes = useStyles();
-
+  const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+  // const hidden = useMediaQuery(theme => theme.breakpoints.down('xl'));
   return (
     <footer className={classes.footer}>
-      <Hidden mdDown>
+      {matchesMD ? null : (
         <Grid container justify="center" className={classes.mainContainer}>
           <Grid item className={classes.gridItem}>
             <Grid container direction="column" spacing={2}>
@@ -156,7 +171,7 @@ export default function Footer(props) {
                 item
                 component={Link}
                 onClick={() => props.setValue(2)}
-                to="/recovery"
+                to="/cr"
                 className={classes.link}
               >
                 Celebrate Recovery
@@ -208,11 +223,11 @@ export default function Footer(props) {
             </Grid>
           </Grid>
         </Grid>
-      </Hidden>
+      )}
       <img
-        className={classes.adornment}
+        className={matchesMD ? classes.adornmentSmall : classes.adornment}
         alt="decorative graphic"
-        src={footerAdornment}
+        src={matchesMD ? footerAdornmentShort : footerAdornment}
       />
       <img
         style={{width: "50px"}}

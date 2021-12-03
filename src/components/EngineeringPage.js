@@ -1,4 +1,5 @@
 import React from "react";
+import Lottie from "react-lottie";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
@@ -8,68 +9,130 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import ButtonArrow from "./ui/ButtonArrow";
 import customSoftwareIcon from "../assets/customSoftwareIcon.svg";
-import AWSLogo from "../assets/AWS_Logo.svg"
-import mobileAppsIcon from "../assets/mobileIcon.svg";
+import AWSLogo from "../assets/AWS_Logo.svg";
+import GetItDone from "../animations/developer/developer.json";
 import websitesIcon from "../assets/websiteIcon.svg";
 
 const useStyles = makeStyles((theme) => ({
-    learnButton: {
-        ...theme.typography.learnButton,
-        fontSize: "0.7rem",
-        height: 35,
-        padding: 5,
-        [theme.breakpoints.down("sm")]: {
-          marginBottom: "2em"
-        }
-      },
-      specialText: {
-        fontFamily: "Pacifico",
-        color: theme.palette.common.orange
-      },
-      subtitle: {
-        marginBottom: "1em"
-      },
-      icon: {
-        marginLeft: "2em",
-        [theme.breakpoints.down("xs")]: {
-          marginLeft: 0
-        }
-      },
-      serviceContainer: {
-        marginTop: "10em",
-        [theme.breakpoints.down("sm")]: {
-          padding: 25
-        }
-      },
+  animation: {
+    maxWidth: "50em",
+    minWidth: "21em",
+    marginTop: 0,
+    // marginLeft: "10%",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "30em"
+    }
+  },
+  mainContainer: {
+    marginTop: 0,
+    marginLeft: 0,
+    [theme.breakpoints.down("md")]: {
+      marginTop: "3em"
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "2em"
+    }
+  },
+  welcomeMessage: {
+    minWidth: "21.5em",
+    marginLeft: "1em",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: 0
+    }
+  },
+  awsSection: {
+    marginTop: "5em",
+    marginRight: "3em",
+    [theme.breakpoints.down("sm")]: {
+      padding: 25,
+    },
+  },
+  learnButton: {
+    ...theme.typography.learnButton,
+    fontSize: "0.7rem",
+    height: 35,
+    padding: 5,
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "2em",
+    },
+  },
+  specialText: {
+    fontFamily: "Pacifico",
+    color: theme.palette.common.orange,
+  },
+  subtitle: {
+    marginBottom: "1em",
+  },
+  icon: {
+    marginLeft: "2em",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: 0,
+    },
+  },
+  serviceContainer: {
+    marginTop: "10em",
+    [theme.breakpoints.down("sm")]: {
+      padding: 25,
+    },
+  },
 }));
 
 export default function EngineeringPage(props) {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
-//   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
+  //   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: GetItDone,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   return (
-    <Grid container direction="column">
-        <Grid item>
-            <Typography variant="h2" gutterBottom style={{marginLeft: matchesSM ? 0 : "5rem", marginTop: matchesSM ? "1em" : "2em"}} align={matchesSM ? "center" : undefined}>
-                Software Engineering
+    <Grid container direction="column" className={classes.mainContainer}>
+      <Grid item>
+        <Typography
+          variant="h2"
+          gutterBottom
+          style={{
+            marginLeft: matchesSM ? 0 : "2rem",
+            // marginTop: matchesSM ? "1em" : "2em",
+          }}
+          align={matchesSM ? "center" : undefined}
+        >
+          Software Engineering
+        </Typography>
+      </Grid>
+      <Grid item>
+        <Grid container justifyContent="space-evenly" direction="row">
+          <Grid sm item className={classes.welcomeMessage}>
+            <Typography variant="body1" align="center">
+              And the next thing you know,
+              <br />
+              you're not who you used to be...
             </Typography>
+          </Grid>
+          <Grid sm item className={classes.animation}>
+            <Lottie options={defaultOptions} height={"50%"} width={"50%"} />
+          </Grid>
         </Grid>
-        <Grid item>
-        {" "}
-        {/*-----AWS Block-----*/}
+      </Grid>
+      <Grid item className={classes.awsSection}>
         <Grid
           container
           direction="row"
-          style={{marginTop: matchesSM ? "1em" :"5em"}}
+          style={{ marginTop: matchesSM ? "1em" : "5em" }}
           justify={matchesSM ? "center" : "flex-end"}
-          className={classes.serviceContainer}
+          className={classes.awsSection}
         >
           <Grid
             item
             style={{
               textAlign: matchesSM ? "center" : undefined,
-              width: matchesSM ? undefined : "35em"
+              width: matchesSM ? undefined : "35em",
             }}
           >
             <Typography variant="h4">AWS Cloud Technology</Typography>
@@ -166,7 +229,7 @@ export default function EngineeringPage(props) {
         <Grid
           container
           direction="row"
-          style={{marginBottom: "10em"}}
+          style={{ marginBottom: "10em" }}
           justify={matchesSM ? "center" : "flex-end"}
           className={classes.serviceContainer}
         >
@@ -174,7 +237,7 @@ export default function EngineeringPage(props) {
             item
             style={{
               textAlign: matchesSM ? "center" : undefined,
-              width: matchesSM ? undefined : "35em"
+              width: matchesSM ? undefined : "35em",
             }}
           >
             <Typography variant="h4">Website Development</Typography>
@@ -202,7 +265,7 @@ export default function EngineeringPage(props) {
               />
             </Button>
           </Grid>
-          <Grid item style={{marginRight: matchesSM ? 0 : "5em"}}>
+          <Grid item style={{ marginRight: matchesSM ? 0 : "5em" }}>
             <img
               className={classes.icon}
               alt="website icon"
