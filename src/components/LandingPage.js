@@ -10,25 +10,25 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 
-import CallToAction from "./ui/CallToAction";
+import KitchenDisplay from "./ui/Kitchen";
+import WoodshopDisplay from "./ui/Woodshop";
 
 //import animationData from "../animations/landinganimation/data";
 import animationData from "../animations/developer/developer.json";
 import customSoftwareIcon from "../assets/customSoftwareIcon.svg";
 import mobileAppsIcon from "../assets/mobileIcon.svg";
 import websitesIcon from "../assets/websiteIcon.svg";
-import revolutionBackground from "../assets/repeatingBackground.svg";
-import infoBackground from "../assets/infoBackground.svg";
+import recoveryBackground from "../assets/repeatingBackground.svg";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   animation: {
     maxWidth: "50em",
     minWidth: "21em",
     marginTop: "2em",
     marginLeft: "10%",
     [theme.breakpoints.down("sm")]: {
-      maxWidth: "30em"
-    }
+      maxWidth: "30em",
+    },
   },
   estimateButton: {
     ...theme.typography.estimate,
@@ -38,17 +38,24 @@ const useStyles = makeStyles(theme => ({
     width: 145,
     marginRight: 40,
     "&:hover": {
-      backgroundColor: theme.palette.secondary.light
-    }
+      backgroundColor: theme.palette.secondary.light,
+    },
   },
   buttonContainer: {
-    marginTop: "1em"
+    marginTop: "1em",
   },
   learnButtonHero: {
     ...theme.typography.learnButton,
     fontSize: "0.9rem",
     height: 45,
-    width: 145
+    width: 145,
+  },
+  learnButtonRecovery: {
+    ...theme.typography.learnButton,
+    fontSize: "0.9rem",
+    height: 45,
+    width: 145,
+    topMargin: "5em",
   },
   learnButton: {
     ...theme.typography.learnButton,
@@ -56,74 +63,83 @@ const useStyles = makeStyles(theme => ({
     height: 35,
     padding: 5,
     [theme.breakpoints.down("sm")]: {
-      marginBottom: "2em"
-    }
+      marginBottom: "2em",
+    },
   },
   mainContainer: {
     marginTop: "5em",
     [theme.breakpoints.down("md")]: {
-      marginTop: "3em"
+      marginTop: "3em",
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "2em"
-    }
+      marginTop: "2em",
+    },
   },
   heroTextContainer: {
     minWidth: "21.5em",
     marginLeft: "1em",
     [theme.breakpoints.down("xs")]: {
-      marginLeft: 0
-    }
+      marginLeft: 0,
+    },
   },
   specialText: {
     fontFamily: "Pacifico",
-    color: theme.palette.common.orange
+    color: theme.palette.common.orange,
   },
   subtitle: {
-    marginBottom: "1em"
+    marginBottom: "1em",
   },
   icon: {
     marginLeft: "2em",
     [theme.breakpoints.down("xs")]: {
-      marginLeft: 0
-    }
+      marginLeft: 0,
+    },
   },
   serviceContainer: {
     marginTop: "12em",
     [theme.breakpoints.down("sm")]: {
-      padding: 25
-    }
+      padding: 25,
+    },
+  },
+  recoveryQutote: {
+    marginBottom: "3em",
   },
   revolutionBackground: {
-    backgroundImage: `url(${revolutionBackground})`,
+    backgroundImage: `url(${recoveryBackground})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     height: "100%",
-    width: "100%"
+    width: "100%",
   },
-  revolutionCard: {
+  recoveryCard: {
     position: "absolute",
     boxShadow: theme.shadows[10],
     borderRadius: 15,
-    padding: "10em",
+    padding: "5em",
     [theme.breakpoints.down("sm")]: {
       paddingTop: "8em",
       paddingBottom: "8em",
       paddingLeft: 0,
       paddingRight: 0,
       borderRadius: 0,
-      width: "100%"
-    }
+      width: "100%",
+    },
   },
-  infoBackground: {
-    backgroundImage: `url(${infoBackground})`,
+  recoveryBackground: {
+    backgroundImage: `url(${recoveryBackground})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     height: "100%",
-    width: "100%"
-  }
+    width: "100%",
+  },
+  quoter: {
+    alignItems: "center",
+    marginLeft: "15rem",
+    fontStyle: "italic",
+    fontSize: "2em",
+  },
 }));
 
 export default function LandingPage(props) {
@@ -137,8 +153,8 @@ export default function LandingPage(props) {
     autoplay: true,
     animationData: animationData,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
 
   return (
@@ -146,12 +162,19 @@ export default function LandingPage(props) {
       <Grid item>
         {" "}
         {/*-----Hero Block-----*/}
-        <Grid container justifyContent="space-around" alignItems="center" direction="row">
+        <Grid
+          container
+          justifyContent="space-around"
+          alignItems="center"
+          direction="row"
+        >
           <Grid sm item className={classes.heroTextContainer}>
             <Typography variant="h2" align="center">
-              And the next thing you know,
-              <br />
-              you're not who you used to be...
+              “Strive for perfection in everything you do. Take the best that
+              exists and make it better. When it does not exist, design it.”
+            </Typography>
+            <Typography variant="subtitle1" className={classes.quoter}>
+              Sir Henry Royce
             </Typography>
           </Grid>
           <Grid sm item className={classes.animation}>
@@ -159,16 +182,16 @@ export default function LandingPage(props) {
           </Grid>
         </Grid>
       </Grid>
-      
+
       <Grid item>
-        {/*-----The Revolution Block-----*/}
+        {/*-----The Recovery Block-----*/}
         <Grid
           container
-          style={{ height: "70em", marginTop: "12em" }}
+          style={{ height: "40em", marginTop: "0em" }}
           alignItems="center"
           justify="center"
         >
-          <Card className={classes.revolutionCard}>
+          <Card className={classes.recoveryCard}>
             <CardContent>
               <Grid
                 container
@@ -177,18 +200,18 @@ export default function LandingPage(props) {
               >
                 <Grid item>
                   <Typography variant="h3" gutterBottom>
-                    The Revolution
+                    Recovery Advocate
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <Typography variant="subtitle1">
-                    Visionary insights coupled with cutting-edge technology is a
-                    recipe for revolution.
+                  <Typography variant="subtitle1" className={classes.recoveryQutote}>
+                    I understood myself only after I destroyed myself; and only<br/>
+                    in the process of healing, have I come to know who I really am.
                   </Typography>
                   <Button
                     component={Link}
-                    to="/revolution"
-                    className={classes.learnButtonHero}
+                    to="/recovery"
+                    className={classes.learnButtonRecovery}
                     variant="outlined"
                     onClick={() => props.setValue(2)}
                   >
@@ -203,13 +226,16 @@ export default function LandingPage(props) {
               </Grid>
             </CardContent>
           </Card>
-          <div className={classes.revolutionBackground} />
+          <div className={classes.recoveryBackground} />
         </Grid>
       </Grid>
-      
       <Grid item>
-        {/*-----Call To Action Block-----*/}
-        <CallToAction setValue={props.setValue} />
+        {/*-----Woodshop Block-----*/}
+        <WoodshopDisplay setValue={props.setValue} />
+      </Grid>
+      <Grid item>
+        {/*-----Kitchen Block-----*/}
+        <KitchenDisplay setValue={props.setValue} />
       </Grid>
     </Grid>
   );
