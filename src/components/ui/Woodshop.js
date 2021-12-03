@@ -15,10 +15,21 @@ const useStyles = makeStyles(theme => ({
     ...theme.typography.learnButton,
     fontSize: "0.7rem",
     height: 35,
+    marginTop: 20,
     padding: 5,
+    backgroundColor: "yellow",
+    "&:hover": {
+      backgroundColor: theme.palette.secondary.light,
+      color: "black",
+    },
     [theme.breakpoints.down("sm")]: {
       marginBottom: "2em"
     }
+  },
+  buttonArrow: {
+    width: 15,
+    height: 15,
+    fill: theme.palette.common.black
   },
   titleText: {
     color: "white",
@@ -92,15 +103,15 @@ export default function WoodshopDisplay(props) {
             <Button
                     component={Link}
                     to="/woodshop"
-                    className={classes.learnButtonRecovery}
+                    className={classes.learnButton}
                     variant="outlined"
                     onClick={() => props.setValue(2)}
                   >
                     <span style={{ marginRight: 10 }}>Check it out</span>
-                    <ButtonArrow
+                    <ButtonArrow className={classes.buttonArrow}
                       width={15}
                       height={15}
-                      fill={theme.palette.common.blue}
+                      fill={theme.palette.common.black}
                     />
                   </Button>
             <Grid container justify={matchesSM ? "center" : undefined} item>

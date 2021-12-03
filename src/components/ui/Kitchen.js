@@ -16,6 +16,13 @@ const useStyles = makeStyles(theme => ({
     fontSize: "0.7rem",
     height: 35,
     padding: 5,
+    marginTop: 10,
+    backgroundColor: "red",
+    color: "white",
+    "&:hover": {
+      backgroundColor: theme.palette.secondary.light,
+      color: "black",
+    },
     [theme.breakpoints.down("sm")]: {
       marginBottom: "2em"
     }
@@ -23,6 +30,10 @@ const useStyles = makeStyles(theme => ({
   kitchenText: {
     color: "white",
     fontSize: "4em",
+  },
+  supportText: {
+    color: "white",
+    fontSize: "2rem",
   },
   background: {
     backgroundImage: `url(${background})`,
@@ -33,27 +44,27 @@ const useStyles = makeStyles(theme => ({
     height: "60em",
     width: "100%",
     [theme.breakpoints.down("md")]: {
-      // backgroundImage: `url(${mobileBackground})`,
+      backgroundImage: `url(${mobileBackground})`,
       backgroundAttachment: "inherit"
     }
   },
-  estimateButton: {
-    ...theme.typography.estimate,
-    borderRadius: 50,
-    height: 80,
-    width: 205,
-    backgroundColor: theme.palette.common.orange,
-    fontSize: "1.5rem",
-    marginRight: "5em",
-    marginLeft: "2em",
-    "&:hover": {
-      backgroundColor: theme.palette.secondary.light
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginLeft: 0,
-      marginRight: 0
-    }
-  }
+  // estimateButton: {
+  //   ...theme.typography.estimate,
+  //   borderRadius: 50,
+  //   height: 80,
+  //   width: 205,
+  //   backgroundColor: theme.palette.common.orange,
+  //   fontSize: "1.5rem",
+  //   marginRight: "5em",
+  //   marginLeft: "2em",
+  //   "&:hover": {
+  //     backgroundColor: theme.palette.secondary.light
+  //   },
+  //   [theme.breakpoints.down("sm")]: {
+  //     marginLeft: 0,
+  //     marginRight: 0
+  //   }
+  // }
 }));
 
 export default function KitchenDisplay(props) {
@@ -83,7 +94,7 @@ export default function KitchenDisplay(props) {
               <br />
               we don't have to be bored.
             </Typography>
-            <Typography variant="h1" style={{ fontSize: "2.5rem" }}>
+            <Typography variant="h1" className={classes.supportText}>
               Here are some things that make my life special
             </Typography>
             <Button
@@ -97,7 +108,7 @@ export default function KitchenDisplay(props) {
                     <ButtonArrow
                       width={15}
                       height={15}
-                      fill={theme.palette.common.blue}
+                      fill={theme.palette.common.white}
                     />
                   </Button>
             <Grid container justify={matchesSM ? "center" : undefined} item>
