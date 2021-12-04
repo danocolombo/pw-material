@@ -1,15 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { makeStyles, useTheme } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import footerAdornment from "../../assets/FooterGraphic.svg";
-import footerAdornmentShort from "../../assets/FooterGraphicShort.svg";
-// import instagram from "../../assets/instagram.svg";
-import twitter from "../../assets/twitter.svg";
 import linkedIn from "../../assets/LinkedInLogo.png";
-import { withThemeCreator } from "@material-ui/styles";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -28,17 +24,6 @@ const useStyles = makeStyles((theme) => ({
       width: "15em",
     },
   },
-  adornmentSmall: {
-    width: "25em",
-    verticalAlign: "top",
-    topMargin: 0,
-    // [theme.breakpoints.down("md")]: {
-    //   width: "21em",
-    // },
-    // [theme.breakpoints.down("xs")]: {
-    //   width: "15em",
-    // },
-  },
   mainContainer: {
     position: "absolute",
   },
@@ -49,44 +34,34 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     textDecoration: "none",
   },
-  gridItem: {
-    margin: "3rem",
-  },
-  icon: {
-    height: "4rem",
-    width: "4rem",
-    [theme.breakpoints.down("xs")]: {
-        height: "2.5rem",
-        width: "2.5rem"
-    }
-  },
   linkedInIcon: {
     // height: "4rem",
     padding: "2px",
     width: "4rem",
     backgroundColor: "white",
     [theme.breakpoints.down("xs")]: {
-        // height: "2.5rem",
-        width: "2.5rem"
-    }
+      // height: "2.5rem",
+      width: "2.5rem",
+    },
+  },
+  gridItem: {
+    margin: "3em",
   },
   socialContainer: {
-      position: "absolute",
-      marginTop: "-3rem",
-      left: ".5em",
-      justifyContent: "flex-start",
-      [theme.breakpoints.down("xs")]: {
-        left: "4px",
-        marginTop: "-35px"
-    }
+    position: "absolute",
+    marginTop: "-2.5em",
+    left: ".5em",
+    [theme.breakpoints.down("xs")]: {
+      height: "70%",
+    },
   },
 }));
+
 export default function Footer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
-  // const hidden = useMediaQuery(theme => theme.breakpoints.down('xl'));
   return (
     <footer className={classes.footer}>
       {matchesMD ? null : (
@@ -224,20 +199,26 @@ export default function Footer(props) {
           </Grid>
         </Grid>
       )}
-      <img
-        className={matchesMD ? classes.adornmentSmall : classes.adornment}
-        alt="decorative graphic"
-        src={matchesMD ? footerAdornmentShort : footerAdornment}
-      />
-      <img
-        style={{width: "50px"}}
-        alt="decorative graphic"
-        src={linkedIn}
-      />
-      <Grid container justify="flex-end" spacing={2} className={classes.socialContainer}>
-        <Grid item component={"a"} href="https://www.linkedin.com/in/dcolombo/" rel="noopener noreferrer" target="_blank">
-            <img src={linkedIn} alt="Linked In logo" className={classes.linkedInIcon}/>
 
+      <img
+        alt="black decorative slash"
+        src={footerAdornment}
+        className={classes.adornment}
+      />
+
+      <Grid container justify="flex-start" className={classes.socialContainer}>
+        <Grid
+          item
+          component={"a"}
+          href="https://www.linkedin.com/in/dcolombo/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <img
+            src={linkedIn}
+            alt="Linked In logo"
+            className={classes.linkedInIcon}
+          />
         </Grid>
       </Grid>
     </footer>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
 import Header from "./ui/header";
+// import Footer from "./ui/footer";
 import Footer from "./ui/footer";
 import theme from "./ui/theme";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
