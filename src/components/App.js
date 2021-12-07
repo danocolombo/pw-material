@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./LandingPage";
 import EngineeringPage from "./EngineeringPage";
 import AWS from "./AWSPage";
+import Contact from "./contactme";
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -25,6 +26,17 @@ function App() {
             path="/aws"
             render={props => (
               <AWS
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/contact"
+            render={props => (
+              <Contact
                 {...props}
                 setValue={setValue}
                 setSelectedIndex={setSelectedIndex}
