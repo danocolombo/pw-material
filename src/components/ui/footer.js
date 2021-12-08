@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Footer(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+  
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <footer className={classes.footer}>
