@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -15,7 +16,6 @@ import phoneIcon from "../assets/phone.svg";
 import emailIcon from "../assets/email.svg";
 import paperAirplane from "../assets/send.svg";
 import ButtonArrow from "../components/ui/ButtonArrow";
-import { SSL_OP_NETSCAPE_CHALLENGE_BUG } from "constants";
 
 const useStyles = makeStyles((theme) => ({
   background: {
@@ -92,7 +92,11 @@ export default function Contact(props) {
   const [emailHelper, setEmailHelper] = useState("");
   const [message, setMessage] = useState("");
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
+  const [alert, setAlert] = useState({ open: false, color: "" });
+  const [alertMessage, setAlertMesssage] = useState("");
+  
   const onChange = (event) => {
     let valid;
     switch (event.target.id) {
@@ -122,6 +126,38 @@ export default function Contact(props) {
       case "default":
         break;
     }
+  };
+  const onConfirm = () => {
+    axios.get('https://us-central1-dcolombo-material.cloudfunctions.net/sendMail')
+    
+    axios
+      .get(
+        "https://us-central1-dcolombo-material.cloudfunctions.net/sendMail",
+        {
+          params: {
+            email: email,
+            name: name,
+            phone: phone,
+            message: message
+          }
+        }
+      )
+      .then(res => {
+        setLoading(false);
+        setOpen(false);
+        setName("");
+        setEmail("");
+        setPhone("");
+        setMessage("");
+        setAlert({ open: true, color: "#4BB543" });
+        setAlertMesssage("Message sent successfully!");
+      })
+      .catch(err => {
+        setLoading(false);
+        setAlert({ open: true, color: "#FF3232" });
+        setAlertMesssage("Something went wrong! Please try again.");
+        console.error(err);
+      });
   };
   return (
     <Grid container direction="row">
@@ -370,7 +406,8 @@ export default function Contact(props) {
             </Grid>
             <Grid item>
               <Button
-                onClick={() => setOpen(true)}
+                // onClick={() => setOpen(true)}
+                onClick={onConfirm}
                 disabled={
                   name.length === 0 ||
                   message.length === 0 ||
