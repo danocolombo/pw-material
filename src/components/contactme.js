@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, Fragment } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -9,6 +9,8 @@ import TextField from "@material-ui/core/TextField";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Snackbar from "@material-ui/core/Snackbar";
 
 import background from "../assets/background.jpg";
 import mobileBackground from "../assets/mobileBackground.jpg";
@@ -128,8 +130,7 @@ export default function Contact(props) {
     }
   };
   const onConfirm = () => {
-    // axios.get('https://us-central1-dcolombo-material.cloudfunctions.net/sendMail')
-    
+    setLoading(true);
     axios
       .get(
         "https://us-central1-dcolombo-material.cloudfunctions.net/sendMail",
@@ -138,11 +139,11 @@ export default function Contact(props) {
             email: email,
             name: name,
             phone: phone,
-            message: message
-          }
+            message: message,
+          },
         }
       )
-      .then(res => {
+      .then((res) => {
         setLoading(false);
         setOpen(false);
         setName("");
@@ -152,13 +153,19 @@ export default function Contact(props) {
         setAlert({ open: true, color: "#4BB543" });
         setAlertMesssage("Message sent successfully!");
       })
-      .catch(err => {
+      .catch((err) => {
         setLoading(false);
         setAlert({ open: true, color: "#FF3232" });
         setAlertMesssage("Something went wrong! Please try again.");
         console.error(err);
       });
   };
+  const buttonContents = (
+    <Fragment>
+      Send Message
+      <img src={paperAirplane} alt="paper airplane" style={{ marginLeft: "1em" }} />
+    </Fragment>
+  );
   return (
     <Grid container direction="row">
       <Grid
@@ -298,12 +305,7 @@ export default function Contact(props) {
                 variant="contained"
                 className={classes.sendButton}
               >
-                Send Message{" "}
-                <img
-                  src={paperAirplane}
-                  style={{ marginLeft: "1em" }}
-                  alt="paper airplane"
-                />
+                {buttonContents}
               </Button>
             </Grid>
           </Grid>
@@ -355,7 +357,7 @@ export default function Contact(props) {
               <TextField
                 label="Email"
                 id="email"
-                error={emailHelper.length != 0}
+                error={emailHelper.length !== 0}
                 helperText={emailHelper}
                 fullWidth
                 value={email}
@@ -367,7 +369,7 @@ export default function Contact(props) {
               <TextField
                 label="Phone"
                 id="phone"
-                error={phoneHelper.length != 0}
+                error={phoneHelper.length !== 0}
                 helperText={phoneHelper}
                 fullWidth
                 value={phone}
@@ -418,18 +420,12 @@ export default function Contact(props) {
                 }
                 variant="contained"
                 className={classes.sendButton}
-              >
-                Send Message{" "}
-                <img
-                  src={paperAirplane}
-                  style={{ marginLeft: "1em" }}
-                  alt="paper airplane"
-                />
-              </Button>
+              >{loading ? <CircularProgress size={30}/> : buttonContents}</Button>
             </Grid>
           </Grid>
         </DialogContent>
       </Dialog>
+      <Snackbar open={alert.open} message={alertMessage} ContentProps={{style: {backgroundColor: alert.backgroundColor }}} anchorOrigin={{vertical: "top", horizontal: "center"}} onClose={() => setAlert({...alert, open: false})} autoHideDuration={4000} />
       <Grid
         item
         container
