@@ -96,7 +96,7 @@ export default function Contact(props) {
 
   const [alert, setAlert] = useState({ open: false, color: "" });
   const [alertMessage, setAlertMesssage] = useState("");
-  
+
   const onChange = (event) => {
     let valid;
     switch (event.target.id) {
@@ -128,7 +128,7 @@ export default function Contact(props) {
     }
   };
   const onConfirm = () => {
-    axios.get('https://us-central1-dcolombo-material.cloudfunctions.net/sendMail')
+    // axios.get('https://us-central1-dcolombo-material.cloudfunctions.net/sendMail')
     
     axios
       .get(
@@ -338,7 +338,7 @@ export default function Contact(props) {
         <DialogContent>
           <Grid container direction="column">
             <Grid item>
-              <Typography align="center" variant="h4" gutterButtom>
+              <Typography align="center" variant="h4" gutterBottom>
                 Confirm message
               </Typography>
             </Grid>
