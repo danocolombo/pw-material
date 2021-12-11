@@ -163,7 +163,11 @@ export default function Contact(props) {
   const buttonContents = (
     <Fragment>
       Send Message
-      <img src={paperAirplane} alt="paper airplane" style={{ marginLeft: "1em" }} />
+      <img
+        src={paperAirplane}
+        alt="paper airplane"
+        style={{ marginLeft: "1em" }}
+      />
     </Fragment>
   );
   return (
@@ -420,12 +424,21 @@ export default function Contact(props) {
                 }
                 variant="contained"
                 className={classes.sendButton}
-              >{loading ? <CircularProgress size={30}/> : buttonContents}</Button>
+              >
+                {loading ? <CircularProgress size={30} /> : buttonContents}
+              </Button>
             </Grid>
           </Grid>
         </DialogContent>
       </Dialog>
-      <Snackbar open={alert.open} message={alertMessage} ContentProps={{style: {backgroundColor: alert.backgroundColor }}} anchorOrigin={{vertical: "top", horizontal: "center"}} onClose={() => setAlert({...alert, open: false})} autoHideDuration={4000} />
+      <Snackbar
+        open={alert.open}
+        message={alertMessage}
+        ContentProps={{ style: { backgroundColor: alert.backgroundColor } }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={() => setAlert({ ...alert, open: false })}
+        autoHideDuration={4000}
+      />
       <Grid
         item
         container
