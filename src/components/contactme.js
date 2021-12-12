@@ -133,7 +133,7 @@ export default function Contact(props) {
     setLoading(true);
     axios
       .get(
-        "https://us-central1-dcolombo-material.cloudfunctions.net/sendMail",
+        "https://us-central1-dcolombo-material.cloudfunctions.net/sendAnEmail",
         {
           params: {
             email: email,
