@@ -14,7 +14,6 @@ import Snackbar from "@material-ui/core/Snackbar";
 
 import background from "../assets/background.jpg";
 import mobileBackground from "../assets/mobileBackground.jpg";
-import phoneIcon from "../assets/phone.svg";
 import emailIcon from "../assets/email.svg";
 import paperAirplane from "../assets/send.svg";
 import ButtonArrow from "../components/ui/ButtonArrow";
@@ -125,7 +124,7 @@ export default function Contact(props) {
           setPhoneHelper("");
         }
         break;
-      case "default":
+      default:
         break;
     }
   };
@@ -224,7 +223,7 @@ export default function Contact(props) {
               <Grid item>
                 <img
                   src={emailIcon}
-                  alt="email image"
+                  alt="email"
                   style={{ marginRight: "0.5em", verticalAlign: "bottom" }}
                 />
               </Grid>

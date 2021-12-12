@@ -197,7 +197,7 @@ export default function EngineeringPage(props) {
           <Grid item>
             <img
               className={classes.icon}
-              alt="full-stack image"
+              alt="custom software"
               src={customSoftwareIcon}
               width="250em"
             />

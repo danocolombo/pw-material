@@ -15,9 +15,6 @@ import WoodshopDisplay from "./ui/Woodshop";
 
 //import animationData from "../animations/landinganimation/data";
 import animationData from "../animations/developer/developer.json";
-import customSoftwareIcon from "../assets/customSoftwareIcon.svg";
-import mobileAppsIcon from "../assets/mobileIcon.svg";
-import websitesIcon from "../assets/websiteIcon.svg";
 import recoveryBackground from "../assets/repeatingBackground.svg";
 
 const useStyles = makeStyles((theme) => ({
