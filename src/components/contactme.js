@@ -197,9 +197,9 @@ export default function Contact(props) {
               <Typography
                 variant="body1"
                 align={matchesMD ? "center" : undefined}
-                style={{ color: theme.palette.common.blue }}
+                style={{ color: theme.palette.common.blue, paddingLeft: "10px", paddingRight: "20px" }}
               >
-                I'm waiting
+                Drop me a direct message, <br/>or use the form below.
               </Typography>
             </Grid>
             {/* <Grid item container style={{ marginTop: "2em" }}>

@@ -7,6 +7,7 @@ import theme from "./ui/theme";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./LandingPage";
 import EngineeringPage from "./EngineeringPage";
+import RecoveryPage from "./RecoveryPage";
 import AWS from "./AWSPage";
 import Contact from "./contactme";
 
@@ -21,6 +22,7 @@ function App() {
           {/* <Route exact path="/" component={() => <div style={{height: "500px"}}>HOME</div>}/> */}
           <Route exact path="/" render={(props) => <LandingPage setValue={setValue} setSelectedIndex={setSelectedIndex} />}/>
           <Route exact path="/engineering" render={(props) => <EngineeringPage setValue={setValue} setSelectedIndex={setSelectedIndex} />}/>
+          <Route exact path="/recovery" render={(props) => <RecoveryPage setValue={setValue} setSelectedIndex={setSelectedIndex} />}/>
           <Route
             exact
             path="/aws"
@@ -45,7 +47,7 @@ function App() {
           />
           <Route exact path="/integrations" component={() => <div>Integrations</div>} />
           <Route exact path="/enterprise" component={() => <div>Enterprise</div>} />
-          <Route exact path="/recovery" component={() => <div>Recovery</div>} />
+          {/* <Route exact path="/recovery" component={() => <div>Recovery</div>} /> */}
           <Route exact path="/cr" component={() => <div>Celebrate Recovery</div>} />
           <Route exact path="/hobbies" component={() => <div>Hobbies</div>} />
           <Route exact path="/woodshop" component={() => <div>Woodshop</div>} />
