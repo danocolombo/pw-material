@@ -6,14 +6,20 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import ButtonArrow from "./ui/ButtonArrow";
 import Typography from "@material-ui/core/Typography";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import ImageListItemBar from "@mui/material/ImageListItemBar";
+import ListSubheader from "@mui/material/ListSubheader";
+import IconButton from "@mui/material/IconButton";
+import InfoIcon from "@mui/icons-material/Info";
+
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 
-import TechSledPic from "../assets/TechSled.png";
-
-import KitchenDisplay from "./ui/Kitchen";
-import WoodshopDisplay from "./ui/Woodshop";
+import TechSledPic from "../assets/TechSled.svg";
+import CoatRack from "../assets/WS-Coat-Rack.svg";
+import ShoeBench from "../assets/WS-Shoe-Bench.svg";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
@@ -41,11 +47,24 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "21.5em",
   },
   woodPic: {
-    marginLeft: "2em",
-    width: "100px",
+    // height: "4rem",
+    padding: "2px",
+    // width: "4rem",
+    height: "400px",
+    alignItems: "left",
+
+    backgroundColor: "white",
     [theme.breakpoints.down("xs")]: {
-      marginLeft: 0,
+      // height: "2.5rem",
+      width: "2.5rem",
     },
+  },
+  woodGalleryContainer: {
+    marginLeft: "20em",
+  },
+  woodGaleryList: {
+    width: 800, 
+    height: 800,
   },
   heroTextContainer: {
     minWidth: "21.5em",
@@ -142,15 +161,46 @@ export default function LandingPage(props) {
               something.
             </Typography>
           </Grid>
-          <Grid><img
+          <Grid>
+            <img
               className={classes.woodPic}
               alt="Tech Sled"
               src={TechSledPic}
-              // width="250em"
-            /></Grid>
+            />
+          </Grid>
+        </Grid>
+        <Grid
+          className={classes.woodGalleryContainer}
+        >
+          <ImageList className={classes.woodGaleryList}>
+            <ImageListItem key="Subheader" cols={2}>
+              <ListSubheader component="div"><Typography variant="h3">Project Galery</Typography></ListSubheader>
+            </ImageListItem>
+            {woodshopProjectData.map((item) => (
+              <ImageListItem key={item.img}>
+                <img
+                  src={`${item.img}?w=400&fit=crop&auto=format`}
+                  srcSet={`${item.img}?w=400&fit=crop&auto=format&dpr=2 2x`}
+                  alt={item.title}
+                  loading="lazy"
+                />
+                <ImageListItemBar
+                  title={item.title}
+                  // subtitle={item.author}
+                  actionIcon={
+                    <IconButton
+                      sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                      aria-label={`info about ${item.title}`}
+                    >
+                      <InfoIcon />
+                    </IconButton>
+                  }
+                />
+              </ImageListItem>
+            ))}
+          </ImageList>
         </Grid>
       </Grid>
-      >
       <Grid item>
         {/*-----Homework Block-----*/}
         <Typography variant="h2" className={classes.sectionHeader}>
@@ -168,3 +218,16 @@ export default function LandingPage(props) {
     </Grid>
   );
 }
+//woodshop projects
+const woodshopProjectData = [
+  {
+    img: CoatRack,
+    title: "Coat Rack",
+    author: "@bkristastucchio",
+  },
+  {
+    img: ShoeBench,
+    title: "Entry Way Bench",
+    author: "@rollelflex_graphy726",
+  },
+];
