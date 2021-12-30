@@ -142,7 +142,7 @@ export default function Footer(props) {
               >
                 Recovery
               </Grid>
-              <Grid
+              {/* <Grid
                 item
                 component={Link}
                 onClick={() => props.setValue(2)}
@@ -150,7 +150,7 @@ export default function Footer(props) {
                 className={classes.link}
               >
                 Celebrate Recovery
-              </Grid>
+              </Grid> */}
             </Grid>
           </Grid>
           <Grid item className={classes.gridItem}>

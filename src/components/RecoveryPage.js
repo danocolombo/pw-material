@@ -15,51 +15,6 @@ import animationData from "../animations/developer/developer.json";
 import recoveryBackground from "../assets/repeatingBackground.svg";
 
 const useStyles = makeStyles((theme) => ({
-  animation: {
-    maxWidth: "50em",
-    minWidth: "21em",
-    marginTop: "2em",
-    marginLeft: "10%",
-    [theme.breakpoints.down("sm")]: {
-      maxWidth: "30em",
-    },
-  },
-  estimateButton: {
-    ...theme.typography.estimate,
-    backgroundColor: theme.palette.common.orange,
-    borderRadius: 50,
-    height: 45,
-    width: 145,
-    marginRight: 40,
-    "&:hover": {
-      backgroundColor: theme.palette.secondary.light,
-    },
-  },
-  buttonContainer: {
-    marginTop: "1em",
-  },
-  learnButtonHero: {
-    ...theme.typography.learnButton,
-    fontSize: "0.9rem",
-    height: 45,
-    width: 145,
-  },
-  learnButtonRecovery: {
-    ...theme.typography.learnButton,
-    fontSize: "0.9rem",
-    height: 45,
-    width: 145,
-    topMargin: "5em",
-  },
-  learnButton: {
-    ...theme.typography.learnButton,
-    fontSize: "0.7rem",
-    height: 35,
-    padding: 5,
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: "2em",
-    },
-  },
   mainContainer: {
     marginTop: "5em",
     [theme.breakpoints.down("md")]: {
@@ -76,41 +31,10 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: 0,
     },
   },
-  specialText: {
-    fontFamily: "Pacifico",
-    color: theme.palette.common.orange,
-  },
-  subtitle: {
-    marginBottom: "1em",
-  },
-  icon: {
-    marginLeft: "2em",
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: 0,
-    },
-  },
-  serviceContainer: {
-    marginTop: "12em",
-    [theme.breakpoints.down("sm")]: {
-      padding: 25,
-    },
-  },
-  recoveryQutote: {
-    marginBottom: "0px",
-  },
-  revolutionBackground: {
-    backgroundImage: `url(${recoveryBackground})`,
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    height: "100%",
-    width: "100%",
-  },
   recoveryCard: {
     position: "absolute",
     boxShadow: theme.shadows[10],
     borderRadius: 15,
-    // padding: "5em",
     [theme.breakpoints.down("sm")]: {
       paddingTop: "8em",
       paddingBottom: "8em",
@@ -128,12 +52,6 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
   },
-  quoter: {
-    alignItems: "center",
-    marginLeft: "15rem",
-    fontStyle: "italic",
-    fontSize: "2em",
-  },
   introParagraph: {
     alignItems: "center",
     paddingTop: "1rem",
@@ -147,6 +65,19 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "5px",
     marginBottom: "5px",
     fontWeight: 600,
+  },
+  findGroupButtom: {
+    ...theme.typography.goButton,
+    backgroundColor: theme.palette.common.red,
+    fontSize: "0.7rem",
+    height: 35,
+    width: 200,
+    textAlign: "center",
+    padding: 5,
+    marginBottom: "2em",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "2em",
+    },
   },
 }));
 
@@ -224,31 +155,81 @@ export default function LandingPage(props) {
             direction="row"
           >
             <Typography variant="bodyPlain" className={classes.introParagraph}>
-              Life was difficult growing up, but you only know what you know. So I had no idea what was going on. 
-              Over the decades of my life I struggled with relationships, identity and turned to self-medcate to endure.
-              I was a determined, self-reliant person through all my challenges. When I finally got sick and tired 
-              of being sick and tired, I began to seek professional help.<br/><br/>
-              I know self-medication was not the solution to my struggles in life, but it seemed like it gave me
-              the ability to continue on. I came to understand that the self-medication was not the problem, but 
-              just a symptom of something bigging going on.<br/><br/>
-              Through years of striving and trying, I finally found a program called Celebrate Recovery (CR), that 
-              helped me get past my medicating challeenges and was able to get some restoration and healing that was 
-              the root of my dysfunciton.
+              Life has been a challenge and my childhood was difficult, but I
+              never knew. We only know what we know. Our only reference we have
+              for reality is what we experience. So I had no idea what was going
+              on. Over the decades of my life I struggled with relationships,
+              identity and turned to self-medcate to endure. I was a determined,
+              self-reliant person through all my challenges. When I finally got
+              sick and tired of being sick and tired, I began to seek
+              professional help.
+              <br />
+              <br />I knew self-medication was not the solution to my struggles
+              in life, but it seemed like it gave me the ability to continue on.
+              I came to understand that my tendency to self-medicate was not the
+              problem, but just a symptom of something bigger going on.
             </Typography>
           </Grid>
           <Grid
-          container
-          justifyContent="space-around"
-          alignItems="center"
-          direction="row">
-            <Typography variant="subtitle1" className={classes.SobrietyRecoveryDefs}>
-              Sobriety: the state of not being intoxicated.<br/>
+            container
+            justifyContent="space-around"
+            alignItems="center"
+            direction="row"
+          >
+            <Typography
+              variant="subtitle1"
+              className={classes.SobrietyRecoveryDefs}
+            >
+              Sobriety: the state of not being intoxicated.
+              <br />
               Recovery: return to a normal state of health, mind or strength
+            </Typography>
+          </Grid>
+          <Grid
+            container
+            justifyContent="space-around"
+            alignItems="center"
+            direction="row"
+          >
+            <Typography variant="bodyPlain" className={classes.introParagraph}>
+              Through years of striving and trying, I finally found a program
+              called Celebrate Recovery (CR), that helped me get past my
+              medicating challeenges and deal with the root of the challenges
+              and get some restoration and healing. The truth is, I did not even
+              know change was possible, I just figured I had to deal with my
+              hurts, habits and hang-ups on my own with a goal of just getting
+              by.
+              <br />
+              <br />
+              Contact me if you want some more information, or click the "Find a
+              Group" link below.
             </Typography>
           </Grid>
         </Grid>
       </Grid>
-      
+      <Grid item>
+        <Grid
+          container
+          justifyContent="space-around"
+          alignItems="center"
+          direction="row"
+        >
+          <Button
+            component={Link}
+            to="https://locator.crgroups.info/"
+            className={classes.findGroupButtom}
+            variant="outlined"
+            // onClick={() => props.setValue(2)}
+          >
+            <span style={{ marginRight: 10 }}>Find A Group</span>
+            <ButtonArrow
+              width={15}
+              height={15}
+              fill={theme.palette.common.white}
+            />
+          </Button>
+        </Grid>
+      </Grid>
     </Grid>
   );
 }

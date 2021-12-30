@@ -4,11 +4,14 @@ import { createTheme } from "@material-ui/core/styles";
 const arcBlue = "#0d72bb";
 const arcOrange = "#FFBA60";
 const arcGrey = "#868686";
+const fortsonRed = "#DC143C"
+const fortsonBlue = "#0000FF"
 export default createTheme({
   palette: {
     common: {
       blue: `${arcBlue}`,
       orange: `${arcOrange}`,
+      red: `${fortsonRed}`,
     },
     primary: {
       main: `${arcBlue}`,
@@ -84,6 +87,15 @@ export default createTheme({
       borderWidth: 2,
       textTransform: "none",
       color: arcBlue,
+      borderRadius: 50,
+      fontFamily: "Roboto",
+      fontWeight: "bold",
+    },
+    goButton: {
+      borderColor: "black",
+      borderWidth: 2,
+      textTransform: "none",
+      color: "white",
       borderRadius: 50,
       fontFamily: "Roboto",
       fontWeight: "bold",

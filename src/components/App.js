@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./LandingPage";
 import EngineeringPage from "./EngineeringPage";
 import RecoveryPage from "./RecoveryPage";
+import HobbiesPage from "./HobbiesPage";
 import AWS from "./AWSPage";
 import Contact from "./contactme";
 
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/" render={(props) => <LandingPage setValue={setValue} setSelectedIndex={setSelectedIndex} />}/>
           <Route exact path="/engineering" render={(props) => <EngineeringPage setValue={setValue} setSelectedIndex={setSelectedIndex} />}/>
           <Route exact path="/recovery" render={(props) => <RecoveryPage setValue={setValue} setSelectedIndex={setSelectedIndex} />}/>
+          <Route exact path="/hobbies" render={(props) => <HobbiesPage setValue={setValue} setSelectedIndex={setSelectedIndex} />}/>
           <Route
             exact
             path="/aws"
