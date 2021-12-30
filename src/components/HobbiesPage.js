@@ -10,6 +10,8 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 
+import TechSledPic from "../assets/TechSled.png";
+
 import KitchenDisplay from "./ui/Kitchen";
 import WoodshopDisplay from "./ui/Woodshop";
 
@@ -21,6 +23,28 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "2em",
+    },
+  },
+  introParagraph: {
+    marginLeft: "10em",
+    marginTop: "0em",
+    marginBottom: "2em",
+  },
+  sectionHeader: {
+    marginLeft: "5em",
+  },
+  sectionParagraph: {
+    // marginLeft: "5em",
+    marginTop: "0em",
+    marginBottom: "2em",
+    minWidth: "21.5em",
+    maxWidth: "21.5em",
+  },
+  woodPic: {
+    marginLeft: "2em",
+    width: "100px",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: 0,
     },
   },
   heroTextContainer: {
@@ -42,13 +66,6 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: 0,
       width: "100%",
     },
-  },
-  introParagraph: {
-    alignItems: "center",
-    paddingTop: "1rem",
-    paddingRight: "15rem",
-    paddingBottom: "1rem",
-    paddingLeft: "15rem",
   },
   SobrietyRecoveryDefs: {
     alignItems: "center",
@@ -90,12 +107,63 @@ export default function LandingPage(props) {
   return (
     <Grid container direction="column" className={classes.mainContainer}>
       <Grid item>
+        <Typography variant="body1" className={classes.introParagraph}>
+          There are times of hard work, but there also has to be a balance of
+          difference. The moments of just escaping from the moment into a
+          healthy interaction. Not to waste time, but also to get some sense of
+          acheivement and accomplishment. These are a few of my favorite
+          things...
+        </Typography>
+      </Grid>
+      <Grid item>
         {/*-----Woodshop Block-----*/}
-        <WoodshopDisplay setValue={props.setValue} />
+        <Typography variant="h2" className={classes.sectionHeader}>
+          Woodworking
+        </Typography>
+        <Grid
+          container
+          justifyContent="space-evenly"
+          alignItems="top"
+          direction="row"
+        >
+          <Grid>
+            <Typography className={classes.sectionParagraph}>
+              It started all the way back in middle school, or what we used to
+              call Junior High. It was a great class that gave me a sense of
+              worth and accomplishment. To be able to make something that I
+              could say was mine, felt so good.
+              <br />
+              That outlet has been dormant for decades and life got busy, but in
+              the last few years of battling the pandemic of COVID, I have found
+              my way back.
+              <br />
+              Not just just waste time, or get my mind off things, but to
+              actually be creative and produce and construct from nothing to
+              something.
+            </Typography>
+          </Grid>
+          <Grid><img
+              className={classes.woodPic}
+              alt="Tech Sled"
+              src={TechSledPic}
+              // width="250em"
+            /></Grid>
+        </Grid>
+      </Grid>
+      >
+      <Grid item>
+        {/*-----Homework Block-----*/}
+        <Typography variant="h2" className={classes.sectionHeader}>
+          Homework
+        </Typography>
+        <Typography className={classes.sectionParagraph}>Homework</Typography>
       </Grid>
       <Grid item>
         {/*-----Kitchen Block-----*/}
-        <KitchenDisplay setValue={props.setValue} />
+        <Typography variant="h2" className={classes.sectionHeader}>
+          Kitchen
+        </Typography>
+        <Typography className={classes.sectionParagraph}>Kitchen</Typography>
       </Grid>
     </Grid>
   );
