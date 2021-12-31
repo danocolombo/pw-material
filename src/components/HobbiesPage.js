@@ -1,7 +1,7 @@
 import React from "react";
 import Lottie from "react-lottie";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -15,16 +15,16 @@ import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 
 //these are for kitchen recipes
-import CardHeader from '@mui/material/CardHeader';
-import Avatar from '@mui/material/Avatar';
-import { red } from '@mui/material/colors';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import CardMedia from '@mui/material/CardMedia';
-import CardActions from '@mui/material/CardActions';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Collapse from '@mui/material/Collapse';
+import CardHeader from "@mui/material/CardHeader";
+import Avatar from "@mui/material/Avatar";
+import { red } from "@mui/material/colors";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import CardMedia from "@mui/material/CardMedia";
+import CardActions from "@mui/material/CardActions";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ShareIcon from "@mui/icons-material/Share";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Collapse from "@mui/material/Collapse";
 
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Card from "@material-ui/core/Card";
@@ -99,7 +99,6 @@ const useStyles = makeStyles((theme) => ({
   recipePic: {
     height: 300,
     // width: 100,
-    
   },
   heroTextContainer: {
     minWidth: "21.5em",
@@ -147,9 +146,9 @@ const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
+  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+  marginLeft: "auto",
+  transition: theme.transitions.create("transform", {
     duration: theme.transitions.duration.shortest,
   }),
 }));
@@ -287,88 +286,59 @@ export default function LandingPage(props) {
             />
           </Grid>
         </Grid>
-        <Grid className={classes.recipeContainer}>    
-          <Card className={classes.recipeCard}>
-            <CardHeader
-              avatar={
-                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                  FIRE
-                </Avatar>
-              }
-              action={
-                <IconButton aria-label="settings">
-                  <MoreVertIcon />
-                </IconButton>
-              }
-              title="Shrimp and Chorizo Paella"
-              subheader="September 14, 2016"
-            />
-            <img src={SalsaPic} alt="salsa" className={classes.recipePic}/>
-            {/* <CardMedia
+        {/* RECIPES */}
+        <Grid className={classes.recipeContainer}>
+          {recipes.map((recipe) => (
+            <Card className={classes.recipeCard}>
+              <CardHeader
+                avatar={
+                  <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                    FIRE
+                  </Avatar>
+                }
+                action={
+                  <IconButton aria-label="settings">
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title={recipe.title}
+                subheader="September 14, 2016"
+              />
+              <img
+                src={recipe.picture}
+                alt="salsa"
+                className={classes.recipePic}
+              />
+              {/* <CardMedia
               component="img"
               className={classes.recipePic}
               // height="194"
               image= {SalsaPic}
               alt="Hot Salsa"
             /> */}
-            <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                This impressive paella is a perfect party dish and a fun meal to
-                cook together with your guests. Add 1 cup of frozen peas along
-                with the mussels, if you like.
-              </Typography>
-            </CardContent>
-            <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="share">
-                <ShareIcon />
-              </IconButton>
-              <ExpandMore
-                expand={expanded}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-              >
-                <ExpandMoreIcon />
-              </ExpandMore>
-            </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-              <CardContent>
-                <Typography paragraph>Method:</Typography>
-                <Typography paragraph>
-                  Heat 1/2 cup of the broth in a pot until simmering, add
-                  saffron and set aside for 10 minutes.
-                </Typography>
-                <Typography paragraph>
-                  Heat oil in a (14- to 16-inch) paella pan or a large, deep
-                  skillet over medium-high heat. Add chicken, shrimp and
-                  chorizo, and cook, stirring occasionally until lightly
-                  browned, 6 to 8 minutes. Transfer shrimp to a large plate and
-                  set aside, leaving chicken and chorizo in the pan. Add
-                  pimentón, bay leaves, garlic, tomatoes, onion, salt and
-                  pepper, and cook, stirring often until thickened and fragrant,
-                  about 10 minutes. Add saffron broth and remaining 4 1/2 cups
-                  chicken broth; bring to a boil.
-                </Typography>
-                <Typography paragraph>
-                  Add rice and stir very gently to distribute. Top with
-                  artichokes and peppers, and cook without stirring, until most
-                  of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
-                  medium-low, add reserved shrimp and mussels, tucking them down
-                  into the rice, and cook again without stirring, until mussels
-                  have opened and rice is just tender, 5 to 7 minutes more.
-                  (Discard any mussels that don’t open.)
-                </Typography>
-                <Typography>
-                  Set aside off of the heat to let rest for 10 minutes, and then
-                  serve.
-                </Typography>
-              </CardContent>
-            </Collapse>
-          </Card>
-          
+              <CardContent><div dangerouslySetInnerHTML={{__html: recipe.overview}}></div></CardContent>
+              {/* <CardContent>recipe.overview</CardContent> */}
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <ShareIcon />
+                </IconButton>
+                <ExpandMore
+                  expand={expanded}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                >
+                  <ExpandMoreIcon />
+                </ExpandMore>
+              </CardActions>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>{recipe.description}</CardContent>
+              </Collapse>
+            </Card>
+          ))}
         </Grid>
       </Grid>
     </Grid>
@@ -390,5 +360,40 @@ const woodshopProjectData = [
     img: Desk,
     title: "Desk",
     author: "@rollelflex_graphy726",
+  },
+];
+
+//recipes
+const recipes = [
+  {
+    title: "Hot Salsa",
+    origin: "original",
+    picture: SalsaPic,
+    overview: `<Typography variant="body2" color="text.secondary">
+    This impressive paella is a perfect party dish and a fun meal
+    to cook together with your guests. Add 1 cup of frozen peas
+    along with the mussels, if you like.
+  </Typography>`,
+    description: `<Typography className={classes.sectionParagraph}>
+    It started all the way back in middle school, or what we used to
+    call Junior High. It was a great class that gave me a sense of
+    worth and accomplishment. To be able to make something that I
+    could say was mine, felt so good.
+    <br />
+    That outlet has been dormant for decades and life got busy, but in
+    the last few years of battling the pandemic of COVID, I have found
+    my way back.
+    <br />
+    Not just just waste time, or get my mind off things, but to
+    actually be creative and produce and construct from nothing to
+    something.
+  </Typography>`,
+  },
+  {
+    title: "Gunpowder Guac",
+    picture: SalsaPic,
+    origin: "modified from Betty Crocker party recipes",
+    overview: `<Typography className={classes.sectionParagraph}>Avacados with a flavorful kick.</Typography>`,
+    description: `<Typography className={classes.sectionParagraph}>Just a test</Typography>`,
   },
 ];
