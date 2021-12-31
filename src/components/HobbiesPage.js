@@ -38,6 +38,13 @@ import Desk from "../assets/WS-Desk.svg";
 import SalsaPic from "../assets/kitchen/salsa.svg";
 import { autocompleteClasses } from "@mui/material";
 
+//========================================
+// * Don' forget this
+// ! it will hurt....
+// TODO: clean up the unused code
+//   if you use 3 spaces you get YELLOW
+//+++++++++++++++++++++++++++++++++++++++++
+
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
     marginTop: "5em",
