@@ -93,9 +93,13 @@ const useStyles = makeStyles((theme) => ({
   recipeContainer: {
     marginLeft: "20em",
   },
+  recipeCard: {
+    maxWidth: 500,
+  },
   recipePic: {
-    width: "auto",
-    height: "10%",
+    height: 300,
+    // width: 100,
+    
   },
   heroTextContainer: {
     minWidth: "21.5em",
@@ -284,7 +288,7 @@ export default function LandingPage(props) {
           </Grid>
         </Grid>
         <Grid className={classes.recipeContainer}>    
-          <Card sx={{ maxWidth: 345 }}>
+          <Card className={classes.recipeCard}>
             <CardHeader
               avatar={
                 <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -299,12 +303,14 @@ export default function LandingPage(props) {
               title="Shrimp and Chorizo Paella"
               subheader="September 14, 2016"
             />
-            <CardMedia
+            <img src={SalsaPic} alt="salsa" className={classes.recipePic}/>
+            {/* <CardMedia
               component="img"
               className={classes.recipePic}
+              // height="194"
               image= {SalsaPic}
               alt="Hot Salsa"
-            />
+            /> */}
             <CardContent>
               <Typography variant="body2" color="text.secondary">
                 This impressive paella is a perfect party dish and a fun meal to
@@ -362,6 +368,7 @@ export default function LandingPage(props) {
               </CardContent>
             </Collapse>
           </Card>
+          
         </Grid>
       </Grid>
     </Grid>
