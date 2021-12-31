@@ -1,6 +1,7 @@
 import React from "react";
 import Lottie from "react-lottie";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { styled } from '@mui/material/styles';
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -13,6 +14,18 @@ import ListSubheader from "@mui/material/ListSubheader";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 
+//these are for kitchen recipes
+import CardHeader from '@mui/material/CardHeader';
+import Avatar from '@mui/material/Avatar';
+import { red } from '@mui/material/colors';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import CardMedia from '@mui/material/CardMedia';
+import CardActions from '@mui/material/CardActions';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Collapse from '@mui/material/Collapse';
+
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -20,6 +33,10 @@ import CardContent from "@material-ui/core/CardContent";
 import TechSledPic from "../assets/TechSled.svg";
 import CoatRack from "../assets/WS-Coat-Rack.svg";
 import ShoeBench from "../assets/WS-Shoe-Bench.svg";
+import Desk from "../assets/WS-Desk.svg";
+//kitchen images
+import SalsaPic from "../assets/kitchen/salsa.svg";
+import { autocompleteClasses } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
@@ -63,8 +80,15 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "20em",
   },
   woodGaleryList: {
-    width: 800, 
+    width: 800,
     height: 800,
+  },
+  recipeContainer: {
+    marginLeft: "20em",
+  },
+  recipePic: {
+    width: "auto",
+    height: "10%",
   },
   heroTextContainer: {
     minWidth: "21.5em",
@@ -108,11 +132,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const ExpandMore = styled((props) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+  marginLeft: 'auto',
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest,
+  }),
+}));
+
 export default function LandingPage(props) {
+  const [expanded, setExpanded] = React.useState(false);
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   // const defaultOptions = {
   //   loop: true,
@@ -169,12 +209,12 @@ export default function LandingPage(props) {
             />
           </Grid>
         </Grid>
-        <Grid
-          className={classes.woodGalleryContainer}
-        >
+        <Grid className={classes.woodGalleryContainer}>
           <ImageList className={classes.woodGaleryList}>
             <ImageListItem key="Subheader" cols={2}>
-              <ListSubheader component="div"><Typography variant="h3">Project Galery</Typography></ListSubheader>
+              <ListSubheader component="div">
+                <Typography variant="h3">Project Galery</Typography>
+              </ListSubheader>
             </ImageListItem>
             {woodshopProjectData.map((item) => (
               <ImageListItem key={item.img}>
@@ -201,19 +241,121 @@ export default function LandingPage(props) {
           </ImageList>
         </Grid>
       </Grid>
-      <Grid item>
-        {/*-----Homework Block-----*/}
-        <Typography variant="h2" className={classes.sectionHeader}>
-          Homework
-        </Typography>
-        <Typography className={classes.sectionParagraph}>Homework</Typography>
-      </Grid>
+
       <Grid item>
         {/*-----Kitchen Block-----*/}
         <Typography variant="h2" className={classes.sectionHeader}>
           Kitchen
         </Typography>
-        <Typography className={classes.sectionParagraph}>Kitchen</Typography>
+        <Grid
+          container
+          justifyContent="space-evenly"
+          alignItems="top"
+          direction="row"
+        >
+          <Grid>
+            <Typography className={classes.sectionParagraph}>
+              It takes a lot of energy to focus and work hard, then when we have
+              a hobby that also requires us eo exert more physical energy, we
+              need to re-fuel.
+              <br />
+              I had to learn to cook at a very young age, and I have always
+              enjoyed the challenges of taking a recipe and finishing the dish
+              to the end.
+              <br />
+              <br />
+              Now over the years, I have discovered and returned to some special
+              recipes, and you will find them below.
+            </Typography>
+          </Grid>
+          <Grid>
+            <img
+              className={classes.woodPic}
+              alt="Tech Sled"
+              src={TechSledPic}
+            />
+          </Grid>
+        </Grid>
+        <Grid className={classes.recipeContainer}>    
+          <Card sx={{ maxWidth: 345 }}>
+            <CardHeader
+              avatar={
+                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                  FIRE
+                </Avatar>
+              }
+              action={
+                <IconButton aria-label="settings">
+                  <MoreVertIcon />
+                </IconButton>
+              }
+              title="Shrimp and Chorizo Paella"
+              subheader="September 14, 2016"
+            />
+            <CardMedia
+              component="img"
+              className={classes.recipePic}
+              image= {SalsaPic}
+              alt="Hot Salsa"
+            />
+            <CardContent>
+              <Typography variant="body2" color="text.secondary">
+                This impressive paella is a perfect party dish and a fun meal to
+                cook together with your guests. Add 1 cup of frozen peas along
+                with the mussels, if you like.
+              </Typography>
+            </CardContent>
+            <CardActions disableSpacing>
+              <IconButton aria-label="add to favorites">
+                <FavoriteIcon />
+              </IconButton>
+              <IconButton aria-label="share">
+                <ShareIcon />
+              </IconButton>
+              <ExpandMore
+                expand={expanded}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+              >
+                <ExpandMoreIcon />
+              </ExpandMore>
+            </CardActions>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+              <CardContent>
+                <Typography paragraph>Method:</Typography>
+                <Typography paragraph>
+                  Heat 1/2 cup of the broth in a pot until simmering, add
+                  saffron and set aside for 10 minutes.
+                </Typography>
+                <Typography paragraph>
+                  Heat oil in a (14- to 16-inch) paella pan or a large, deep
+                  skillet over medium-high heat. Add chicken, shrimp and
+                  chorizo, and cook, stirring occasionally until lightly
+                  browned, 6 to 8 minutes. Transfer shrimp to a large plate and
+                  set aside, leaving chicken and chorizo in the pan. Add
+                  pimentón, bay leaves, garlic, tomatoes, onion, salt and
+                  pepper, and cook, stirring often until thickened and fragrant,
+                  about 10 minutes. Add saffron broth and remaining 4 1/2 cups
+                  chicken broth; bring to a boil.
+                </Typography>
+                <Typography paragraph>
+                  Add rice and stir very gently to distribute. Top with
+                  artichokes and peppers, and cook without stirring, until most
+                  of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
+                  medium-low, add reserved shrimp and mussels, tucking them down
+                  into the rice, and cook again without stirring, until mussels
+                  have opened and rice is just tender, 5 to 7 minutes more.
+                  (Discard any mussels that don’t open.)
+                </Typography>
+                <Typography>
+                  Set aside off of the heat to let rest for 10 minutes, and then
+                  serve.
+                </Typography>
+              </CardContent>
+            </Collapse>
+          </Card>
+        </Grid>
       </Grid>
     </Grid>
   );
@@ -228,6 +370,11 @@ const woodshopProjectData = [
   {
     img: ShoeBench,
     title: "Entry Way Bench",
+    author: "@rollelflex_graphy726",
+  },
+  {
+    img: Desk,
+    title: "Desk",
     author: "@rollelflex_graphy726",
   },
 ];
