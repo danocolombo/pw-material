@@ -20,28 +20,28 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 0,
     // marginLeft: "10%",
     [theme.breakpoints.down("sm")]: {
-      maxWidth: "30em"
-    }
+      maxWidth: "30em",
+    },
   },
   mainContainer: {
     marginTop: 0,
     marginLeft: 0,
     [theme.breakpoints.down("md")]: {
-      marginTop: "3em"
+      marginTop: "3em",
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "2em"
-    }
+      marginTop: "2em",
+    },
   },
   welcomeMessage: {
     minWidth: "21.5em",
-    marginLeft: "1em",
+    marginLeft: "0em",
     [theme.breakpoints.down("xs")]: {
-      marginLeft: 0
-    }
+      marginLeft: 0,
+    },
   },
   awsSection: {
-    marginTop: "5em",
+    marginTop: "1em",
     marginRight: "3em",
     [theme.breakpoints.down("sm")]: {
       padding: 25,
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   serviceContainer: {
-    marginTop: "10em",
+    marginTop: "5em",
     [theme.breakpoints.down("sm")]: {
       padding: 25,
     },
@@ -102,7 +102,7 @@ export default function EngineeringPage(props) {
           variant="h2"
           gutterBottom
           style={{
-            marginLeft: matchesSM ? 0 : "2rem",
+            marginLeft: matchesSM ? 0 : "10rem",
             // marginTop: matchesSM ? "1em" : "2em",
           }}
           align={matchesSM ? "center" : undefined}
@@ -111,6 +111,10 @@ export default function EngineeringPage(props) {
         </Typography>
       </Grid>
       <Grid item>
+        {/* //   ========================== */}
+        {/* //   This is the first section */}
+        {/* //   ========================== */}
+
         <Grid container justifyContent="space-evenly" direction="row">
           <Grid sm item className={classes.welcomeMessage}>
             <Typography variant="body1" align="center">
@@ -124,6 +128,9 @@ export default function EngineeringPage(props) {
           </Grid>
         </Grid>
       </Grid>
+      {/* //   ========================== */}
+      {/* //   This is the AWS section */}
+      {/* //   ========================== */}
       <Grid item className={classes.awsSection}>
         <Grid
           container
@@ -177,7 +184,9 @@ export default function EngineeringPage(props) {
       </Grid>
       <Grid item>
         {" "}
-        {/*-----Custom Software Block-----*/}
+        {/* //   =================================== */}
+        {/* //   This is the Custom Software section */}
+        {/* //   =================================== */}
         <Grid
           container
           direction="row"
@@ -229,7 +238,9 @@ export default function EngineeringPage(props) {
       </Grid>
       <Grid item>
         {" "}
-        {/*-----Websites Block-----*/}
+                {/* //   =================================== */}
+        {/* //   This is the Website section */}
+        {/* //   =================================== */}
         <Grid
           container
           direction="row"

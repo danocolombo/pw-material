@@ -119,7 +119,9 @@ export default function EngineeringPage(props) {
       </Grid>
       <Grid item>
         {" "}
-        {/*-----Certifications-----*/}
+        {/* //   =================================== */}
+        {/* //   This is the AWS section */}
+        {/* //   =================================== */}
         <Grid
           container
           direction="row"
@@ -170,7 +172,9 @@ export default function EngineeringPage(props) {
       </Grid>
       <Grid item>
         {" "}
-        {/*-----Full Stack-----*/}
+        {/* //   =================================== */}
+        {/* //   This is the Full-stack section */}
+        {/* //   =================================== */}
         <Grid
           container
           direction="row"
@@ -203,7 +207,9 @@ export default function EngineeringPage(props) {
             />
           </Grid>
         </Grid>
-        {/* ====================== START TECH APPS ROW 1 ================== */}
+        {/* //   =================================== */}
+        {/* //   This is AWS technology section */}
+        {/* //   =================================== */}
         <Grid
           container
           direction="row"
@@ -344,7 +350,9 @@ export default function EngineeringPage(props) {
       </Grid>
       <Grid item>
         {" "}
-        {/*-----Solutions Block-----*/}
+        {/* //   =================================== */}
+        {/* //   This is the solutions section */}
+        {/* //   =================================== */}
         <Grid
           container
           direction="row"
@@ -392,7 +400,9 @@ export default function EngineeringPage(props) {
             />
           </Grid>
         </Grid>
-        {/* ====================== START SOLUTION 1 ================== */}
+        {/* //   =================================== */}
+        {/* //   This is the P8 Rally section */}
+        {/* //   =================================== */}
         <Grid
           container
           direction="row"
@@ -414,24 +424,23 @@ export default function EngineeringPage(props) {
                   leaders and participants.
                 </div>
                 <Button
-                component={Link}
-                to="/websites"
-                variant="outlined"
-                className={classes.learnButton}
-                onClick={() => {
-                  props.setValue(1);
-                  props.setSelectedIndex(3);
-                }}
-              >
-                <span style={{ marginRight: 10 }}>Learn More</span>
-                <ButtonArrow
-                  width={10}
-                  height={10}
-                  fill={theme.palette.common.blue}
-                />
-              </Button>
+                  component={Link}
+                  to="/websites"
+                  variant="outlined"
+                  className={classes.learnButton}
+                  onClick={() => {
+                    props.setValue(1);
+                    props.setSelectedIndex(3);
+                  }}
+                >
+                  <span style={{ marginRight: 10 }}>Learn More</span>
+                  <ButtonArrow
+                    width={10}
+                    height={10}
+                    fill={theme.palette.common.blue}
+                  />
+                </Button>
               </div>
-              
             </Grid>
           </Grid>
         </Grid>
@@ -444,6 +453,9 @@ export default function EngineeringPage(props) {
           alignItems="center"
           style={{ marginBottom: "5em", marginTop: "5em" }}
         >
+          {/* //   =================================== */}
+          {/* //   This is the Meeter section */}
+          {/* //   =================================== */}
           <Grid item>
             <Grid item container>
               <div>
@@ -481,7 +493,6 @@ export default function EngineeringPage(props) {
             </Grid>
           </Grid>
         </Grid>
-        {/* ===================== END OF SOLUTION 2 ==================*/}
       </Grid>
     </Grid>
   );
