@@ -36,6 +36,7 @@ import ShoeBench from "../assets/WS-Shoe-Bench.svg";
 import Desk from "../assets/WS-Desk.svg";
 //kitchen images
 import SalsaPic from "../assets/kitchen/salsa.svg";
+import GuacPic from "../assets/kitchen/guac-square.png";
 import { autocompleteClasses } from "@mui/material";
 
 //========================================
@@ -279,11 +280,11 @@ export default function LandingPage(props) {
             </Typography>
           </Grid>
           <Grid>
-            <img
+            {/* <img
               className={classes.woodPic}
               alt="Tech Sled"
               src={TechSledPic}
-            />
+            /> */}
           </Grid>
         </Grid>
         {/* RECIPES */}
@@ -319,12 +320,8 @@ export default function LandingPage(props) {
               <CardContent><div dangerouslySetInnerHTML={{__html: recipe.overview}}></div></CardContent>
               {/* <CardContent>recipe.overview</CardContent> */}
               <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
+                <div>
+                <span>view details</span>
                 <ExpandMore
                   expand={expanded}
                   onClick={handleExpandClick}
@@ -333,9 +330,10 @@ export default function LandingPage(props) {
                 >
                   <ExpandMoreIcon />
                 </ExpandMore>
+                </div>
               </CardActions>
               <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent>{recipe.description}</CardContent>
+                <CardContent><div dangerouslySetInnerHTML={{__html: recipe.description}}></div></CardContent>
               </Collapse>
             </Card>
           ))}
@@ -391,9 +389,18 @@ const recipes = [
   },
   {
     title: "Gunpowder Guac",
-    picture: SalsaPic,
+    picture: GuacPic,
     origin: "modified from Betty Crocker party recipes",
     overview: `<Typography className={classes.sectionParagraph}>Avacados with a flavorful kick.</Typography>`,
-    description: `<Typography className={classes.sectionParagraph}>Just a test</Typography>`,
+    description: `<Typography className={classes.sectionParagraph}>
+    <B>INGREDIENTS</B><br/>
+    2 avacados, chopped<br/>
+    1 T lime juice<br/>
+    1/2 cup roasted red pepper, chopped<br/>
+    bunch of green onions, thinly sliced<br/>
+    1 jalepeno or 2 serano peppers<br/>
+    salt<br/>
+    pepper<br/>
+    1/8 t cayanne pepper powder</Typography>`,
   },
 ];
