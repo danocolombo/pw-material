@@ -99,7 +99,7 @@ export default function KitchenDisplay(props) {
             </Typography>
             <Button
                     component={Link}
-                    to="/recovery"
+                    to="/hobbies"
                     className={classes.learnButton}
                     variant="outlined"
                     onClick={() => props.setValue(2)}

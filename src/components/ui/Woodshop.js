@@ -102,7 +102,7 @@ export default function WoodshopDisplay(props) {
             </Typography>
             <Button
                     component={Link}
-                    to="/woodshop"
+                    to="/hobbies"
                     className={classes.learnButton}
                     variant="outlined"
                     onClick={() => props.setValue(2)}

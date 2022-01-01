@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Lottie from "react-lottie";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { styled } from "@mui/material/styles";
@@ -165,6 +165,10 @@ export default function LandingPage(props) {
     setExpanded(!expanded);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // const defaultOptions = {
   //   loop: true,
   //   autoplay: true,
@@ -173,7 +177,6 @@ export default function LandingPage(props) {
   //     preserveAspectRatio: "xMidYMid slice",
   //   },
   // };
-
   return (
     <Grid container direction="column" className={classes.mainContainer}>
       <Grid item>
@@ -187,7 +190,11 @@ export default function LandingPage(props) {
       </Grid>
       <Grid item>
         {/*-----Woodshop Block-----*/}
-        <Typography variant="h2" className={classes.sectionHeader}>
+        <Typography
+          variant="h2"
+          id="woodshop"
+          className={classes.sectionHeader}
+        >
           Woodworking
         </Typography>
         <Grid
@@ -317,23 +324,31 @@ export default function LandingPage(props) {
               image= {SalsaPic}
               alt="Hot Salsa"
             /> */}
-              <CardContent><div dangerouslySetInnerHTML={{__html: recipe.overview}}></div></CardContent>
+              <CardContent>
+                <div
+                  dangerouslySetInnerHTML={{ __html: recipe.overview }}
+                ></div>
+              </CardContent>
               {/* <CardContent>recipe.overview</CardContent> */}
               <CardActions disableSpacing>
                 <div>
-                <span>view details</span>
-                <ExpandMore
-                  expand={expanded}
-                  onClick={handleExpandClick}
-                  aria-expanded={expanded}
-                  aria-label="show more"
-                >
-                  <ExpandMoreIcon />
-                </ExpandMore>
+                  <span>view details</span>
+                  <ExpandMore
+                    expand={expanded}
+                    onClick={handleExpandClick}
+                    aria-expanded={expanded}
+                    aria-label="show more"
+                  >
+                    <ExpandMoreIcon />
+                  </ExpandMore>
                 </div>
               </CardActions>
               <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent><div dangerouslySetInnerHTML={{__html: recipe.description}}></div></CardContent>
+                <CardContent>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: recipe.description }}
+                  ></div>
+                </CardContent>
               </Collapse>
             </Card>
           ))}
