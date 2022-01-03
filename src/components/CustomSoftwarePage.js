@@ -34,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: "2em",
     },
   },
+  introductionSection: {
+    marginLeft: "5em",
+  },
   specialText: {
     fontFamily: "Pacifico",
     color: theme.palette.common.orange,
@@ -41,22 +44,8 @@ const useStyles = makeStyles((theme) => ({
   subtitle: {
     marginBottom: "1em",
   },
-  awsIcon: {
-    marginLeft: "2em",
-    height: "80px",
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: 0,
-    },
-  },
   icon: {
     marginLeft: "2em",
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: 0,
-    },
-  },
-  certIcon: {
-    marginLeft: "2em",
-    width: "100px",
     [theme.breakpoints.down("xs")]: {
       marginLeft: 0,
     },
@@ -111,74 +100,32 @@ export default function EngineeringPage(props) {
           }}
           align={matchesSM ? "center" : undefined}
         >
-          Amazon Cloud Technology
+          Custom Software Development
         </Typography>
-        <Grid item style={{ marginRight: matchesSM ? 0 : "5em" }}>
-          <img
-            className={classes.awsIcon}
-            alt="mobile phone icon"
-            src={AWSLogo}
-            width="250em"
-          />
-        </Grid>
+        <Typography variant="subtitle1" className={classes.introductionSection}>
+          The reality is that software engineering is not just about a clean
+          simple design, code, test and deliver on time life. The challenges of
+          engineering are taking exising systems and modifying and adapting them
+          as needed. Modernizing and improving on systems that are already in
+          place.
+          <br />
+          You might be familiar with the discussions...
+          <ul>
+            <li>We need to reduce our costs</li>
+            <li>One of our components is no longer supported</li>
+            <li>We want to add this new feature</li>
+            <li>Performance and response times are not acceptable</li>
+          </ul>
+          And the list goes on. All of these challenges are not your typical
+          assignment for someone just getting started in software engineering.
+          These challenges take experience, and insights.  Through the years I have been able to take on these type of challenges and finish with satisfaction.
+        </Typography>
       </Grid>
+
       <Grid item>
         {" "}
         {/* //   =================================== */}
-        {/* //   This is the AWS section */}
-        {/* //   =================================== */}
-        <Grid
-          container
-          direction="row"
-          style={{ marginTop: matchesSM ? "1em" : "2em" }}
-          justify={matchesSM ? "center" : "flex-end"}
-          className={classes.serviceContainer}
-        >
-          <Grid
-            item
-            style={{
-              textAlign: matchesSM ? "center" : undefined,
-              width: matchesSM ? undefined : "35em",
-            }}
-          >
-            <Typography variant="h4">Offically Certified</Typography>
-            <Typography variant="subtitle1" className={classes.subtitle}>
-              Serious needs, requires serious commitment.
-            </Typography>
-            <Typography variant="subtitle1">
-              Not just getting a free account and messing around on YouTube.
-              {matchesSM ? null : <br />}But actually taking the time to get
-              seriously educated and experienced.
-            </Typography>
-          </Grid>
-          <Grid item style={{ marginRight: matchesSM ? 0 : "5em" }}>
-            <img
-              className={classes.certIcon}
-              alt="AWS Certified Architect"
-              src={AWS_SAA_Logo}
-              // width="250em"
-            />
-            {matchesSM ? null : <br />}
-            <img
-              className={classes.certIcon}
-              alt="AWS Certified Developer"
-              src={AWS_DA_Logo}
-              // width="250em"
-            />
-            {matchesSM ? null : <br />}
-            <img
-              className={classes.certIcon}
-              alt="AWS Cloud Practioner"
-              src={AWS_CP_Logo}
-              // width="250em"
-            />
-          </Grid>
-        </Grid>
-      </Grid>
-      <Grid item>
-        {" "}
-        {/* //   =================================== */}
-        {/* //   This is the Full-stack section */}
+        {/* //   From one to another to another      */}
         {/* //   =================================== */}
         <Grid
           container
@@ -193,9 +140,9 @@ export default function EngineeringPage(props) {
               textAlign: matchesSM ? "center" : undefined,
             }}
           >
-            <Typography variant="h4">Full-Stack Experience</Typography>
+            <Typography variant="h4">Product Evolution</Typography>
             <Typography variant="subtitle1" className={classes.subtitle}>
-              Top to bottom. Inside-out
+              Over the years I have been task with working with one software solution for managing a client's meetings. It was custom software, originally written in PHP with a MySQL database backend.
             </Typography>
             <Typography variant="subtitle1">
               From domains, storage, databases, APIs and front-end development.
