@@ -50,11 +50,36 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: 0,
     },
   },
-  serviceContainer: {
-    marginTop: "10em",
+  productEvolutionSection: {
+    marginLeft: "3em",
+    marginTop: "1em",
     [theme.breakpoints.down("sm")]: {
       padding: 25,
     },
+  },
+  productEvolutionParagraph: {
+    marginLeft: "2em",
+  },
+  phaseHeader: {
+    marginTop: "1em",
+    marginLeft: "1.5em",
+  },
+  phaseObjective: {
+    marginLeft: "5em",
+    marginBottom: "2em",
+    fontFamily: "Tahoma",
+    fontSize: "1.3em",
+    fontWeight: "bold",
+  },
+  phaseParagraph: {
+    marginLeft: "5em",
+    marginRight: "5em",
+  },
+  technicalChallenges: {
+    fontWeight: "bold",
+    marginLeft: "5em",
+    marginTop: "2em",
+    bottomMargin: "1em",
   },
   techTitle: {
     fontSize: "1.5em",
@@ -118,20 +143,22 @@ export default function EngineeringPage(props) {
           </ul>
           And the list goes on. All of these challenges are not your typical
           assignment for someone just getting started in software engineering.
-          These challenges take experience, and insights.  Through the years I have been able to take on these type of challenges and finish with satisfaction.
+          These challenges take experience, and insights. Through the years I
+          have been able to take on these type of challenges and finish with
+          satisfaction.
         </Typography>
       </Grid>
 
       <Grid item>
         {" "}
         {/* //   =================================== */}
-        {/* //   From one to another to another      */}
+        {/* //   Product Evolution                   */}
         {/* //   =================================== */}
         <Grid
           container
           direction="row"
           justify={matchesSM ? "center" : undefined}
-          className={classes.serviceContainer}
+          className={classes.productEvolutionSection}
         >
           <Grid
             item
@@ -140,16 +167,124 @@ export default function EngineeringPage(props) {
               textAlign: matchesSM ? "center" : undefined,
             }}
           >
-            <Typography variant="h4">Product Evolution</Typography>
-            <Typography variant="subtitle1" className={classes.subtitle}>
-              Over the years I have been task with working with one software solution for managing a client's meetings. It was custom software, originally written in PHP with a MySQL database backend.
-            </Typography>
-            <Typography variant="subtitle1">
-              From domains, storage, databases, APIs and front-end development.
-              {matchesSM ? null : <br />}Doing what is necessary to make things
-              happen.
+            <Typography variant="h2">Product Evolution</Typography>
+            <Typography
+              variant="subtitle1"
+              className={classes.productEvolutionParagraph}
+            >
+              Over the years I have been task with working with one software
+              solution for managing a client's meetings. It was custom software,
+              originally written in PHP with a MySQL database backend.
             </Typography>
           </Grid>
+          {/* //   =================================== */}
+          {/* //   Product Evolution  - PHASE I        */}
+          {/* //   =================================== */}
+          <Grid
+            item
+            style={{
+              marginLeft: matchesSM ? 0 : "2em",
+              textAlign: matchesSM ? "center" : undefined,
+            }}
+          >
+            <Typography variant="h4" className={classes.phaseHeader}>
+              Phase I
+            </Typography>
+            <Typography variant="subtitle1" className={classes.phaseObjective}>
+              The first desire was to update the user workflows, UI and get off
+              the hosted webserver.
+            </Typography>
+            <Typography variant="subtitle1" className={classes.phaseParagraph}>
+              This took on a full SDLC approach as user requirements and scope
+              definition was defined. The entire PHP frontend was rewritten in
+              in React JS (javascript). This front end used what is called the
+              MERN stack.
+              <ul>
+                <li>
+                  <b>M</b>ongoDB - document database
+                </li>
+                <li>
+                  <b>E</b>xpressJS - Node.js web framework
+                </li>
+                <li>
+                  <b>R</b>eactJS - a clicent-side JavaScript framework
+                </li>
+                <li>
+                  <b>N</b>odeJS - the premiere JavaScript web server
+                </li>
+              </ul>
+            </Typography>
+            <Typography variant="subtitle1" className={classes.phaseParagraph}>
+              This resulted in the client getting a much cleaner, more
+              responsive interface and moved the database from a hosted MySQL
+              database to MongoDB Atlas. The customer was satisfied with the
+              results of phase I.
+            </Typography>
+            <Typography variant="h6" className={classes.technicalChallenges}>
+              Technical Challenges & Highlights
+            </Typography>
+            <Typography variant="subtitle1" className={classes.phaseParagraph}>
+              <ul>
+                <li>
+                  Migrate MySQL (Relational Database) to MongoDB (Document
+                  Database)
+                </li>
+                <li>
+                  Write new database layer in express to replace PHP/MySQL
+                  queries
+                </li>
+              </ul>
+            </Typography>
+          </Grid>
+          {/* //   =================================== */}
+          {/* //   Product Evolution  - PHASE II       */}
+          {/* //   =================================== */}
+          <Grid
+            item
+            style={{
+              marginLeft: matchesSM ? 0 : "2em",
+              textAlign: matchesSM ? "center" : undefined,
+            }}
+          >
+            <Typography variant="h4" className={classes.phaseHeader}>
+              Phase II
+            </Typography>
+            <Typography variant="subtitle1" className={classes.phaseObjective}>
+              Move to standard REST interface and move to AWS no-SQL
+            </Typography>
+            <Typography variant="subtitle1" className={classes.phaseParagraph}>
+              One of the biggest challenges was to migrate from the MongoDB
+              document database to the AWS DynamoDB no-sql database. Once the
+              data was available, the database calls were abstracted from
+              Express and moved to AWS API Gateway and AWS Lambda.<br/><br/>
+              This phase also gave us the opportunity to migrate all of the 
+              web hosting to AWS S3 object storage.
+            </Typography>
+            <Typography variant="subtitle1" className={classes.phaseParagraph}>
+              This phase made the system data now availalbe within the solution, 
+              but it also now exposed the opportunity for API interactions with
+              te data and not have it embedded in the solution stack.
+            </Typography>
+            <Typography variant="h6" className={classes.technicalChallenges}>
+              Technical Challenges & Highlights
+            </Typography>
+            <Typography variant="subtitle1" className={classes.phaseParagraph}>
+              <ul>
+                <li>
+                  Migrate MongoDB (Document Database) to AWS DynamoDB (NOSQL Database)<br/>
+                  This data conversion with done in Python.
+                </li>
+                <li>
+                  All API entry points provided in AWS API Gateway
+                </li>
+                <li>
+                  Database interfaces and business logic moved to AWS Lambda functions
+                </li>
+              </ul>
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid>
           <Grid item>
             <img
               className={classes.icon}
