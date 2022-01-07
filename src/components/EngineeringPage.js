@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import Lottie from "react-lottie";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
 
 import ButtonArrow from "./ui/ButtonArrow";
 import customSoftwareIcon from "../assets/customSoftwareIcon.svg";
@@ -32,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       marginTop: "2em",
     },
+  },
+  breadcrumbsContainer: {
+    marginLeft: "2em",
   },
   welcomeMessage: {
     minWidth: "21.5em",
@@ -97,6 +102,12 @@ export default function EngineeringPage(props) {
   };
   return (
     <Grid container direction="column" className={classes.mainContainer}>
+      <div className={classes.breadcrumbsContainer}><Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/">
+          Main
+        </Link>
+        <Typography color="text.primary">Engineering</Typography>
+      </Breadcrumbs></div>
       <Grid item>
         <Typography
           variant="h2"
@@ -156,6 +167,7 @@ export default function EngineeringPage(props) {
             </Typography>
             <Button
               component={Link}
+              href="/aws"
               to="/aws"
               variant="outlined"
               className={classes.learnButton}
@@ -211,6 +223,7 @@ export default function EngineeringPage(props) {
             <Button
               component={Link}
               to="/customsoftware"
+              href="/customsoftware"
               variant="outlined"
               className={classes.learnButton}
               onClick={() => {
@@ -265,6 +278,7 @@ export default function EngineeringPage(props) {
             <Button
               component={Link}
               to="/websites"
+              href="/websites"
               variant="outlined"
               className={classes.learnButton}
               onClick={() => {

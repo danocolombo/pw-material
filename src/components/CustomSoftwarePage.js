@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
 
 import ButtonArrow from "./ui/ButtonArrow";
 import customSoftwareIcon from "../assets/customSoftwareIcon.svg";
@@ -25,6 +27,9 @@ import mobileAppsIcon from "../assets/mobileIcon.svg";
 import websitesIcon from "../assets/websiteIcon.svg";
 
 const useStyles = makeStyles((theme) => ({
+  breadcrumbsContainer: {
+    marginLeft: "2em",
+  },
   learnButton: {
     ...theme.typography.learnButton,
     fontSize: "0.7rem",
@@ -115,6 +120,17 @@ export default function EngineeringPage(props) {
 
   return (
     <Grid container direction="column">
+      <div className={classes.breadcrumbsContainer}>
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link underline="hover" color="inherit" href="/">
+            Main
+          </Link>
+          <Link underline="hover" color="inherit" href="/engineering">
+            Engineering
+          </Link>
+          <Typography color="text.primary">Custom Software</Typography>
+        </Breadcrumbs>
+      </div>
       <Grid item>
         <Typography
           variant="h2"
@@ -256,12 +272,14 @@ export default function EngineeringPage(props) {
               One of the biggest challenges was to migrate from the MongoDB
               document database to the AWS DynamoDB no-sql database. Once the
               data was available, the database calls were abstracted from
-              Express and moved to AWS API Gateway and AWS Lambda.<br/><br/>
-              This phase also gave us the opportunity to migrate all of the 
-              web hosting to AWS S3 object storage.
+              Express and moved to AWS API Gateway and AWS Lambda.
+              <br />
+              <br />
+              This phase also gave us the opportunity to migrate all of the web
+              hosting to AWS S3 object storage.
             </Typography>
             <Typography variant="subtitle1" className={classes.phaseParagraph}>
-              This phase made the system data now availalbe within the solution, 
+              This phase made the system data now availalbe within the solution,
               but it also now exposed the opportunity for API interactions with
               te data and not have it embedded in the solution stack.
             </Typography>
@@ -271,14 +289,15 @@ export default function EngineeringPage(props) {
             <Typography variant="subtitle1" className={classes.phaseParagraph}>
               <ul>
                 <li>
-                  Migrate MongoDB (Document Database) to AWS DynamoDB (NOSQL Database)<br/>
+                  Migrate MongoDB (Document Database) to AWS DynamoDB (NOSQL
+                  Database)
+                  <br />
                   This data conversion with done in Python.
                 </li>
+                <li>All API entry points provided in AWS API Gateway</li>
                 <li>
-                  All API entry points provided in AWS API Gateway
-                </li>
-                <li>
-                  Database interfaces and business logic moved to AWS Lambda functions
+                  Database interfaces and business logic moved to AWS Lambda
+                  functions
                 </li>
               </ul>
             </Typography>
