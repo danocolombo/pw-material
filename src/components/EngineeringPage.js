@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Lottie from "react-lottie";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
 
 import ButtonArrow from "./ui/ButtonArrow";
 import customSoftwareIcon from "../assets/customSoftwareIcon.svg";
@@ -20,28 +22,31 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 0,
     // marginLeft: "10%",
     [theme.breakpoints.down("sm")]: {
-      maxWidth: "30em"
-    }
+      maxWidth: "30em",
+    },
   },
   mainContainer: {
     marginTop: 0,
     marginLeft: 0,
     [theme.breakpoints.down("md")]: {
-      marginTop: "3em"
+      marginTop: "3em",
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "2em"
-    }
+      marginTop: "2em",
+    },
+  },
+  breadcrumbsContainer: {
+    marginLeft: "2em",
   },
   welcomeMessage: {
     minWidth: "21.5em",
-    marginLeft: "1em",
+    marginLeft: "0em",
     [theme.breakpoints.down("xs")]: {
-      marginLeft: 0
-    }
+      marginLeft: 0,
+    },
   },
   awsSection: {
-    marginTop: "5em",
+    marginTop: "1em",
     marginRight: "3em",
     [theme.breakpoints.down("sm")]: {
       padding: 25,
@@ -70,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   serviceContainer: {
-    marginTop: "10em",
+    marginTop: "5em",
     [theme.breakpoints.down("sm")]: {
       padding: 25,
     },
@@ -81,6 +86,10 @@ export default function EngineeringPage(props) {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   //   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const defaultOptions = {
@@ -93,12 +102,18 @@ export default function EngineeringPage(props) {
   };
   return (
     <Grid container direction="column" className={classes.mainContainer}>
+      <div className={classes.breadcrumbsContainer}><Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/">
+          Main
+        </Link>
+        <Typography color="text.primary">Engineering</Typography>
+      </Breadcrumbs></div>
       <Grid item>
         <Typography
           variant="h2"
           gutterBottom
           style={{
-            marginLeft: matchesSM ? 0 : "2rem",
+            marginLeft: matchesSM ? 0 : "10rem",
             // marginTop: matchesSM ? "1em" : "2em",
           }}
           align={matchesSM ? "center" : undefined}
@@ -107,6 +122,10 @@ export default function EngineeringPage(props) {
         </Typography>
       </Grid>
       <Grid item>
+        {/* //   ========================== */}
+        {/* //   This is the first section */}
+        {/* //   ========================== */}
+
         <Grid container justifyContent="space-evenly" direction="row">
           <Grid sm item className={classes.welcomeMessage}>
             <Typography variant="body1" align="center">
@@ -120,6 +139,9 @@ export default function EngineeringPage(props) {
           </Grid>
         </Grid>
       </Grid>
+      {/* //   ========================== */}
+      {/* //   This is the AWS section */}
+      {/* //   ========================== */}
       <Grid item className={classes.awsSection}>
         <Grid
           container
@@ -145,6 +167,7 @@ export default function EngineeringPage(props) {
             </Typography>
             <Button
               component={Link}
+              href="/aws"
               to="/aws"
               variant="outlined"
               className={classes.learnButton}
@@ -173,7 +196,9 @@ export default function EngineeringPage(props) {
       </Grid>
       <Grid item>
         {" "}
-        {/*-----Custom Software Block-----*/}
+        {/* //   =================================== */}
+        {/* //   This is the Custom Software section */}
+        {/* //   =================================== */}
         <Grid
           container
           direction="row"
@@ -198,6 +223,7 @@ export default function EngineeringPage(props) {
             <Button
               component={Link}
               to="/customsoftware"
+              href="/customsoftware"
               variant="outlined"
               className={classes.learnButton}
               onClick={() => {
@@ -225,7 +251,9 @@ export default function EngineeringPage(props) {
       </Grid>
       <Grid item>
         {" "}
-        {/*-----Websites Block-----*/}
+        {/* //   =================================== */}
+        {/* //   This is the Website section */}
+        {/* //   =================================== */}
         <Grid
           container
           direction="row"
@@ -250,6 +278,7 @@ export default function EngineeringPage(props) {
             <Button
               component={Link}
               to="/websites"
+              href="/websites"
               variant="outlined"
               className={classes.learnButton}
               onClick={() => {

@@ -15,9 +15,6 @@ import WoodshopDisplay from "./ui/Woodshop";
 
 //import animationData from "../animations/landinganimation/data";
 import animationData from "../animations/developer/developer.json";
-import customSoftwareIcon from "../assets/customSoftwareIcon.svg";
-import mobileAppsIcon from "../assets/mobileIcon.svg";
-import websitesIcon from "../assets/websiteIcon.svg";
 import recoveryBackground from "../assets/repeatingBackground.svg";
 
 const useStyles = makeStyles((theme) => ({
@@ -67,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   mainContainer: {
-    marginTop: "5em",
+    marginTop: "1em",
     [theme.breakpoints.down("md")]: {
       marginTop: "3em",
     },
@@ -77,7 +74,8 @@ const useStyles = makeStyles((theme) => ({
   },
   heroTextContainer: {
     minWidth: "21.5em",
-    marginLeft: "1em",
+    marginLeft: "4em",
+    alignItems: "center",
     [theme.breakpoints.down("xs")]: {
       marginLeft: 0,
     },
@@ -102,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   recoveryQutote: {
-    marginBottom: "3em",
+    marginBottom: "1em",
   },
   revolutionBackground: {
     backgroundImage: `url(${recoveryBackground})`,
@@ -116,7 +114,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     boxShadow: theme.shadows[10],
     borderRadius: 15,
-    padding: "5em",
+    padding: "1em",
     [theme.breakpoints.down("sm")]: {
       paddingTop: "8em",
       paddingBottom: "8em",
@@ -169,7 +167,7 @@ export default function LandingPage(props) {
           direction="row"
         >
           <Grid sm item className={classes.heroTextContainer}>
-            <Typography variant="h2" align="center">
+            <Typography variant="h4" align="center">
               “Strive for perfection in everything you do. Take the best that
               exists and make it better. When it does not exist, design it.”
             </Typography>
@@ -178,7 +176,7 @@ export default function LandingPage(props) {
             </Typography>
           </Grid>
           <Grid sm item className={classes.animation}>
-            <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
+            <Lottie options={defaultOptions} height={"50%"} width={"50%"} />
           </Grid>
         </Grid>
       </Grid>
