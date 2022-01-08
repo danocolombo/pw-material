@@ -142,14 +142,14 @@ export default function Header(props) {
   const menuOptions = [
     { name: "Engineering", link: "/engineering", activeIndex: 1, selectedIndex: 0 },
     {
-      name: "Cloud Technology",
+      name: "AWS Cloud",
       link: "/aws",
       activeIndex: 1,
       selectedIndex: 1
     },
     {
-      name: "Integrations",
-      link: "/integrations",
+      name: "Custom Software",
+      link: "/customsoftware",
       activeIndex: 1,
       selectedIndex: 2
     },
@@ -173,7 +173,7 @@ export default function Header(props) {
     },
     { name: "Recovery", link: "/recovery", activeIndex: 2 },
     { name: "Hobbies", link: "/hobbies", activeIndex: 3 },
-    { name: "Contact Us", link: "/contact", activeIndex: 4 }
+    { name: "Contact Me", link: "/contact", activeIndex: 4 }
   ];
 
   useEffect(() => {

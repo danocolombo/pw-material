@@ -1,6 +1,6 @@
 import { React, useState, Fragment } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -11,24 +11,38 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Snackbar from "@material-ui/core/Snackbar";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
 
-import background from "../assets/background.jpg";
+// import background from "../assets/background.jpg";
+import background from "../assets/programmingScreens.png";
 import mobileBackground from "../assets/mobileBackground.jpg";
 import emailIcon from "../assets/email.svg";
 import paperAirplane from "../assets/send.svg";
 import ButtonArrow from "../components/ui/ButtonArrow";
+import { blue } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   background: {
     backgroundImage: `url(${background})`,
+    opacity: "60%",
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: "60em",
+    borderRadius: 15,
+    height: "45em",
     paddingBottom: "10em",
     [theme.breakpoints.down("md")]: {
       backgroundImage: `url(${mobileBackground})`,
     },
+  },
+  breadcrumbsContainer: {
+    marginLeft: "2em",
+  },
+  fishingBox: {
+    backgroundColor: "white",
+    padding: "2em",
+    borderRadius: 8,
   },
   learnButton: {
     ...theme.typography.learnButton,
@@ -62,12 +76,15 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 5,
   },
   sendButton: {
-    ...theme.typography.estimate,
+    // ...theme.typography.estimate,
+    background: `${theme.palette.common.blue}`,
+    color: `${theme.palette.common.blue}`,
+    backgroundColor: `${theme.palette.common.blue}`,
     borderRadius: 50,
     height: 45,
     width: 245,
     fontSize: "1rem",
-    backgroundColor: theme.palette.common.orange,
+    
     "&:hover": {
       backgroundColor: theme.palette.secondary.light,
     },
@@ -170,39 +187,54 @@ export default function Contact(props) {
     </Fragment>
   );
   return (
-    <Grid container direction="row">
-      <Grid
-        item
-        container
-        direction="column"
-        style={{
-          marginBottom: matchesMD ? "5em" : 0,
-          marginTop: matchesSM ? "1em" : matchesMD ? "5em" : 0,
-        }}
-        justify="center"
-        alignItems="center"
-        lg={4}
-        xl={3}
-      >
-        <Grid item>
-          <Grid container direction="column">
+    <Grid container direction="column">
+      <Grid item>
+        <div className={classes.breadcrumbsContainer}>
+          <Breadcrumbs aria-label="breadcrumb">
+            <Link underline="hover" color="inherit" href="/">
+              Main
+            </Link>
+            <Typography color="text.primary">Contact Me</Typography>
+          </Breadcrumbs>
+        </div>
+        <Grid container direction="row">
+          <Grid
+            item
+            container
+            direction="column"
+            style={{
+              marginBottom: matchesMD ? "5em" : 0,
+              marginTop: matchesSM ? "1em" : matchesMD ? "5em" : 0,
+            }}
+            justify="center"
+            alignItems="center"
+            lg={4}
+            xl={3}
+          >
             <Grid item>
-              <Typography
-                variant="h2"
-                align={matchesMD ? "center" : undefined}
-                style={{ lineHeight: 1 }}
-              >
-                Contact Me
-              </Typography>
-              <Typography
-                variant="body1"
-                align={matchesMD ? "center" : undefined}
-                style={{ color: theme.palette.common.blue, paddingLeft: "10px", paddingRight: "20px" }}
-              >
-                Drop me a direct message, <br/>or use the form below.
-              </Typography>
-            </Grid>
-            {/* <Grid item container style={{ marginTop: "2em" }}>
+              <Grid container direction="column">
+                <Grid item>
+                  <Typography
+                    variant="h2"
+                    align={matchesMD ? "center" : undefined}
+                    style={{ lineHeight: 1 }}
+                  >
+                    Contact Me
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    align={matchesMD ? "center" : undefined}
+                    style={{
+                      color: theme.palette.common.blue,
+                      paddingLeft: "10px",
+                      paddingRight: "20px",
+                    }}
+                  >
+                    Drop me a direct message, <br />
+                    or use the form below.
+                  </Typography>
+                </Grid>
+                {/* <Grid item container style={{ marginTop: "2em" }}>
               <Grid item>
                 <img
                   src={phoneIcon}
@@ -219,285 +251,302 @@ export default function Contact(props) {
                 </Typography>
               </Grid>
             </Grid> */}
-            <Grid item container style={{ marginBottom: "2em" }}>
-              <Grid item>
-                <img
-                  src={emailIcon}
-                  alt="email"
-                  style={{ marginRight: "0.5em", verticalAlign: "bottom" }}
-                />
-              </Grid>
-              <Grid item>
-                <Typography
-                  variant="body1"
-                  style={{ color: theme.palette.common.blue, fontSize: "1rem" }}
+                <Grid item container style={{ marginBottom: "2em" }}>
+                  <Grid item>
+                    <img
+                      src={emailIcon}
+                      alt="email"
+                      style={{ marginRight: "0.5em", verticalAlign: "bottom" }}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      variant="body1"
+                      style={{
+                        color: theme.palette.common.blue,
+                        fontSize: "1rem",
+                      }}
+                    >
+                      <a
+                        href="mailto:dano.colombo@gmail.com"
+                        target="_new"
+                        style={{ textDecoration: "none", color: "inherit" }}
+                      >
+                        dano.colombo@gmail.com
+                      </a>
+                    </Typography>
+                  </Grid>
+                </Grid>
+                <Grid
+                  item
+                  container
+                  direction="column"
+                  style={{ maxWidth: "20em" }}
                 >
-                  <a
-                    href="mailto:dano.colombo@gmail.com"
-                    target="_new"
-                    style={{ textDecoration: "none", color: "inherit" }}
+                  <Grid item style={{ marginBottom: "0.5em" }}>
+                    <TextField
+                      label="Name"
+                      fullWidth
+                      id="name"
+                      value={name}
+                      onChange={(event) => setName(event.target.value)}
+                    />
+                  </Grid>
+                  <Grid item style={{ marginBottom: "0.5em" }}>
+                    <TextField
+                      label="Email"
+                      id="email"
+                      error={emailHelper.length !== 0}
+                      helperText={emailHelper}
+                      fullWidth
+                      value={email}
+                      // onChange={(event) => setEmail(event.target.value)}
+                      onChange={onChange}
+                    />
+                  </Grid>
+                  <Grid item style={{ marginBottom: "0.5em" }}>
+                    <TextField
+                      label="Phone"
+                      id="phone"
+                      error={phoneHelper.length !== 0}
+                      helperText={phoneHelper}
+                      fullWidth
+                      value={phone}
+                      onChange={onChange}
+                      //onChange={(event) => setPhone(event.target.value)}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid item style={{ maxWidth: "20em" }}>
+                  <TextField
+                    InputProps={{ disableUnderline: true }}
+                    id="message"
+                    fullWidth
+                    className={classes.message}
+                    value={message}
+                    multiline
+                    rows={10}
+                    onChange={(event) => setMessage(event.target.value)}
+                  />
+                </Grid>
+                <Grid
+                  item
+                  container
+                  justify="center"
+                  style={{ marginTop: "2em" }}
+                >
+                  <Button
+                    onClick={() => setOpen(true)}
+                    disabled={
+                      name.length === 0 ||
+                      message.length === 0 ||
+                      email.length === 0 ||
+                      phone.length === 0 ||
+                      phoneHelper.length !== 0 ||
+                      emailHelper.length !== 0
+                    }
+                    variant="contained"
+                    className={classes.sendButton}
                   >
-                    dano.colombo@gmail.com
-                  </a>
-                </Typography>
+                    {buttonContents}
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
-            <Grid
-              item
-              container
-              direction="column"
-              style={{ maxWidth: "20em" }}
-            >
-              <Grid item style={{ marginBottom: "0.5em" }}>
+          </Grid>
+          <Dialog
+            style={{ zIndex: 1302 }}
+            open={open}
+            fullScreen={matchesXS}
+            onClose={() => setOpen(false)}
+            PaperProps={{
+              style: {
+                paddingTop: matchesXS ? "1em" : "5em",
+                paddingBottom: matchesXS ? "1em" : "5em",
+                paddingLeft: matchesXS
+                  ? 0
+                  : matchesSM
+                  ? "5em"
+                  : matchesMD
+                  ? "10em"
+                  : "20em",
+                paddingRight: matchesXS
+                  ? 0
+                  : matchesSM
+                  ? "5em"
+                  : matchesMD
+                  ? "10em"
+                  : "20em",
+              },
+            }}
+          >
+            <DialogContent>
+              <Grid container direction="column">
+                <Grid item>
+                  <Typography align="center" variant="h4" gutterBottom>
+                    Confirm message
+                  </Typography>
+                </Grid>
+                <Grid item style={{ marginBottom: "0.5em" }}>
+                  <TextField
+                    label="Name"
+                    fullWidth
+                    id="name"
+                    value={name}
+                    onChange={(event) => setName(event.target.value)}
+                  />
+                </Grid>
+                <Grid item style={{ marginBottom: "0.5em" }}>
+                  <TextField
+                    label="Email"
+                    id="email"
+                    error={emailHelper.length !== 0}
+                    helperText={emailHelper}
+                    fullWidth
+                    value={email}
+                    // onChange={(event) => setEmail(event.target.value)}
+                    onChange={onChange}
+                  />
+                </Grid>
+                <Grid item style={{ marginBottom: "0.5em" }}>
+                  <TextField
+                    label="Phone"
+                    id="phone"
+                    error={phoneHelper.length !== 0}
+                    helperText={phoneHelper}
+                    fullWidth
+                    value={phone}
+                    onChange={onChange}
+                    //onChange={(event) => setPhone(event.target.value)}
+                  />
+                </Grid>
+              </Grid>
+              <Grid item style={{ maxWidth: matchesXS ? "100%" : "20em" }}>
                 <TextField
-                  label="Name"
+                  InputProps={{ disableUnderline: true }}
+                  id="message"
                   fullWidth
-                  id="name"
-                  value={name}
-                  onChange={(event) => setName(event.target.value)}
+                  className={classes.message}
+                  value={message}
+                  multiline
+                  rows={10}
+                  onChange={(event) => setMessage(event.target.value)}
                 />
               </Grid>
-              <Grid item style={{ marginBottom: "0.5em" }}>
-                <TextField
-                  label="Email"
-                  id="email"
-                  error={emailHelper.length !== 0}
-                  helperText={emailHelper}
-                  fullWidth
-                  value={email}
-                  // onChange={(event) => setEmail(event.target.value)}
-                  onChange={onChange}
-                />
-              </Grid>
-              <Grid item style={{ marginBottom: "0.5em" }}>
-                <TextField
-                  label="Phone"
-                  id="phone"
-                  error={phoneHelper.length !== 0}
-                  helperText={phoneHelper}
-                  fullWidth
-                  value={phone}
-                  onChange={onChange}
-                  //onChange={(event) => setPhone(event.target.value)}
-                />
-              </Grid>
-            </Grid>
-            <Grid item style={{ maxWidth: "20em" }}>
-              <TextField
-                InputProps={{ disableUnderline: true }}
-                id="message"
-                fullWidth
-                className={classes.message}
-                value={message}
-                multiline
-                rows={10}
-                onChange={(event) => setMessage(event.target.value)}
-              />
-            </Grid>
-            <Grid item container justify="center" style={{ marginTop: "2em" }}>
-              <Button
-                onClick={() => setOpen(true)}
-                disabled={
-                  name.length === 0 ||
-                  message.length === 0 ||
-                  email.length === 0 ||
-                  phone.length === 0 ||
-                  phoneHelper.length !== 0 ||
-                  emailHelper.length !== 0
-                }
-                variant="contained"
-                className={classes.sendButton}
+              <Grid
+                item
+                container
+                direction={matchesSM ? "column" : "row"}
+                style={{ marginTop: "2em" }}
+                alignItems="center"
               >
-                {buttonContents}
-              </Button>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-      <Dialog
-        style={{ zIndex: 1302 }}
-        open={open}
-        fullScreen={matchesXS}
-        onClose={() => setOpen(false)}
-        PaperProps={{
-          style: {
-            paddingTop: matchesXS ? "1em" : "5em",
-            paddingBottom: matchesXS ? "1em" : "5em",
-            paddingLeft: matchesXS
-              ? 0
-              : matchesSM
-              ? "5em"
-              : matchesMD
-              ? "10em"
-              : "20em",
-            paddingRight: matchesXS
-              ? 0
-              : matchesSM
-              ? "5em"
-              : matchesMD
-              ? "10em"
-              : "20em",
-          },
-        }}
-      >
-        <DialogContent>
-          <Grid container direction="column">
-            <Grid item>
-              <Typography align="center" variant="h4" gutterBottom>
-                Confirm message
-              </Typography>
-            </Grid>
-            <Grid item style={{ marginBottom: "0.5em" }}>
-              <TextField
-                label="Name"
-                fullWidth
-                id="name"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-              />
-            </Grid>
-            <Grid item style={{ marginBottom: "0.5em" }}>
-              <TextField
-                label="Email"
-                id="email"
-                error={emailHelper.length !== 0}
-                helperText={emailHelper}
-                fullWidth
-                value={email}
-                // onChange={(event) => setEmail(event.target.value)}
-                onChange={onChange}
-              />
-            </Grid>
-            <Grid item style={{ marginBottom: "0.5em" }}>
-              <TextField
-                label="Phone"
-                id="phone"
-                error={phoneHelper.length !== 0}
-                helperText={phoneHelper}
-                fullWidth
-                value={phone}
-                onChange={onChange}
-                //onChange={(event) => setPhone(event.target.value)}
-              />
-            </Grid>
-          </Grid>
-          <Grid item style={{ maxWidth: matchesXS ? "100%" : "20em" }}>
-            <TextField
-              InputProps={{ disableUnderline: true }}
-              id="message"
-              fullWidth
-              className={classes.message}
-              value={message}
-              multiline
-              rows={10}
-              onChange={(event) => setMessage(event.target.value)}
-            />
-          </Grid>
+                <Grid item>
+                  <Button
+                    style={{ fontWeight: 300 }}
+                    color="primary"
+                    onClick={() => setOpen(false)}
+                  >
+                    Cancel
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button
+                    // onClick={() => setOpen(true)}
+                    onClick={onConfirm}
+                    disabled={
+                      name.length === 0 ||
+                      message.length === 0 ||
+                      email.length === 0 ||
+                      phone.length === 0 ||
+                      phoneHelper.length !== 0 ||
+                      emailHelper.length !== 0
+                    }
+                    variant="contained"
+                    className={classes.sendButton}
+                  >
+                    {loading ? <CircularProgress size={30} /> : buttonContents}
+                  </Button>
+                </Grid>
+              </Grid>
+            </DialogContent>
+          </Dialog>
+          <Snackbar
+            open={alert.open}
+            message={alertMessage}
+            ContentProps={{ style: { backgroundColor: alert.backgroundColor } }}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            onClose={() => setAlert({ ...alert, open: false })}
+            autoHideDuration={4000}
+          />
           <Grid
             item
             container
-            direction={matchesSM ? "column" : "row"}
-            style={{ marginTop: "2em" }}
+            direction={matchesMD ? "column" : "row"}
+            className={classes.background}
             alignItems="center"
+            justify={matchesMD ? "center" : undefined}
+            lg={8}
+            xl={9}
           >
-            <Grid item>
-              <Button
-                style={{ fontWeight: 300 }}
-                color="primary"
-                onClick={() => setOpen(false)}
-              >
-                Cancel
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button
-                // onClick={() => setOpen(true)}
-                onClick={onConfirm}
-                disabled={
-                  name.length === 0 ||
-                  message.length === 0 ||
-                  email.length === 0 ||
-                  phone.length === 0 ||
-                  phoneHelper.length !== 0 ||
-                  emailHelper.length !== 0
-                }
-                variant="contained"
-                className={classes.sendButton}
-              >
-                {loading ? <CircularProgress size={30} /> : buttonContents}
-              </Button>
-            </Grid>
-          </Grid>
-        </DialogContent>
-      </Dialog>
-      <Snackbar
-        open={alert.open}
-        message={alertMessage}
-        ContentProps={{ style: { backgroundColor: alert.backgroundColor } }}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        onClose={() => setAlert({ ...alert, open: false })}
-        autoHideDuration={4000}
-      />
-      <Grid
-        item
-        container
-        direction={matchesMD ? "column" : "row"}
-        className={classes.background}
-        alignItems="center"
-        justify={matchesMD ? "center" : undefined}
-        lg={8}
-        xl={9}
-      >
-        <Grid
-          item
-          style={{
-            marginLeft: matchesMD ? 0 : "3em",
-            textAlign: matchesMD ? "center" : "inherit",
-          }}
-        >
-          <Grid container direction="column">
-            <Grid item>
-              <Typography variant="h2" align={matchesMD ? "center" : undefined}>
-                Simple Software.
-                <br />
-                Revolutionary Results.
-              </Typography>
-              <Typography
-                variant="subtitle2"
-                style={{ fontSize: "1.5rem" }}
-                align={matchesMD ? "center" : undefined}
-              >
-                Take advantage of the 21st Century.
-              </Typography>
-              <Grid container justify={matchesMD ? "center" : undefined} item>
-                <Button
-                  component={Link}
-                  to="/revolution"
-                  variant="outlined"
-                  className={classes.learnButton}
-                  onClick={() => props.setValue(2)}
-                >
-                  <span style={{ marginRight: 5 }}>Learn More</span>
-                  <ButtonArrow
-                    width={10}
-                    height={10}
-                    fill={theme.palette.common.blue}
-                  />
-                </Button>
+            <Grid
+              item
+              style={{
+                marginLeft: matchesMD ? 0 : "3em",
+                textAlign: matchesMD ? "center" : "inherit",
+              }}
+            >
+              <Grid container direction="column">
+                <Grid item className={classes.fishingBox}>
+                  <Typography
+                    variant="h2"
+                    align={matchesMD ? "center" : undefined}
+                  >
+                    Have challenges?
+                    <br />
+                    Need help?
+                  </Typography>
+                  <Typography
+                    variant="subtitle2"
+                    style={{ fontSize: "1.5rem", color: "black" }}
+                    align={matchesMD ? "center" : undefined}
+                  >
+                    No job too small
+                  </Typography>
+                  <Grid
+                    container
+                    justify={matchesMD ? "center" : undefined}
+                    item
+                  >
+                    {/* <Button
+                      component={Link}
+                      to="/revolution"
+                      variant="outlined"
+                      className={classes.learnButton}
+                      onClick={() => props.setValue(2)}
+                    >
+                      <span style={{ marginRight: 5 }}>Learn More</span>
+                      <ButtonArrow
+                        width={10}
+                        height={10}
+                        fill={theme.palette.common.blue}
+                      />
+                    </Button> */}
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
+            <Grid item>
+              {/* <Button
+                component={Link}
+                to="/estimate"
+                variant="contained"
+                className={classes.estimateButton}
+                onClick={() => props.setValue(5)}
+              >
+                Free Estimate
+              </Button> */}
+            </Grid>
           </Grid>
-        </Grid>
-        <Grid item>
-          <Button
-            component={Link}
-            to="/estimate"
-            variant="contained"
-            className={classes.estimateButton}
-            onClick={() => props.setValue(5)}
-          >
-            Free Estimate
-          </Button>
         </Grid>
       </Grid>
     </Grid>

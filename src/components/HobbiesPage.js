@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Lottie from "react-lottie";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { styled } from "@mui/material/styles";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import ButtonArrow from "./ui/ButtonArrow";
@@ -13,6 +13,8 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import ListSubheader from "@mui/material/ListSubheader";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
 
 //these are for kitchen recipes
 import CardHeader from "@mui/material/CardHeader";
@@ -48,13 +50,16 @@ import { autocompleteClasses } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
-    marginTop: "5em",
+    marginTop: "1em",
     [theme.breakpoints.down("md")]: {
       marginTop: "3em",
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "2em",
     },
+  },
+  breadcrumbsContainer: {
+    marginLeft: "2em",
   },
   introParagraph: {
     marginLeft: "10em",
@@ -179,6 +184,14 @@ export default function LandingPage(props) {
   // };
   return (
     <Grid container direction="column" className={classes.mainContainer}>
+      <div className={classes.breadcrumbsContainer}>
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link underline="hover" color="inherit" href="/">
+            Main
+          </Link>
+          <Typography color="text.primary">Hobbies</Typography>
+        </Breadcrumbs>
+      </div>
       <Grid item>
         <Typography variant="body1" className={classes.introParagraph}>
           There are times of hard work, but there also has to be a balance of

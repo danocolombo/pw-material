@@ -1,7 +1,7 @@
 import React from "react";
 import Lottie from "react-lottie";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import ButtonArrow from "./ui/ButtonArrow";
@@ -9,6 +9,8 @@ import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
 
 //import animationData from "../animations/landinganimation/data";
 import animationData from "../animations/developer/developer.json";
@@ -16,13 +18,16 @@ import recoveryBackground from "../assets/repeatingBackground.svg";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
-    marginTop: "5em",
+    marginTop: "1em",
     [theme.breakpoints.down("md")]: {
       marginTop: "3em",
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "2em",
     },
+  },
+  breadcrumbsContainer: {
+    marginLeft: "2em",
   },
   heroTextContainer: {
     minWidth: "21.5em",
@@ -98,6 +103,14 @@ export default function LandingPage(props) {
 
   return (
     <Grid container direction="column" className={classes.mainContainer}>
+      <div className={classes.breadcrumbsContainer}>
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link underline="hover" color="inherit" href="/">
+            Main
+          </Link>
+          <Typography color="text.primary">Recovery</Typography>
+        </Breadcrumbs>
+      </div>
       <Grid item>
         {/*-----The Recovery Block-----*/}
         <Grid
