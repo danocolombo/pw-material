@@ -173,7 +173,7 @@ export default function Header(props) {
     },
     { name: "Recovery", link: "/recovery", activeIndex: 2 },
     { name: "Hobbies", link: "/hobbies", activeIndex: 3 },
-    { name: "Contact Us", link: "/contact", activeIndex: 4 }
+    { name: "Contact Me", link: "/contact", activeIndex: 4 }
   ];
 
   useEffect(() => {
