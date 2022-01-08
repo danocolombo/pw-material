@@ -14,19 +14,23 @@ import Snackbar from "@material-ui/core/Snackbar";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 
-import background from "../assets/background.jpg";
+// import background from "../assets/background.jpg";
+import background from "../assets/programmingScreens.png";
 import mobileBackground from "../assets/mobileBackground.jpg";
 import emailIcon from "../assets/email.svg";
 import paperAirplane from "../assets/send.svg";
 import ButtonArrow from "../components/ui/ButtonArrow";
+import { blue } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   background: {
     backgroundImage: `url(${background})`,
+    opacity: "60%",
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: "60em",
+    borderRadius: 15,
+    height: "45em",
     paddingBottom: "10em",
     [theme.breakpoints.down("md")]: {
       backgroundImage: `url(${mobileBackground})`,
@@ -34,6 +38,11 @@ const useStyles = makeStyles((theme) => ({
   },
   breadcrumbsContainer: {
     marginLeft: "2em",
+  },
+  fishingBox: {
+    backgroundColor: "white",
+    padding: "2em",
+    borderRadius: 8,
   },
   learnButton: {
     ...theme.typography.learnButton,
@@ -67,12 +76,15 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 5,
   },
   sendButton: {
-    ...theme.typography.estimate,
+    // ...theme.typography.estimate,
+    background: `${theme.palette.common.blue}`,
+    color: `${theme.palette.common.blue}`,
+    backgroundColor: `${theme.palette.common.blue}`,
     borderRadius: 50,
     height: 45,
     width: 245,
     fontSize: "1rem",
-    backgroundColor: theme.palette.common.orange,
+    
     "&:hover": {
       backgroundColor: theme.palette.secondary.light,
     },
@@ -484,28 +496,28 @@ export default function Contact(props) {
               }}
             >
               <Grid container direction="column">
-                <Grid item>
+                <Grid item className={classes.fishingBox}>
                   <Typography
                     variant="h2"
                     align={matchesMD ? "center" : undefined}
                   >
-                    Simple Software.
+                    Have challenges?
                     <br />
-                    Revolutionary Results.
+                    Need help?
                   </Typography>
                   <Typography
                     variant="subtitle2"
-                    style={{ fontSize: "1.5rem" }}
+                    style={{ fontSize: "1.5rem", color: "black" }}
                     align={matchesMD ? "center" : undefined}
                   >
-                    Take advantage of the 21st Century.
+                    No job too small
                   </Typography>
                   <Grid
                     container
                     justify={matchesMD ? "center" : undefined}
                     item
                   >
-                    <Button
+                    {/* <Button
                       component={Link}
                       to="/revolution"
                       variant="outlined"
@@ -518,13 +530,13 @@ export default function Contact(props) {
                         height={10}
                         fill={theme.palette.common.blue}
                       />
-                    </Button>
+                    </Button> */}
                   </Grid>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item>
-              <Button
+              {/* <Button
                 component={Link}
                 to="/estimate"
                 variant="contained"
@@ -532,7 +544,7 @@ export default function Contact(props) {
                 onClick={() => props.setValue(5)}
               >
                 Free Estimate
-              </Button>
+              </Button> */}
             </Grid>
           </Grid>
         </Grid>
