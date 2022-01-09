@@ -9,6 +9,8 @@ import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import mobileBackground from "../assets/aci-terzza-sunset.jpg";
+import background from "../assets/aci-terzza-sunset.jpg";
 
 import KitchenDisplay from "./ui/Kitchen";
 import WoodshopDisplay from "./ui/Woodshop";
@@ -26,6 +28,22 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       maxWidth: "30em",
     },
+  },
+  background: {
+    backgroundImage: `url(${background})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundAttachment: "fixed",
+    backgroundRepeat: "no-repeat",
+    height: "40em",
+    width: "100%",
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${mobileBackground})`,
+      backgroundAttachment: "inherit"
+    }
+  },
+  introductionParagraph: {
+    color: theme.palette.common.white,
   },
   estimateButton: {
     ...theme.typography.estimate,
@@ -76,6 +94,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "21.5em",
     marginLeft: "4em",
     alignItems: "center",
+    color: theme.palette.common.orange,
     [theme.breakpoints.down("xs")]: {
       marginLeft: 0,
     },
@@ -157,7 +176,7 @@ export default function LandingPage(props) {
 
   return (
     <Grid container direction="column" className={classes.mainContainer}>
-      <Grid item>
+      <Grid item className={classes.background}>
         {" "}
         {/*-----Hero Block-----*/}
         <Grid
@@ -167,7 +186,7 @@ export default function LandingPage(props) {
           direction="row"
         >
           <Grid sm item className={classes.heroTextContainer}>
-            <Typography variant="h4" align="center">
+            <Typography variant="h4" align="center" className={classes.introductionParagraph}>
               “Strive for perfection in everything you do. Take the best that
               exists and make it better. When it does not exist, design it.”
             </Typography>
