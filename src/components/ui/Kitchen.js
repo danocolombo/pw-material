@@ -11,11 +11,12 @@ import background from "../../assets/kitchenIngredients.svg";
 import mobileBackground from "../../assets/kitchenIngredients.svg";
 
 const useStyles = makeStyles(theme => ({
-  learnButton: {
+  hobbyButton: {
     ...theme.typography.learnButton,
-    fontSize: "0.7rem",
-    height: 35,
-    padding: 5,
+    fontSize: "1em",
+    height: 45,
+    paddingleft: 15,
+    // padding: 5,
     marginTop: 10,
     backgroundColor: "red",
     color: "white",
@@ -100,7 +101,7 @@ export default function KitchenDisplay(props) {
             <Button
                     component={Link}
                     to="/hobbies"
-                    className={classes.learnButton}
+                    className={classes.hobbyButton}
                     variant="outlined"
                     onClick={() => props.setValue(2)}
                   >

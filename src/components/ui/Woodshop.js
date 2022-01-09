@@ -11,12 +11,12 @@ import background from "../../assets/woodshop.svg";
 import mobileBackground from "../../assets/woodshop.svg";
 
 const useStyles = makeStyles(theme => ({
-  learnButton: {
+  hobbyButton: {
     ...theme.typography.learnButton,
-    fontSize: "0.7rem",
-    height: 35,
+    fontSize: "1em",
+    height: 45,
     marginTop: 20,
-    padding: 5,
+    paddingLeft: 15,
     backgroundColor: "yellow",
     "&:hover": {
       backgroundColor: theme.palette.secondary.light,
@@ -103,7 +103,7 @@ export default function WoodshopDisplay(props) {
             <Button
                     component={Link}
                     to="/hobbies"
-                    className={classes.learnButton}
+                    className={classes.hobbyButton}
                     variant="outlined"
                     onClick={() => props.setValue(2)}
                   >
