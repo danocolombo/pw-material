@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   introductionParagraph: {
     color: theme.palette.common.white,
+    marginTop: "10em",
   },
   estimateButton: {
     ...theme.typography.estimate,
@@ -195,7 +196,7 @@ export default function LandingPage(props) {
             </Typography>
           </Grid>
           <Grid sm item className={classes.animation}>
-            <Lottie options={defaultOptions} height={"50%"} width={"50%"} />
+            {/* <Lottie options={defaultOptions} height={"50%"} width={"50%"} /> */}
           </Grid>
         </Grid>
       </Grid>
