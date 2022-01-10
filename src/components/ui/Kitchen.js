@@ -31,6 +31,9 @@ const useStyles = makeStyles(theme => ({
   kitchenText: {
     color: "white",
     fontSize: "4em",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "1.5em"
+    }
   },
   supportText: {
     color: "white",
@@ -46,7 +49,8 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     [theme.breakpoints.down("md")]: {
       backgroundImage: `url(${mobileBackground})`,
-      backgroundAttachment: "inherit"
+      backgroundAttachment: "inherit",
+      height: "30em",
     }
   },
   // estimateButton: {
@@ -72,6 +76,7 @@ export default function KitchenDisplay(props) {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Grid
@@ -95,9 +100,9 @@ export default function KitchenDisplay(props) {
               <br />
               we don't have to be bored.
             </Typography>
-            <Typography variant="h1" className={classes.supportText}>
+            {matchesMD ? null : <Typography variant="h1" className={classes.supportText}>
               Here are some things that make my life special
-            </Typography>
+            </Typography>}
             <Button
                     component={Link}
                     to="/hobbies"
