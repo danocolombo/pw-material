@@ -8,7 +8,7 @@ import ButtonArrow from "./ButtonArrow";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import background from "../../assets/woodshop.svg";
-import mobileBackground from "../../assets/woodshop.svg";
+import mobileBackground from "../../assets/shoptoolsMobile.png";
 
 const useStyles = makeStyles(theme => ({
   hobbyButton: {
@@ -34,6 +34,9 @@ const useStyles = makeStyles(theme => ({
   titleText: {
     color: "white",
     fontSize: "4em",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "2em",
+    },
   },
   supportText: {
     color: "white",
@@ -49,7 +52,8 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     [theme.breakpoints.down("md")]: {
       backgroundImage: `url(${mobileBackground})`,
-      backgroundAttachment: "inherit"
+      backgroundAttachment: "inherit",
+      height: "30em",
     }
   },
   estimateButton: {
@@ -75,7 +79,7 @@ export default function WoodshopDisplay(props) {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
-
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Grid
       container
@@ -96,10 +100,10 @@ export default function WoodshopDisplay(props) {
             <Typography variant="h2" className={classes.titleText}>
               There is a time for everything...
             </Typography>
-            <Typography variant="h1" className={classes.supportText}>
+            {matchesMD ? null : <Typography variant="h1" className={classes.supportText}>
               It is just real pleasing to take a mental break and do something physical.<br/>
               I find a peaceful place in the woodshop
-            </Typography>
+            </Typography> }
             <Button
                     component={Link}
                     to="/hobbies"
