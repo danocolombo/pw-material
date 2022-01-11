@@ -48,8 +48,8 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.white,
     marginTop: "10em",
     [theme.breakpoints.down("md")]: {
-      marginTop: "1em",
-      padding: "1em",
+      marginTop: "6rem",
+      width: "100%",
     },
   },
   quoter: {
@@ -139,15 +139,15 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "2em",
     },
   },
-  heroTextContainer: {
-    minWidth: "21.5em",
-    marginLeft: "4em",
-    alignItems: "center",
-    color: theme.palette.common.orange,
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: 0,
-    },
-  },
+  // heroTextContainer: {
+  //   minWidth: "21.5em",
+  //   marginLeft: "4em",
+  //   alignItems: "center",
+  //   color: theme.palette.common.orange,
+  //   [theme.breakpoints.down("xs")]: {
+  //     marginLeft: 0,
+  //   },
+  // },
   specialText: {
     fontFamily: "Pacifico",
     color: theme.palette.common.orange,
@@ -182,8 +182,12 @@ const useStyles = makeStyles((theme) => ({
 export default function LandingPage(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
+  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
+  const matchesXL = useMediaQuery(theme.breakpoints.down("xl"));
+  const matchesXXL = useMediaQuery(theme.breakpoints.down("xxl"));
 
   const defaultOptions = {
     loop: true,

@@ -4,8 +4,8 @@ import { createTheme } from "@material-ui/core/styles";
 const arcBlue = "#0d72bb";
 const arcOrange = "#FFBA60";
 const arcGrey = "#868686";
-const fortsonRed = "#DC143C"
-const fortsonBlue = "#0000FF"
+const fortsonRed = "#DC143C";
+const fortsonBlue = "#0000FF";
 export default createTheme({
   palette: {
     common: {
@@ -101,6 +101,17 @@ export default createTheme({
       fontWeight: "bold",
     },
   },
+  breakpoints: {
+    //  these are the mimimum width of each size
+    values: {
+      xs: 0,
+      sm: 320,
+      md: 360,
+      lg: 820,
+      xl: 1200,
+      xxl: 1536,
+    },
+  },
   overrides: {
     MuiInputLabel: {
       root: {
@@ -115,12 +126,12 @@ export default createTheme({
       },
       underline: {
         "&:before": {
-          borderBottom: `2px solid ${arcBlue}`
+          borderBottom: `2px solid ${arcBlue}`,
         },
-        "&:hover:not($disabled):not($focused):not($error):before":{
-          borderBottom: `2px solid ${arcBlue}`
-        }
-      }
-    }
+        "&:hover:not($disabled):not($focused):not($error):before": {
+          borderBottom: `2px solid ${arcBlue}`,
+        },
+      },
+    },
   },
 });

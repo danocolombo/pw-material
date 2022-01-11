@@ -16,6 +16,34 @@ import GetItDone from "../animations/developer/developer.json";
 import websitesIcon from "../assets/websiteIcon.svg";
 
 const useStyles = makeStyles((theme) => ({
+  mainContainer: {
+    marginTop: 0,
+    marginLeft: 0,
+    [theme.breakpoints.down("md")]: {
+      marginTop: "2em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "2em",
+    },
+  },
+  sizeInfo: {
+    marginLeft: "5em",
+    marginTop: 0,
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1em",
+      marginLeft: "5em",
+    },
+  },
+  breadcrumbsContainer: {
+    marginLeft: "2em",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "1em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1em",
+      marginLeft: "5em",
+    },
+  },
   animation: {
     maxWidth: "50em",
     minWidth: "21em",
@@ -24,19 +52,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       maxWidth: "30em",
     },
-  },
-  mainContainer: {
-    marginTop: 0,
-    marginLeft: 0,
-    [theme.breakpoints.down("md")]: {
-      marginTop: "3em",
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "2em",
-    },
-  },
-  breadcrumbsContainer: {
-    marginLeft: "2em",
   },
   welcomeMessage: {
     minWidth: "21.5em",
@@ -85,7 +100,12 @@ const useStyles = makeStyles((theme) => ({
 export default function EngineeringPage(props) {
   const classes = useStyles();
   const theme = useTheme();
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
+  const matchesXL = useMediaQuery(theme.breakpoints.down("xl"));
+  const matchesPhone = useMediaQuery(theme.breakpoints.down("phone"));
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -102,21 +122,41 @@ export default function EngineeringPage(props) {
   };
   return (
     <Grid container direction="column" className={classes.mainContainer}>
-      <div className={classes.breadcrumbsContainer}><Breadcrumbs aria-label="breadcrumb">
+      <Grid item className={classes.sizeInfo}>
+        <Typography variant="subtitle1">
+          {matchesXS
+            ? "XS    "+ window.innerWidth
+            : matchesSM
+            ? "SM    "+ window.innerWidth
+            : matchesMD
+            ? "MD    " + window.innerWidth
+            : matchesLG
+            ? "LG    " + window.innerWidth
+            : matchesXL
+            ? "XL    "+ window.innerWidth
+            : matchesPhone
+            ? "PHONE "+ window.innerWidth
+            : "NADA"}
+            <br/>
+            {/* width: {window.innerWidth} */}
+        </Typography>
+      </Grid>
+      <Grid item className={classes.breadcrumbsContainer}><Breadcrumbs aria-label="breadcrumb">
         <Link underline="hover" color="inherit" href="/">
           Main
         </Link>
         <Typography color="text.primary">Engineering</Typography>
-      </Breadcrumbs></div>
+      </Breadcrumbs></Grid>
       <Grid item>
         <Typography
           variant="h2"
           gutterBottom
           style={{
-            marginLeft: matchesSM ? 0 : "10rem",
+            marginLeft: matchesMD ? 0 : "10rem",
+            fontSize: "1.7em",
             // marginTop: matchesSM ? "1em" : "2em",
           }}
-          align={matchesSM ? "center" : undefined}
+          align={matchesMD ? "center" : undefined}
         >
           Software Engineering
         </Typography>
