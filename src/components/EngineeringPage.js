@@ -35,7 +35,33 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   introGraphic: {
-    alignItems:"left",
+    marginLeft: 0,
+    marginTop: 0,
+    marginRight: 0,
+    marginBottom: 0,
+    margin: 0,
+    // align: "left",
+    // alignContent: "left",
+    // alignItems: "left",
+    // alignSelf: "left",
+    // justifyContent: "left",
+    // textAlign: "left",
+    // [theme.breakpoints.down("md")]: {
+    //   align: "center",
+    //   alignItems: "center",
+    //   alignSelf: "center",
+    //   justifyContent: "center",
+    //   textAlign: "center",
+    // },
+  },
+  lottieProgrammer: {
+    height: "250px",
+    width: "250px",
+      align: "center",
+      alignItems: "center",
+      alignSelf: "center",
+      justifyContent: "center",
+      textAlign: "center",
   },
   cloudText: {
     // fontSize: "1.7em",
@@ -219,7 +245,9 @@ export default function EngineeringPage(props) {
           </Typography>
         </Grid>
         <Grid item lg={5} md={12} className={classes.introGraphic}>
-          <Lottie options={defaultOptions} height={"50%"} width={"50%"} />
+          <div className={classes.lottieProgrammer}>
+          <Lottie options={defaultOptions}  />
+          </div>
         </Grid>
         {/* //   ========================== */}
         {/* //   This is AWS section        */}
@@ -314,7 +342,7 @@ export default function EngineeringPage(props) {
         {/* //   ========================== */}
         {/* //   Website Development        */}
         {/* //   ========================== */}
-        <Grid item sm={12}>
+        {/* <Grid item sm={12}>
           <Typography variant="h4">Website Development</Typography>
         </Grid>
         <Grid item lg={7} md={12}>
@@ -342,7 +370,7 @@ export default function EngineeringPage(props) {
                   fill={theme.palette.common.blue}
                 />
               </Button>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Grid>
   );
