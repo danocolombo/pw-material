@@ -6,8 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
 
 import ButtonArrow from "./ui/ButtonArrow";
 import customSoftwareIcon from "../assets/customSoftwareIcon.svg";
@@ -26,6 +26,47 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "2em",
     },
   },
+  introText: {
+    textAlign:"center",
+    marginTop: "2em",
+    [theme.breakpoints.down("md")]: {
+      marginTop: 0,
+      marginBottom: "1em",
+    },
+  },
+  introGraphic: {
+    alignItems:"left",
+  },
+  cloudText: {
+    // fontSize: "1.7em",
+    align: "left",
+    paddingLeft: "1em",
+    // marginLeft: "1emm",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: 0,
+      marginBottom: "1em",
+      align: "center"
+    },
+  },
+  learnMoreButton: {
+    alignItmes: "center",
+  },
+  cloudGraphic: {
+    alignItems:"left",
+    marginBottom: "10em",
+  },
+  softwareText:{
+    align: "left",
+    paddingLeft: "1em",
+    // marginLeft: "1emm",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: 0,
+      marginBottom: "1em",
+      align: "center"
+    },
+  },
+
+
   sizeInfo: {
     marginLeft: "5em",
     marginTop: 0,
@@ -125,222 +166,182 @@ export default function EngineeringPage(props) {
       <Grid item className={classes.sizeInfo}>
         <Typography variant="subtitle1">
           {matchesXS
-            ? "XS    "+ window.innerWidth
+            ? "XS    " + window.innerWidth
             : matchesSM
-            ? "SM    "+ window.innerWidth
+            ? "SM    " + window.innerWidth
             : matchesMD
             ? "MD    " + window.innerWidth
             : matchesLG
             ? "LG    " + window.innerWidth
             : matchesXL
-            ? "XL    "+ window.innerWidth
+            ? "XL    " + window.innerWidth
             : matchesPhone
-            ? "PHONE "+ window.innerWidth
+            ? "PHONE " + window.innerWidth
             : "NADA"}
-            <br/>
-            {/* width: {window.innerWidth} */}
+          <br />
+          {/* width: {window.innerWidth} */}
         </Typography>
       </Grid>
-      <Grid item className={classes.breadcrumbsContainer}><Breadcrumbs aria-label="breadcrumb">
-        <Link underline="hover" color="inherit" href="/">
-          Main
-        </Link>
-        <Typography color="text.primary">Engineering</Typography>
-      </Breadcrumbs></Grid>
-      <Grid item>
-        <Typography
-          variant="h2"
-          gutterBottom
-          style={{
-            marginLeft: matchesMD ? 0 : "10rem",
-            fontSize: "1.7em",
-            // marginTop: matchesSM ? "1em" : "2em",
-          }}
-          align={matchesMD ? "center" : undefined}
-        >
-          Software Engineering
-        </Typography>
+      <Grid item className={classes.breadcrumbsContainer}>
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link underline="hover" color="inherit" href="/">
+            Main
+          </Link>
+          <Typography color="text.primary">Engineering</Typography>
+        </Breadcrumbs>
       </Grid>
-      <Grid item>
+      <Grid container direction="row">
+        {/* //   ========================== */}
+        {/* //   Title Section */}
+        {/* //   ========================== */}
+        <Grid item sm={12}>
+          <Typography
+            variant="h2"
+            gutterBottom
+            style={{
+              marginLeft: matchesMD ? 0 : "10rem",
+              fontSize: "1.7em",
+              // marginTop: matchesSM ? "1em" : "2em",
+            }}
+            align={matchesMD ? "center" : undefined}
+          >
+            Software Engineering
+          </Typography>
+        </Grid>
         {/* //   ========================== */}
         {/* //   This is the first section */}
         {/* //   ========================== */}
-
-        <Grid container justifyContent="space-evenly" direction="row">
-          <Grid sm item className={classes.welcomeMessage}>
-            <Typography variant="body1" align="center">
-              And the next thing you know,
-              <br />
-              you're not who you used to be...
-            </Typography>
-          </Grid>
-          <Grid sm item className={classes.animation}>
-            <Lottie options={defaultOptions} height={"50%"} width={"50%"} />
-          </Grid>
+        <Grid item lg={7} md={12}>
+          <Typography variant="body1" className={classes.introText}>
+            And the next thing you know,
+            <br />
+            you're not who you used to be...
+          </Typography>
         </Grid>
-      </Grid>
-      {/* //   ========================== */}
-      {/* //   This is the AWS section */}
-      {/* //   ========================== */}
-      <Grid item className={classes.awsSection}>
-        <Grid
-          container
-          direction="row"
-          style={{ marginTop: matchesSM ? "1em" : "5em" }}
-          justify={matchesSM ? "center" : "flex-end"}
-          className={classes.awsSection}
-        >
-          <Grid
-            item
-            style={{
-              textAlign: matchesSM ? "center" : undefined,
-              width: matchesSM ? undefined : "35em",
+        <Grid item lg={5} md={12} className={classes.introGraphic}>
+          <Lottie options={defaultOptions} height={"50%"} width={"50%"} />
+        </Grid>
+        {/* //   ========================== */}
+        {/* //   This is AWS section        */}
+        {/* //   ========================== */}
+        <Grid item sm={12}>
+          <Typography
+            variant="h2"
+            gutterBottom
+            className={classes.cloudText}
+            
+          >
+            AWS Cloud Technology
+          </Typography>
+        </Grid>
+        <Grid item lg={7} md={12}>
+          <Typography variant="subtitle1" className={classes.cloudText}>
+            Leader in Cloud Technology. Experience through the stack.
+          </Typography>
+          <Typography variant="subtitle1" className={classes.cloudText}>
+            Design, architecture, development and delivery,
+            {matchesSM ? null : <br />}not just training.
+          </Typography>
+          <Button
+            component={Link}
+            href="/aws"
+            to="/aws"
+            variant="outlined"
+            className={classes.learnMoreButton}
+            onClick={() => {
+              props.setValue(1);
+              props.setSelectedIndex(2);
             }}
           >
-            <Typography variant="h4">AWS Cloud Technology</Typography>
-            <Typography variant="subtitle1" className={classes.subtitle}>
-              Leader in Cloud Technology. Experience through the stack.
-            </Typography>
-            <Typography variant="subtitle1">
-              Design, architecture, development and delivery,
-              {matchesSM ? null : <br />}not just training.
-            </Typography>
-            <Button
-              component={Link}
-              href="/aws"
-              to="/aws"
-              variant="outlined"
-              className={classes.learnButton}
-              onClick={() => {
-                props.setValue(1);
-                props.setSelectedIndex(2);
-              }}
-            >
-              <span style={{ marginRight: 10 }}>Learn More</span>
-              <ButtonArrow
-                width={10}
-                height={10}
-                fill={theme.palette.common.blue}
-              />
-            </Button>
-          </Grid>
-          <Grid item style={{ marginRight: matchesSM ? 0 : "5em" }}>
-            <img
-              className={classes.icon}
-              alt="mobile phone icon"
-              src={AWSLogo}
-              width="250em"
+            <span style={{ marginRight: 10 }}>Learn More</span>
+            {/* <span>Learn More</span> */}
+            <ButtonArrow
+              width={10}
+              height={10}
+              fill={theme.palette.common.blue}
             />
-          </Grid>
+          </Button>
         </Grid>
-      </Grid>
-      <Grid item>
-        {" "}
-        {/* //   =================================== */}
-        {/* //   This is the Custom Software section */}
-        {/* //   =================================== */}
-        <Grid
-          container
-          direction="row"
-          justify={matchesSM ? "center" : undefined}
-          className={classes.serviceContainer}
-        >
-          <Grid
-            item
-            style={{
-              marginLeft: matchesSM ? 0 : "5em",
-              textAlign: matchesSM ? "center" : undefined,
+        <Grid item lg={5} md={12} className={classes.cloudGraphic}>
+          <img
+            className={classes.icon}
+            alt="mobile phone icon"
+            src={AWSLogo}
+            width="250em"
+          />
+        </Grid>
+        {/* //   ========================== */}
+        {/* //   Custom Software Dev        */}
+        {/* //   ========================== */}
+        <Grid item sm={12}>
+          <Typography variant="h4" className={classes.softwareText}>Custom Software Development</Typography>
+        </Grid>
+        <Grid item lg={7} md={12}>
+          <Typography variant="subtitle1" className={classes.softwareText}>
+            Save Energy. Save Time. Save Money.
+          </Typography>
+          <Typography variant="subtitle1" className={classes.softwareText}>
+            Complete digital solutions, from investigation to{" "}
+            <span className={classes.specialText}>celebration.</span>
+          </Typography>
+          <Button
+            component={Link}
+            to="/customsoftware"
+            href="/customsoftware"
+            variant="outlined"
+            className={classes.learnButton}
+            onClick={() => {
+              props.setValue(1);
+              props.setSelectedIndex(1);
             }}
           >
-            <Typography variant="h4">Custom Software Development</Typography>
-            <Typography variant="subtitle1" className={classes.subtitle}>
-              Save Energy. Save Time. Save Money.
-            </Typography>
-            <Typography variant="subtitle1">
-              Complete digital solutions, from investigation to{" "}
-              <span className={classes.specialText}>celebration.</span>
-            </Typography>
-            <Button
-              component={Link}
-              to="/customsoftware"
-              href="/customsoftware"
-              variant="outlined"
-              className={classes.learnButton}
-              onClick={() => {
-                props.setValue(1);
-                props.setSelectedIndex(1);
-              }}
-            >
-              <span style={{ marginRight: 10 }}>Learn More</span>
-              <ButtonArrow
-                width={10}
-                height={10}
-                fill={theme.palette.common.blue}
-              />
-            </Button>
-          </Grid>
-          <Grid item>
-            <img
-              className={classes.icon}
-              alt="custom software icon"
-              src={customSoftwareIcon}
-              width="250em"
+            <span style={{ marginRight: 10 }}>Learn More</span>
+            <ButtonArrow
+              width={10}
+              height={10}
+              fill={theme.palette.common.blue}
             />
-          </Grid>
+          </Button>
         </Grid>
-      </Grid>
-      <Grid item>
-        {" "}
-        {/* //   =================================== */}
-        {/* //   This is the Website section */}
-        {/* //   =================================== */}
-        <Grid
-          container
-          direction="row"
-          style={{ marginBottom: "10em" }}
-          justify={matchesSM ? "center" : "flex-end"}
-          className={classes.serviceContainer}
-        >
-          <Grid
-            item
-            style={{
-              textAlign: matchesSM ? "center" : undefined,
-              width: matchesSM ? undefined : "35em",
-            }}
-          >
-            <Typography variant="h4">Website Development</Typography>
-            <Typography variant="subtitle1" className={classes.subtitle}>
-              Reach More. Discover More. Sell More.
-            </Typography>
-            <Typography variant="subtitle1">
-              Optimized for Search Engines, built for speed.
-            </Typography>
-            <Button
-              component={Link}
-              to="/websites"
-              href="/websites"
-              variant="outlined"
-              className={classes.learnButton}
-              onClick={() => {
-                props.setValue(1);
-                props.setSelectedIndex(3);
-              }}
-            >
-              <span style={{ marginRight: 10 }}>Learn More</span>
-              <ButtonArrow
-                width={10}
-                height={10}
-                fill={theme.palette.common.blue}
-              />
-            </Button>
-          </Grid>
-          <Grid item style={{ marginRight: matchesSM ? 0 : "5em" }}>
-            <img
-              className={classes.icon}
-              alt="website icon"
-              src={websitesIcon}
-            />
-          </Grid>
+        <Grid item lg={5} md={12}>
+          <img
+            className={classes.icon}
+            alt="custom software icon"
+            src={customSoftwareIcon}
+            width="250em"
+          />
+        </Grid>
+        {/* //   ========================== */}
+        {/* //   Website Development        */}
+        {/* //   ========================== */}
+        <Grid item sm={12}>
+          <Typography variant="h4">Website Development</Typography>
+        </Grid>
+        <Grid item lg={7} md={12}>
+          <Typography variant="subtitle1" className={classes.subtitle}>
+                Reach More. Discover More. Sell More.
+              </Typography>
+              <Typography variant="subtitle1">
+                Optimized for Search Engines, built for speed.
+              </Typography>
+              <Button
+                component={Link}
+                to="/websites"
+                href="/websites"
+                variant="outlined"
+                className={classes.learnButton}
+                onClick={() => {
+                  props.setValue(1);
+                  props.setSelectedIndex(3);
+                }}
+              >
+                <span style={{ marginRight: 10 }}>Learn More</span>
+                <ButtonArrow
+                  width={10}
+                  height={10}
+                  fill={theme.palette.common.blue}
+                />
+              </Button>
         </Grid>
       </Grid>
     </Grid>
