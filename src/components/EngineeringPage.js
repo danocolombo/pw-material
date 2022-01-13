@@ -4,6 +4,8 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 // import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
@@ -26,12 +28,22 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "2em",
     },
   },
+  basicTextCard: {
+    borderBlockColor: "bloack",
+  },
   introText: {
     textAlign: "center",
+    alignItems: "center",
     marginTop: "2em",
     [theme.breakpoints.down("md")]: {
       marginTop: 0,
       marginBottom: "1em",
+    },
+  },
+  introGraphicDiv: {
+    align: "left",
+    [theme.breakpoints.down("md")]: {
+      align: "center",
     },
   },
   introGraphic: {
@@ -41,29 +53,16 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 0,
     marginBottom: 0,
     margin: 0,
-    // align: "left",
-    // alignContent: "left",
-    // alignItems: "left",
-    // alignSelf: "left",
-    // justifyContent: "left",
-    // textAlign: "left",
-    // [theme.breakpoints.down("md")]: {
-    //   align: "center",
-    //   alignItems: "center",
-    //   alignSelf: "center",
-    //   justifyContent: "center",
-    //   textAlign: "center",
-    // },
   },
   lottieProgrammer: {
-    textAlign: "center",
-    height: "50%",
-    width: "50%",
-    align: "center",
-    alignItems: "center",
-    alignSelf: "center",
-    justifyContent: "center",
-    textAlign: "center",
+    // textAlign: "center",
+    // height: "50%",
+    // width: "50%",
+    // align: "center",
+    // alignItems: "center",
+    // alignSelf: "center",
+    // justifyContent: "center",
+    // textAlign: "center",
   },
   cloudText: {
     // fontSize: "1.7em",
@@ -239,24 +238,33 @@ export default function EngineeringPage(props) {
         {/* //   This is the first section */}
         {/* //   ========================== */}
         <Grid item lg={3} md={12}>
-          <Typography variant="body1" className={classes.introText}>
-            And the next thing you know,
-            <br />
-            you're not who you used to be...
-          </Typography>
+          <Card className={classes.basicTextCard}>
+            <CardContent>
+              <Typography variant="body1" className={classes.introText}>
+                And the next thing you know,
+                <br />
+                you're not who you used to be...
+              </Typography>
+            </CardContent>
+          </Card>
         </Grid>
         <Grid item lg={9} md={12} className={classes.introGraphic}>
-          <Grid
-            container
-            spacing={0}
-            direction="column"
-            alignItems="center"
-            justifyContent="top"
-            // style={{ minHeight: "100vh" }}
-          >
-            <Lottie options={defaultOptions} className={classes.lottieProgrammer}/>
+          <Grid container direction="row">
+            <Grid item>
+              <Grid>
+                <div align="center">
+                  <Lottie
+                    options={defaultOptions}
+                    width={matchesXS ? "125px" : matchesMD ? "200px" : "300px"}
+                    height={matchesXS ? "125px" : matchesMD ? "200px" : "300px"}
+                    className={classes.lottieProgrammer}
+                  />
+                </div>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
+
         {/* //   ========================== */}
         {/* //   This is AWS section        */}
         {/* //   ========================== */}

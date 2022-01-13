@@ -15,6 +15,8 @@ import AWS from "./AWSPage";
 import Contact from "./contactme";
 import NotFoundPage from "./NotFoundPage";
 
+import P8Rally from "./P8ProjectPage";
+
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [value, setValue] = useState(0);
@@ -25,6 +27,7 @@ function App() {
         <Switch>
           {/* <Route exact path="/" component={() => <div style={{height: "500px"}}>HOME</div>}/> */}
           <Route exact path="/" render={(props) => <LandingPage setValue={setValue} setSelectedIndex={setSelectedIndex} />}/>
+          <Route exact path="/p8RallyProject" render={(props) => <P8Rally setValue={setValue} setSelectedIndex={setSelectedIndex} />}/>
           <Route exact path="/engineering" render={(props) => <EngineeringPage setValue={setValue} setSelectedIndex={setSelectedIndex} />}/>
           <Route exact path="/customsoftware" render={(props) => <CustomSoftwarePage setValue={setValue} setSelectedIndex={setSelectedIndex} />}/>
           <Route exact path="/enterprise" render={(props) => <EnterprisePage setValue={setValue} setSelectedIndex={setSelectedIndex} />}/>
