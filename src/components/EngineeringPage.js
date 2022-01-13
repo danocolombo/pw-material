@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   introText: {
-    textAlign:"center",
+    textAlign: "center",
     marginTop: "2em",
     [theme.breakpoints.down("md")]: {
       marginTop: 0,
@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   introGraphic: {
+    textAlign: "left",
     marginLeft: 0,
     marginTop: 0,
     marginRight: 0,
@@ -55,13 +56,14 @@ const useStyles = makeStyles((theme) => ({
     // },
   },
   lottieProgrammer: {
-    height: "250px",
-    width: "250px",
-      align: "center",
-      alignItems: "center",
-      alignSelf: "center",
-      justifyContent: "center",
-      textAlign: "center",
+    textAlign: "center",
+    height: "50%",
+    width: "50%",
+    align: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    justifyContent: "center",
+    textAlign: "center",
   },
   cloudText: {
     // fontSize: "1.7em",
@@ -71,27 +73,26 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       marginLeft: 0,
       marginBottom: "1em",
-      align: "center"
+      align: "center",
     },
   },
   learnMoreButton: {
     alignItmes: "center",
   },
   cloudGraphic: {
-    alignItems:"left",
+    alignItems: "left",
     marginBottom: "10em",
   },
-  softwareText:{
+  softwareText: {
     align: "left",
     paddingLeft: "1em",
     // marginLeft: "1emm",
     [theme.breakpoints.down("md")]: {
       marginLeft: 0,
       marginBottom: "1em",
-      align: "center"
+      align: "center",
     },
   },
-
 
   sizeInfo: {
     marginLeft: "5em",
@@ -237,28 +238,30 @@ export default function EngineeringPage(props) {
         {/* //   ========================== */}
         {/* //   This is the first section */}
         {/* //   ========================== */}
-        <Grid item lg={7} md={12}>
+        <Grid item lg={3} md={12}>
           <Typography variant="body1" className={classes.introText}>
             And the next thing you know,
             <br />
             you're not who you used to be...
           </Typography>
         </Grid>
-        <Grid item lg={5} md={12} className={classes.introGraphic}>
-          <div className={classes.lottieProgrammer}>
-          <Lottie options={defaultOptions}  />
-          </div>
+        <Grid item lg={9} md={12} className={classes.introGraphic}>
+          <Grid
+            container
+            spacing={0}
+            direction="column"
+            alignItems="center"
+            justifyContent="top"
+            // style={{ minHeight: "100vh" }}
+          >
+            <Lottie options={defaultOptions} className={classes.lottieProgrammer}/>
+          </Grid>
         </Grid>
         {/* //   ========================== */}
         {/* //   This is AWS section        */}
         {/* //   ========================== */}
         <Grid item sm={12}>
-          <Typography
-            variant="h2"
-            gutterBottom
-            className={classes.cloudText}
-            
-          >
+          <Typography variant="h2" gutterBottom className={classes.cloudText}>
             AWS Cloud Technology
           </Typography>
         </Grid>
@@ -302,7 +305,9 @@ export default function EngineeringPage(props) {
         {/* //   Custom Software Dev        */}
         {/* //   ========================== */}
         <Grid item sm={12}>
-          <Typography variant="h4" className={classes.softwareText}>Custom Software Development</Typography>
+          <Typography variant="h4" className={classes.softwareText}>
+            Custom Software Development
+          </Typography>
         </Grid>
         <Grid item lg={7} md={12}>
           <Typography variant="subtitle1" className={classes.softwareText}>

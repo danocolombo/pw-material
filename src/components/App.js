@@ -4,7 +4,7 @@ import Header from "./ui/header";
 // import Footer from "./ui/footer";
 import Footer from "./ui/footer";
 import theme from "./ui/theme";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import LandingPage from "./LandingPage";
 import EngineeringPage from "./EngineeringPage";
 import CustomSoftwarePage from "./CustomSoftwarePage";
@@ -13,6 +13,7 @@ import RecoveryPage from "./RecoveryPage";
 import HobbiesPage from "./HobbiesPage";
 import AWS from "./AWSPage";
 import Contact from "./contactme";
+import NotFoundPage from "./NotFoundPage";
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -58,6 +59,8 @@ function App() {
           <Route exact path="/hobbies" component={() => <div>Hobbies</div>} />
           <Route exact path="/woodshop" component={() => <div>Woodshop</div>} />
           <Route exact path="/kitchen" component={() => <div>Kitchen</div>} />
+          <Route exact path="/404" render={(props) => <NotFoundPage />}/>
+          <Redirect to="/404" />
         </Switch>
         <Footer value={value} setValue={setValue} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} />
       </BrowserRouter>
