@@ -1,59 +1,68 @@
-import React, { useEffect } from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { useMediaQuery } from "@material-ui/core";
-
+// Ex 1: Normal Flexbox
+// https://react.school/material-ui/grid
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import { Typography } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
-  breadcrumbsContainer: {
-    marginLeft: "2em",
-  },
-  
+    container: {
+        display: 'flex',
+    },
+    item: {
+        border: '1px solid blue',
+        // flexBasis: '33%',
+        // maxWidth: '33%',
+    },
+    itemFlexGrow: {
+        flexGrow: 0,
+        border: '1px solid blue',
+    },
 }));
 
-export default function P8Rally(props) {
-  const classes = useStyles();
-  const theme = useTheme();
-  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
-  const matchesXL = useMediaQuery(theme.breakpoints.down("xl"));
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+export default function Example1() {
+    const classes = useStyles();
 
-  const bull = (
-    <Box
-      component="span"
-      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    >
-      •
-    </Box>
-  );
+    return (
+        <div className={classes.root}>
+            <h3> Ex 1: Normal Flexbox </h3>
+            <div className={classes.container}>
+                <div className={classes.item}> item 1 </div>
+                <div className={classes.itemFlexGrow}> item 2 </div>
+                <div className={classes.item}> item 3 </div>
+            </div>
 
-  return (
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14, textAlign: "right" }} color="text.secondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-  );
+            <br />
+            <Grid container>
+                <Grid item xs={12} sm={6} md={3} className={classes.item}>
+                    <Typography variant='body1'>
+                        Cupidatat est reprehenderit fugiat velit nulla elit
+                        incididunt. Adipisicing excepteur culpa exercitation
+                        nulla. Eu qui dolor veniam culpa.
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} sm={6} md={3} className={classes.item}>
+                    <Typography variant='body1'>
+                        Cupidatat est reprehenderit fugiat velit nulla elit
+                        incididunt. Adipisicing excepteur culpa exercitation
+                        nulla. Eu qui dolor veniam culpa.
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} sm={6} md={3} className={classes.item}>
+                    <Typography variant='body1'>
+                        Cupidatat est reprehenderit fugiat velit nulla elit
+                        incididunt. Adipisicing excepteur culpa exercitation
+                        nulla. Eu qui dolor veniam culpa.
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} sm={6} md={3} className={classes.item}>
+                    <Typography variant='body1'>
+                        Cupidatat est reprehenderit fugiat velit nulla elit
+                        incididunt. Adipisicing excepteur culpa exercitation
+                        nulla. Eu qui dolor veniam culpa.
+                    </Typography>
+                </Grid>
+            </Grid>
+            <br />
+        </div>
+    );
 }
