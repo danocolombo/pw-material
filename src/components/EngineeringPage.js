@@ -4,6 +4,8 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 // import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Box from "@mui/material/Box";
+import { Paper } from "@material-ui/core";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@material-ui/core/Button";
@@ -21,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   mainContainer: {
     marginTop: 0,
     marginLeft: 0,
+    textAlign:"left",
     [theme.breakpoints.down("md")]: {
       marginTop: "2em",
     },
@@ -30,15 +33,29 @@ const useStyles = makeStyles((theme) => ({
   },
   basicTextCard: {
     borderBlockColor: "bloack",
+    marginTop: "2em",
+  },
+  introGrid: {
+    // marginTop: "2em",
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  introGridContainer: {
+    justifyContent:"center",
+    alignItems:"center",
+  },
+  introTextBox: {
+    textAlign: "center",
   },
   introText: {
-    textAlign: "center",
-    alignItems: "center",
-    marginTop: "2em",
-    [theme.breakpoints.down("md")]: {
-      marginTop: 0,
-      marginBottom: "1em",
-    },
+    // textAlign: "center",
+    // alignItems: "center",
+    // marginTop: "4em",
+    // [theme.breakpoints.down("md")]: {
+    //   marginTop: 0,
+    //   marginBottom: "1em",
+    // },
   },
   introGraphicDiv: {
     align: "left",
@@ -55,9 +72,10 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   lottieProgrammer: {
+    // margin: "0 auto"
     // textAlign: "center",
     // height: "50%",
-    // width: "50%",
+    // width: "50%",margin: 0 "auto"
     // align: "center",
     // alignItems: "center",
     // alignSelf: "center",
@@ -181,12 +199,23 @@ export default function EngineeringPage(props) {
 
   const defaultOptions = {
     loop: true,
+    marginTop: 0,
+    marginBottom: 0,
+    marginLeft: "auto",
+    marginRitght: "auto",
     autoplay: true,
     animationData: GetItDone,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  // const Item = styled(Paper)(({ theme }) => ({
+  //   ...theme.typography.body2,
+  //   textAlign: 'center',
+  //   color: theme.palette.text.secondary,
+  //   height: 60,
+  //   lineHeight: '60px',
+  // }));
   return (
     <Grid container direction="column" className={classes.mainContainer}>
       <Grid item className={classes.sizeInfo}>
@@ -237,34 +266,41 @@ export default function EngineeringPage(props) {
         {/* //   ========================== */}
         {/* //   This is the first section */}
         {/* //   ========================== */}
-        <Grid item lg={3} md={12}>
-          <Card className={classes.basicTextCard}>
-            <CardContent>
+        <Grid
+          container
+          direction="row"
+          className={classes.introGridContainer}
+        >
+          <Grid item lg={3} md={12} className={classes.introGrid}>
+            <Box className={classes.introTextBox}>
               <Typography variant="body1" className={classes.introText}>
                 And the next thing you know,
                 <br />
                 you're not who you used to be...
               </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item lg={9} md={12} className={classes.introGraphic}>
-          <Grid container direction="row">
-            <Grid item>
-              <Grid>
-                <div align="center">
-                  <Lottie
-                    options={defaultOptions}
-                    width={matchesXS ? "125px" : matchesMD ? "200px" : "300px"}
-                    height={matchesXS ? "125px" : matchesMD ? "200px" : "300px"}
-                    className={classes.lottieProgrammer}
-                  />
-                </div>
+            </Box>
+          </Grid>
+          <Grid item lg={9} md={12} className={classes.introGraphic}>
+            <Grid container direction="row">
+              <Grid item>
+                <Grid>
+                  <div>
+                    <Lottie
+                      options={defaultOptions}
+                      width={
+                        matchesXS ? "125px" : matchesMD ? "200px" : "300px"
+                      }
+                      height={
+                        matchesXS ? "125px" : matchesMD ? "200px" : "300px"
+                      }
+                      className={classes.lottieProgrammer}
+                    />
+                  </div>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
-
         {/* //   ========================== */}
         {/* //   This is AWS section        */}
         {/* //   ========================== */}
