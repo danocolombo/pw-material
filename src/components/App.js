@@ -11,6 +11,7 @@ import CustomSoftwarePage from './CustomSoftwarePage';
 import EnterprisePage from './EnterprisePage';
 import RecoveryPage from './RecoveryPage';
 import HobbiesPage from './HobbiesPage';
+import AWS2 from './AWSPageCopy';
 import AWS from './AWSPage';
 import Contact from './contactme';
 import NotFoundPage from './NotFoundPage';
@@ -106,6 +107,17 @@ function App() {
                         path='/aws'
                         render={(props) => (
                             <AWS
+                                {...props}
+                                setValue={setValue}
+                                setSelectedIndex={setSelectedIndex}
+                            />
+                        )}
+                    />
+                    <Route
+                        exact
+                        path='/oldaws'
+                        render={(props) => (
+                            <AWS2
                                 {...props}
                                 setValue={setValue}
                                 setSelectedIndex={setSelectedIndex}
