@@ -6,19 +6,22 @@ const arcOrange = "#FFBA60";
 const arcGrey = "#868686";
 const fortsonRed = "#DC143C";
 const fortsonBlue = "#0000FF";
+const fortsonBlack = "#000000";
 export default createTheme({
   palette: {
     common: {
-      blue: `${arcBlue}`,
+      blue: `${fortsonBlue}`,
       orange: `${arcOrange}`,
       red: `${fortsonRed}`,
+      black: `${fortsonBlack}`,
     },
     primary: {
-      main: `${arcBlue}`,
+      main: `${fortsonBlue}`,
     },
     secondary: {
       main: `${arcOrange}`,
     },
+    
   },
   typography: {
     tab: {
@@ -49,7 +52,7 @@ export default createTheme({
     h4: {
       fontFamily: "Raleway",
       fontSize: "1.75rem",
-      color: arcBlue,
+      color: fortsonBlue,
       fontWeight: 700,
     },
     h6: {
@@ -107,7 +110,7 @@ export default createTheme({
       xs: 0,
       sm: 320,
       md: 360,
-      lg: 820,
+      lg: 750,
       xl: 1200,
       xxl: 1536,
     },

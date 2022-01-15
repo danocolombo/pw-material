@@ -1,183 +1,107 @@
 import React, { useEffect } from "react";
-import Lottie from "react-lottie";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 // import { Link } from "react-router-dom";
+import Lottie from "react-lottie";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Box from "@mui/material/Box";
-import { Paper } from "@material-ui/core";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 
 import ButtonArrow from "./ui/ButtonArrow";
+import GetItDone from "../animations/developer/developer.json";
+import engineeringPic from "../assets/computer_glasses.jpg";
 import customSoftwareIcon from "../assets/customSoftwareIcon.svg";
 import AWSLogo from "../assets/AWS_Logo.svg";
-import GetItDone from "../animations/developer/developer.json";
+import AWS_SAA_Logo from "../assets/AWS-SolutionArchitect.png";
+import AWS_DA_Logo from "../assets/AWS-DeveloperAssociate.png";
+import AWS_CP_Logo from "../assets/AWS-CloudPractitioner.png";
+import AWS_Serverless from "../assets/AWS_Serverless.svg";
+import AWS_Amplify from "../assets/AWS_Amplify.svg";
+import AWS_APIGateway from "../assets/AWS_APIGateway.svg";
+import AWS_Lambda from "../assets/AWS_Lambda.svg";
+import AWS_RDS from "../assets/AWS_RDS.svg";
+import AWS_DynamoDB from "../assets/AWS_DynamoDB.svg";
+import P8RallySolution from "../assets/P8RallySolution.png";
+import MeeterSolution from "../assets/MeeterSolution.png";
+
+import mobileAppsIcon from "../assets/mobileIcon.svg";
 import websitesIcon from "../assets/websiteIcon.svg";
 
 const useStyles = makeStyles((theme) => ({
-  mainContainer: {
-    marginTop: 0,
-    marginLeft: 0,
-    textAlign:"left",
-    [theme.breakpoints.down("md")]: {
-      marginTop: "2em",
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "2em",
-    },
+  breadcrumbsContainer: {
+    marginLeft: "2em",
+    marginTop: "-2em",
   },
-  basicTextCard: {
-    borderBlockColor: "bloack",
-    marginTop: "2em",
-  },
-  introGrid: {
-    // marginTop: "2em",
-    textAlign: "center",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  introGridContainer: {
-    justifyContent:"center",
-    alignItems:"center",
-  },
-  introTextBox: {
-    textAlign: "center",
-  },
-  introText: {
-    // textAlign: "center",
-    // alignItems: "center",
-    // marginTop: "4em",
-    // [theme.breakpoints.down("md")]: {
-    //   marginTop: 0,
-    //   marginBottom: "1em",
-    // },
-  },
-  introGraphicDiv: {
-    align: "left",
-    [theme.breakpoints.down("md")]: {
-      align: "center",
-    },
-  },
-  introGraphic: {
-    textAlign: "left",
-    marginLeft: 0,
+  sectionTitle: {
     marginTop: 0,
     marginRight: 0,
     marginBottom: 0,
-    margin: 0,
+    marginLeft: "1em",
+    fontFamily: "Raleway",
+    fontSize: "1.75rem",
+    color: theme.palette.common.blue,
+    fontWeight: 700,
   },
-  lottieProgrammer: {
-    // margin: "0 auto"
-    // textAlign: "center",
-    // height: "50%",
-    // width: "50%",margin: 0 "auto"
-    // align: "center",
-    // alignItems: "center",
-    // alignSelf: "center",
-    // justifyContent: "center",
-    // textAlign: "center",
-  },
-  cloudText: {
-    // fontSize: "1.7em",
-    align: "left",
-    paddingLeft: "1em",
-    // marginLeft: "1emm",
-    [theme.breakpoints.down("md")]: {
-      marginLeft: 0,
-      marginBottom: "1em",
-      align: "center",
-    },
-  },
-  learnMoreButton: {
-    alignItmes: "center",
-  },
-  cloudGraphic: {
-    alignItems: "left",
-    marginBottom: "10em",
-  },
-  softwareText: {
-    align: "left",
-    paddingLeft: "1em",
-    // marginLeft: "1emm",
-    [theme.breakpoints.down("md")]: {
-      marginLeft: 0,
-      marginBottom: "1em",
-      align: "center",
-    },
-  },
-
-  sizeInfo: {
-    marginLeft: "5em",
+  flexContainer: {
     marginTop: 0,
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "1em",
-      marginLeft: "5em",
-    },
-  },
-  breadcrumbsContainer: {
-    marginLeft: "2em",
+    marginRight: 0,
+    marginBottom: 0,
+    marginLeft: 0,
+    display: "flex",
+    flexDirection: "row",
+    // height: "200px",
+    alignItems: "center",
+    // backgroundColor: "DodgerBlue",
     [theme.breakpoints.down("md")]: {
-      fontSize: "1em",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "1em",
-      marginLeft: "5em",
+      flexDirection: "column",
     },
   },
-  animation: {
-    maxWidth: "50em",
-    minWidth: "21em",
+  flexLeft: {
+    // border: "1px solid blue",
+    // backgroundColor: "#f1f1f1",
     marginTop: 0,
-    // marginLeft: "10%",
-    [theme.breakpoints.down("sm")]: {
-      maxWidth: "30em",
+    marginBottom: 0,
+    textAlign: "center",
+    lineHeight: "75px",
+    fontSize: "30px",
+    flex: "35%",
+    [theme.breakpoints.down("md")]: {
+      marginTop: 0,
+      marginBottom: 0,
+      width: "50%",
+      flex: "100%",
     },
   },
-  welcomeMessage: {
-    minWidth: "21.5em",
-    marginLeft: "0em",
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: 0,
-    },
-  },
-  awsSection: {
-    marginTop: "1em",
-    marginRight: "3em",
-    [theme.breakpoints.down("sm")]: {
-      padding: 25,
-    },
-  },
-  learnButton: {
-    ...theme.typography.learnButton,
-    fontSize: "0.7rem",
-    height: 35,
-    padding: 5,
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: "2em",
-    },
-  },
-  specialText: {
-    fontFamily: "Pacifico",
-    color: theme.palette.common.orange,
-  },
-  subtitle: {
-    marginBottom: "1em",
-  },
-  icon: {
+  flexRight: {
+    // border: "1px solid blue",
+    // backgroundColor: "#f1f1f1",
+    marginTop: 0,
+    marginBottom: 0,
     marginLeft: "2em",
-    [theme.breakpoints.down("xs")]: {
+    textAlign: "left",
+    lineHeight: "75px",
+    fontSize: "30px",
+    flex: "65%",
+    [theme.breakpoints.down("md")]: {
+      marginTop: 0,
+      marginBottom: 0,
       marginLeft: 0,
+      width: "50%",
+      textAlign: "center",
+      flex: "100%",
     },
   },
-  serviceContainer: {
-    marginTop: "5em",
-    [theme.breakpoints.down("sm")]: {
-      padding: 25,
+  sectionText: {
+    fontSize: "1.25rem",
+    color: theme.palette.common.black,
+    fontWeight: 400,
+  },
+  graphic: {
+    borderRadius: "10px",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "1em",
     },
   },
 }));
@@ -190,13 +114,10 @@ export default function EngineeringPage(props) {
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
   const matchesXL = useMediaQuery(theme.breakpoints.down("xl"));
-  const matchesPhone = useMediaQuery(theme.breakpoints.down("phone"));
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  //   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
-
   const defaultOptions = {
     loop: true,
     marginTop: 0,
@@ -209,34 +130,8 @@ export default function EngineeringPage(props) {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-  // const Item = styled(Paper)(({ theme }) => ({
-  //   ...theme.typography.body2,
-  //   textAlign: 'center',
-  //   color: theme.palette.text.secondary,
-  //   height: 60,
-  //   lineHeight: '60px',
-  // }));
   return (
-    <Grid container direction="column" className={classes.mainContainer}>
-      <Grid item className={classes.sizeInfo}>
-        <Typography variant="subtitle1">
-          {matchesXS
-            ? "XS    " + window.innerWidth
-            : matchesSM
-            ? "SM    " + window.innerWidth
-            : matchesMD
-            ? "MD    " + window.innerWidth
-            : matchesLG
-            ? "LG    " + window.innerWidth
-            : matchesXL
-            ? "XL    " + window.innerWidth
-            : matchesPhone
-            ? "PHONE " + window.innerWidth
-            : "NADA"}
-          <br />
-          {/* width: {window.innerWidth} */}
-        </Typography>
-      </Grid>
+    <div className={classes.root}>
       <Grid item className={classes.breadcrumbsContainer}>
         <Breadcrumbs aria-label="breadcrumb">
           <Link underline="hover" color="inherit" href="/">
@@ -245,75 +140,44 @@ export default function EngineeringPage(props) {
           <Typography color="text.primary">Engineering</Typography>
         </Breadcrumbs>
       </Grid>
-      <Grid container direction="row">
-        {/* //   ========================== */}
-        {/* //   Title Section */}
-        {/* //   ========================== */}
-        <Grid item sm={12}>
-          <Typography
-            variant="h2"
-            gutterBottom
-            style={{
-              marginLeft: matchesMD ? 0 : "10rem",
-              fontSize: "1.7em",
-              // marginTop: matchesSM ? "1em" : "2em",
-            }}
-            align={matchesMD ? "center" : undefined}
-          >
-            Software Engineering
+      {/** //   SECTION 1 */}
+      <Typography className={classes.sectionTitle}>
+        Software Engineering
+      </Typography>
+      <div className={classes.flexContainer}>
+        <div className={classes.flexLeft}>
+          <Typography className={classes.sectionText}>
+            And the next thing you know,
+            <br />
+            you're not who you used to be...
           </Typography>
-        </Grid>
-        {/* //   ========================== */}
-        {/* //   This is the first section */}
-        {/* //   ========================== */}
-        <Grid
-          container
-          direction="row"
-          className={classes.introGridContainer}
-        >
-          <Grid item lg={3} md={12} className={classes.introGrid}>
-            <Box className={classes.introTextBox}>
-              <Typography variant="body1" className={classes.introText}>
-                And the next thing you know,
-                <br />
-                you're not who you used to be...
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item lg={9} md={12} className={classes.introGraphic}>
-            <Grid container direction="row">
-              <Grid item>
-                <Grid>
-                  <div>
-                    <Lottie
-                      options={defaultOptions}
-                      width={
-                        matchesXS ? "125px" : matchesMD ? "200px" : "300px"
-                      }
-                      height={
-                        matchesXS ? "125px" : matchesMD ? "200px" : "300px"
-                      }
-                      className={classes.lottieProgrammer}
-                    />
-                  </div>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-        {/* //   ========================== */}
-        {/* //   This is AWS section        */}
-        {/* //   ========================== */}
-        <Grid item sm={12}>
-          <Typography variant="h2" gutterBottom className={classes.cloudText}>
-            AWS Cloud Technology
-          </Typography>
-        </Grid>
-        <Grid item lg={7} md={12}>
-          <Typography variant="subtitle1" className={classes.cloudText}>
+        </div>
+        <div className={classes.flexRight}>
+          {/* <Lottie
+            options={defaultOptions}
+            width={matchesXS ? "125px" : matchesMD ? "200px" : "300px"}
+            height={matchesXS ? "125px" : matchesMD ? "200px" : "300px"}
+            className={classes.lottieProgrammer}
+          /> */}
+          <img
+            className={classes.graphic}
+            alt="desktop view"
+            src={engineeringPic}
+            // width="250em"
+            height="200px"
+          />
+        </div>
+      </div>
+      {/** //   SECTION 2 */}
+      <Typography className={classes.sectionTitle}>
+        AWS Cloud Technology
+      </Typography>
+      <div className={classes.flexContainer}>
+        <div className={classes.flexLeft}>
+          <Typography className={classes.sectionText}>
             Leader in Cloud Technology. Experience through the stack.
           </Typography>
-          <Typography variant="subtitle1" className={classes.cloudText}>
+          <Typography className={classes.sectionText}>
             Design, architecture, development and delivery,
             {matchesSM ? null : <br />}not just training.
           </Typography>
@@ -336,28 +200,28 @@ export default function EngineeringPage(props) {
               fill={theme.palette.common.blue}
             />
           </Button>
-        </Grid>
-        <Grid item lg={5} md={12} className={classes.cloudGraphic}>
-          <img
-            className={classes.icon}
-            alt="mobile phone icon"
-            src={AWSLogo}
-            width="250em"
-          />
-        </Grid>
-        {/* //   ========================== */}
-        {/* //   Custom Software Dev        */}
-        {/* //   ========================== */}
-        <Grid item sm={12}>
-          <Typography variant="h4" className={classes.softwareText}>
-            Custom Software Development
-          </Typography>
-        </Grid>
-        <Grid item lg={7} md={12}>
-          <Typography variant="subtitle1" className={classes.softwareText}>
+        </div>
+        <div className={classes.flexRight}>
+          {/* {matchesMD ? null : ( */}
+          <Grid item className={classes.gridItemB2}>
+            <img
+              className={classes.icon}
+              alt="mobile phone icon"
+              src={AWSLogo}
+              width="250em"
+            />
+          </Grid>
+          {/* )} */}
+        </div>
+      </div>
+      {/** //   SECTION 3 */}
+      <Typography className={classes.sectionTitle}>Custom Software</Typography>
+      <div className={classes.flexContainer}>
+        <div className={classes.flexLeft}>
+          <Typography className={classes.sectionText}>
             Save Energy. Save Time. Save Money.
           </Typography>
-          <Typography variant="subtitle1" className={classes.softwareText}>
+          <Typography className={classes.sectionText}>
             Complete digital solutions, from investigation to{" "}
             <span className={classes.specialText}>celebration.</span>
           </Typography>
@@ -379,48 +243,16 @@ export default function EngineeringPage(props) {
               fill={theme.palette.common.blue}
             />
           </Button>
-        </Grid>
-        <Grid item lg={5} md={12}>
+        </div>
+        <div className={classes.flexRight}>
           <img
             className={classes.icon}
             alt="custom software icon"
             src={customSoftwareIcon}
             width="250em"
           />
-        </Grid>
-        {/* //   ========================== */}
-        {/* //   Website Development        */}
-        {/* //   ========================== */}
-        {/* <Grid item sm={12}>
-          <Typography variant="h4">Website Development</Typography>
-        </Grid>
-        <Grid item lg={7} md={12}>
-          <Typography variant="subtitle1" className={classes.subtitle}>
-                Reach More. Discover More. Sell More.
-              </Typography>
-              <Typography variant="subtitle1">
-                Optimized for Search Engines, built for speed.
-              </Typography>
-              <Button
-                component={Link}
-                to="/websites"
-                href="/websites"
-                variant="outlined"
-                className={classes.learnButton}
-                onClick={() => {
-                  props.setValue(1);
-                  props.setSelectedIndex(3);
-                }}
-              >
-                <span style={{ marginRight: 10 }}>Learn More</span>
-                <ButtonArrow
-                  width={10}
-                  height={10}
-                  fill={theme.palette.common.blue}
-                />
-              </Button>
-        </Grid> */}
-      </Grid>
-    </Grid>
+        </div>
+      </div>
+    </div>
   );
 }
