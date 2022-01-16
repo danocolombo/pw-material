@@ -338,7 +338,7 @@ export default function EngineeringPage(props) {
                 </div>
                 <div className={classes.techRight}>
                     <Typography className={classes.techTopic}>
-                        Lambda Compute
+                        Lambda Functions
                     </Typography>
                     <Typography className={classes.techDescription}>
                         Execution in the cloud with no need to for system

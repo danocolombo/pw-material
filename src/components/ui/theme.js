@@ -7,6 +7,7 @@ const arcGrey = "#868686";
 const fortsonRed = "#DC143C";
 const fortsonBlue = "#0000FF";
 const fortsonBlack = "#000000";
+const fortsonGrey = "#868686";
 export default createTheme({
   palette: {
     common: {
@@ -14,6 +15,7 @@ export default createTheme({
       orange: `${arcOrange}`,
       red: `${fortsonRed}`,
       black: `${fortsonBlack}`,
+      grey: `${fortsonGrey}`,
     },
     primary: {
       main: `${fortsonBlue}`,

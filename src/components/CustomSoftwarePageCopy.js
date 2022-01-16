@@ -39,6 +39,9 @@ const useStyles = makeStyles((theme) => ({
             marginBottom: '2em',
         },
     },
+    introductionSection: {
+        marginLeft: '5em',
+    },
     specialText: {
         fontFamily: 'Pacifico',
         color: theme.palette.common.orange,
@@ -46,31 +49,42 @@ const useStyles = makeStyles((theme) => ({
     subtitle: {
         marginBottom: '1em',
     },
-    awsIcon: {
-        marginLeft: '2em',
-        height: '80px',
-        [theme.breakpoints.down('xs')]: {
-            marginLeft: 0,
-        },
-    },
     icon: {
         marginLeft: '2em',
         [theme.breakpoints.down('xs')]: {
             marginLeft: 0,
         },
     },
-    certIcon: {
-        marginLeft: '2em',
-        width: '100px',
-        [theme.breakpoints.down('xs')]: {
-            marginLeft: 0,
-        },
-    },
-    serviceContainer: {
-        marginTop: '10em',
+    productEvolutionSection: {
+        marginLeft: '3em',
+        marginTop: '1em',
         [theme.breakpoints.down('sm')]: {
             padding: 25,
         },
+    },
+    productEvolutionParagraph: {
+        marginLeft: '2em',
+    },
+    phaseHeader: {
+        marginTop: '1em',
+        marginLeft: '1.5em',
+    },
+    phaseObjective: {
+        marginLeft: '5em',
+        marginBottom: '2em',
+        fontFamily: 'Tahoma',
+        fontSize: '1.3em',
+        fontWeight: 'bold',
+    },
+    phaseParagraph: {
+        marginLeft: '5em',
+        marginRight: '5em',
+    },
+    technicalChallenges: {
+        fontWeight: 'bold',
+        marginLeft: '5em',
+        marginTop: '2em',
+        bottomMargin: '1em',
     },
     techTitle: {
         fontSize: '1.5em',
@@ -114,7 +128,9 @@ export default function EngineeringPage(props) {
                     <Link underline='hover' color='inherit' href='/engineering'>
                         Engineering
                     </Link>
-                    <Typography color='text.primary'>AWS</Typography>
+                    <Typography color='text.primary'>
+                        Custom Software
+                    </Typography>
                 </Breadcrumbs>
             </div>
             <Grid item>
@@ -127,86 +143,45 @@ export default function EngineeringPage(props) {
                     }}
                     align={matchesSM ? 'center' : undefined}
                 >
-                    Amazon Cloud Technology
+                    Custom Software Development
                 </Typography>
-                <Grid item style={{ marginRight: matchesSM ? 0 : '5em' }}>
-                    <img
-                        className={classes.awsIcon}
-                        alt='mobile phone icon'
-                        src={AWSLogo}
-                        width='250em'
-                    />
-                </Grid>
-            </Grid>
-            <Grid item>
-                {' '}
-                {/* //   =================================== */}
-                {/* //   This is the AWS section */}
-                {/* //   =================================== */}
-                <Grid
-                    container
-                    direction='row'
-                    style={{ marginTop: matchesSM ? '1em' : '2em' }}
-                    justify={matchesSM ? 'center' : 'flex-end'}
-                    className={classes.serviceContainer}
+                <Typography
+                    variant='subtitle1'
+                    className={classes.introductionSection}
                 >
-                    <Grid
-                        item
-                        style={{
-                            textAlign: matchesSM ? 'center' : undefined,
-                            width: matchesSM ? undefined : '35em',
-                        }}
-                    >
-                        <Typography variant='h4'>
-                            Offically Certified
-                        </Typography>
-                        <Typography
-                            variant='subtitle1'
-                            className={classes.subtitle}
-                        >
-                            Serious needs, requires serious commitment.
-                        </Typography>
-                        <Typography variant='subtitle1'>
-                            Not just getting a free account and messing around
-                            on YouTube.
-                            {matchesSM ? null : <br />}But actually taking the
-                            time to get seriously educated and experienced.
-                        </Typography>
-                    </Grid>
-                    <Grid item style={{ marginRight: matchesSM ? 0 : '5em' }}>
-                        <img
-                            className={classes.certIcon}
-                            alt='AWS Certified Architect'
-                            src={AWS_SAA_Logo}
-                            // width="250em"
-                        />
-                        {matchesSM ? null : <br />}
-                        <img
-                            className={classes.certIcon}
-                            alt='AWS Certified Developer'
-                            src={AWS_DA_Logo}
-                            // width="250em"
-                        />
-                        {matchesSM ? null : <br />}
-                        <img
-                            className={classes.certIcon}
-                            alt='AWS Cloud Practioner'
-                            src={AWS_CP_Logo}
-                            // width="250em"
-                        />
-                    </Grid>
-                </Grid>
+                    The reality is that software engineering is not just about a
+                    clean simple design, code, test and deliver on time life.
+                    The challenges of engineering are taking exising systems and
+                    modifying and adapting them as needed. Modernizing and
+                    improving on systems that are already in place.
+                    <br />
+                    You might be familiar with the discussions...
+                    <ul>
+                        <li>We need to reduce our costs</li>
+                        <li>One of our components is no longer supported</li>
+                        <li>We want to add this new feature</li>
+                        <li>
+                            Performance and response times are not acceptable
+                        </li>
+                    </ul>
+                    And the list goes on. All of these challenges are not your
+                    typical assignment for someone just getting started in
+                    software engineering. These challenges take experience, and
+                    insights. Through the years I have been able to take on
+                    these type of challenges and finish with satisfaction.
+                </Typography>
             </Grid>
+
             <Grid item>
                 {' '}
                 {/* //   =================================== */}
-                {/* //   This is the Full-stack section */}
+                {/* //   Product Evolution                   */}
                 {/* //   =================================== */}
                 <Grid
                     container
                     direction='row'
                     justify={matchesSM ? 'center' : undefined}
-                    className={classes.serviceContainer}
+                    className={classes.productEvolutionSection}
                 >
                     <Grid
                         item
@@ -215,22 +190,173 @@ export default function EngineeringPage(props) {
                             textAlign: matchesSM ? 'center' : undefined,
                         }}
                     >
-                        <Typography variant='h4'>
-                            Full-Stack Experience
+                        <Typography variant='h2'>Product Evolution</Typography>
+                        <Typography
+                            variant='subtitle1'
+                            className={classes.productEvolutionParagraph}
+                        >
+                            Over the years I have been task with working with
+                            one software solution for managing a client's
+                            meetings. It was custom software, originally written
+                            in PHP with a MySQL database backend.
+                        </Typography>
+                    </Grid>
+                    {/* //   =================================== */}
+                    {/* //   Product Evolution  - PHASE I        */}
+                    {/* //   =================================== */}
+                    <Grid
+                        item
+                        style={{
+                            marginLeft: matchesSM ? 0 : '2em',
+                            textAlign: matchesSM ? 'center' : undefined,
+                        }}
+                    >
+                        <Typography
+                            variant='h4'
+                            className={classes.phaseHeader}
+                        >
+                            Phase I
                         </Typography>
                         <Typography
                             variant='subtitle1'
-                            className={classes.subtitle}
+                            className={classes.phaseObjective}
                         >
-                            Top to bottom. Inside-out
+                            The first desire was to update the user workflows,
+                            UI and get off the hosted webserver.
                         </Typography>
-                        <Typography variant='subtitle1'>
-                            From domains, storage, databases, APIs and front-end
-                            development.
-                            {matchesSM ? null : <br />}Doing what is necessary
-                            to make things happen.
+                        <Typography
+                            variant='subtitle1'
+                            className={classes.phaseParagraph}
+                        >
+                            This took on a full SDLC approach as user
+                            requirements and scope definition was defined. The
+                            entire PHP frontend was rewritten in in React JS
+                            (javascript). This front end used what is called the
+                            MERN stack.
+                            <ul>
+                                <li>
+                                    <b>M</b>ongoDB - document database
+                                </li>
+                                <li>
+                                    <b>E</b>xpressJS - Node.js web framework
+                                </li>
+                                <li>
+                                    <b>R</b>eactJS - a clicent-side JavaScript
+                                    framework
+                                </li>
+                                <li>
+                                    <b>N</b>odeJS - the premiere JavaScript web
+                                    server
+                                </li>
+                            </ul>
+                        </Typography>
+                        <Typography
+                            variant='subtitle1'
+                            className={classes.phaseParagraph}
+                        >
+                            This resulted in the client getting a much cleaner,
+                            more responsive interface and moved the database
+                            from a hosted MySQL database to MongoDB Atlas. The
+                            customer was satisfied with the results of phase I.
+                        </Typography>
+                        <Typography
+                            variant='h6'
+                            className={classes.technicalChallenges}
+                        >
+                            Technical Challenges & Highlights
+                        </Typography>
+                        <Typography
+                            variant='subtitle1'
+                            className={classes.phaseParagraph}
+                        >
+                            <ul>
+                                <li>
+                                    Migrate MySQL (Relational Database) to
+                                    MongoDB (Document Database)
+                                </li>
+                                <li>
+                                    Write new database layer in express to
+                                    replace PHP/MySQL queries
+                                </li>
+                            </ul>
                         </Typography>
                     </Grid>
+                    {/* //   =================================== */}
+                    {/* //   Product Evolution  - PHASE II       */}
+                    {/* //   =================================== */}
+                    <Grid
+                        item
+                        style={{
+                            marginLeft: matchesSM ? 0 : '2em',
+                            textAlign: matchesSM ? 'center' : undefined,
+                        }}
+                    >
+                        <Typography
+                            variant='h4'
+                            className={classes.phaseHeader}
+                        >
+                            Phase II
+                        </Typography>
+                        <Typography
+                            variant='subtitle1'
+                            className={classes.phaseObjective}
+                        >
+                            Move to standard REST interface, decoupling the data
+                            layer from the UI and move to AWS no-SQL
+                        </Typography>
+                        <Typography
+                            variant='subtitle1'
+                            className={classes.phaseParagraph}
+                        >
+                            One of the biggest challenges was to migrate from
+                            the MongoDB document database to the AWS DynamoDB
+                            no-sql database. Once the data was available, the
+                            database calls were abstracted from Express and
+                            moved to AWS API Gateway and AWS Lambda.
+                            <br />
+                            <br />
+                            This phase also gave us the opportunity to migrate
+                            all of the web hosting to AWS S3 object storage.
+                        </Typography>
+                        <Typography
+                            variant='subtitle1'
+                            className={classes.phaseParagraph}
+                        >
+                            This phase made the system data now availalbe within
+                            the solution, but it also now exposed the
+                            opportunity for API interactions with te data and
+                            not have it embedded in the solution stack.
+                        </Typography>
+                        <Typography
+                            variant='h6'
+                            className={classes.technicalChallenges}
+                        >
+                            Technical Challenges & Highlights
+                        </Typography>
+                        <Typography
+                            variant='subtitle1'
+                            className={classes.phaseParagraph}
+                        >
+                            <ul>
+                                <li>
+                                    Migrate MongoDB (Document Database) to AWS
+                                    DynamoDB (NOSQL Database)
+                                    <br />
+                                    This data conversion with done in Python.
+                                </li>
+                                <li>
+                                    All API entry points provided in AWS API
+                                    Gateway
+                                </li>
+                                <li>
+                                    Database interfaces and business logic moved
+                                    to AWS Lambda functions
+                                </li>
+                            </ul>
+                        </Typography>
+                    </Grid>
+                </Grid>
+                <Grid>
                     <Grid item>
                         <img
                             className={classes.icon}
@@ -381,10 +507,9 @@ export default function EngineeringPage(props) {
                                     No-SQL Database
                                 </div>
                                 <div className={classes.techDesc}>
-                                    DynamoDB is a fully managed, key-value, and
-                                    document database that delivers
-                                    single-digit-millisecond performance at any
-                                    scale.
+                                    Certralized user management, supporting user
+                                    federation authentication, across platforms
+                                    and integrating backend services.
                                 </div>
                             </div>
                         </Grid>
@@ -424,7 +549,7 @@ export default function EngineeringPage(props) {
                         </Typography>
                         <Button
                             component={Link}
-                            href='/websites'
+                            to='/websites'
                             variant='outlined'
                             className={classes.learnButton}
                             onClick={() => {
