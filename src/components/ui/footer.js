@@ -123,10 +123,10 @@ export default function Footer(props) {
                   props.setValue(1);
                   props.setSelectedIndex(2);
                 }}
-                to="/integrations"
+                to="/customsoftware"
                 className={classes.link}
               >
-                Integrations
+                Custom Software
               </Grid>
               <Grid
                 item
@@ -153,15 +153,6 @@ export default function Footer(props) {
               >
                 Recovery
               </Grid>
-              {/* <Grid
-                item
-                component={Link}
-                onClick={() => props.setValue(2)}
-                to="/cr"
-                className={classes.link}
-              >
-                Celebrate Recovery
-              </Grid> */}
             </Grid>
           </Grid>
           <Grid item className={classes.gridItem}>
