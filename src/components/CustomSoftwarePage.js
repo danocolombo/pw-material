@@ -187,6 +187,16 @@ const useStyles = makeStyles((theme) => ({
       // width: "80%",
     },
   },
+  sectionTitleThree: {
+    marginTop: "1em",
+    marginRight: 0,
+    marginBottom: 0,
+    marginLeft: "5em",
+    fontFamily: "Raleway",
+    fontSize: "1.1rem",
+    color: theme.palette.common.blue,
+    fontWeight: 700,
+  },
 }));
 
 export default function EngineeringPage(props) {
@@ -271,6 +281,9 @@ export default function EngineeringPage(props) {
           </Typography>
         </div>
       </div>
+      {/* //   =================================== */}
+      {/* //   Phase I                             */}
+      {/* //   =================================== */}
       <Typography className={classes.sectionTitleTwo}>Phase I</Typography>
       <div className={classes.flexContainerTwo}>
         <div className={classes.paragraphTwo}>
@@ -305,12 +318,73 @@ export default function EngineeringPage(props) {
       <div className={classes.flexContainerTwo}>
         <div className={classes.paragraphTwo}>
           <Typography>
-          This resulted in the client getting a much cleaner,
-                            more responsive interface and moved the database
-                            from a hosted MySQL database to MongoDB Atlas. The
-                            customer was satisfied with the results of phase I.
+            This resulted in the client getting a much cleaner, more responsive
+            interface and moved the database from a hosted MySQL database to
+            MongoDB Atlas. The customer was satisfied with the results of phase
+            I.
           </Typography>
         </div>
+      </div>
+      <Typography className={classes.sectionTitleThree}>
+        Technical Challenges & Highlights
+      </Typography>
+      <div className={classes.bulletContainerTwo}>
+        <ul>
+          <li>
+            Migrate MySQL (Relational Database) to MongoDB (Document Database)
+          </li>
+          <li>
+            Write new database layer in express to replace PHP/MySQL queries
+          </li>
+        </ul>
+      </div>
+      {/* //   =================================== */}
+      {/* //   Phase II                            */}
+      {/* //   =================================== */}
+      <Typography className={classes.sectionTitleTwo}>Phase II</Typography>
+      <div className={classes.flexContainerTwo}>
+        <div className={classes.paragraphTwo}>
+          <Typography className={classes.customerNeed}>
+            Move to standard REST interface, decoupling the data layer from the
+            UI and move to AWS no-SQL
+          </Typography>
+          <Typography>
+            One of the biggest challenges was to migrate from the MongoDB
+            document database to the AWS DynamoDB no-sql database. Once the data
+            was available, the database calls were abstracted from Express and
+            moved to AWS API Gateway and AWS Lambda.
+            <br />
+            <br />
+            This phase also gave us the opportunity to migrate all of the web
+            hosting to AWS S3 object storage.
+            <br />
+            <br />
+            This phase made the system data now availalbe within the solution,
+            but it also now exposed the opportunity for API interactions with te
+            data and not have it embedded in the solution stack.
+          </Typography>
+        </div>
+      </div>
+      <Typography className={classes.sectionTitleThree}>
+        Technical Challenges & Highlights
+      </Typography>
+      <div className={classes.bulletContainerTwo}>
+      <ul>
+                                <li>
+                                    Migrate MongoDB (Document Database) to AWS
+                                    DynamoDB (NOSQL Database)
+                                    <br />
+                                    This data conversion with done in Python.
+                                </li>
+                                <li>
+                                    All API entry points provided in AWS API
+                                    Gateway
+                                </li>
+                                <li>
+                                    Database interfaces and business logic moved
+                                    to AWS Lambda functions
+                                </li>
+                            </ul>
       </div>
     </div>
   );
