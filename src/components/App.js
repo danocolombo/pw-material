@@ -8,7 +8,6 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import EngineeringPage from './EngineeringPage';
 import CustomSoftwarePage from './CustomSoftwarePage';
-import CustomSoftwarePageCopy from './CustomSoftwarePageCopy';
 import EnterprisePage from './EnterprisePage';
 import RecoveryPage from './RecoveryPage';
 import HobbiesPage from './HobbiesPage';
@@ -57,16 +56,6 @@ function App() {
                         path='/customsoftware'
                         render={(props) => (
                             <CustomSoftwarePage
-                                setValue={setValue}
-                                setSelectedIndex={setSelectedIndex}
-                            />
-                        )}
-                    />
-                    <Route
-                        exact
-                        path='/cs'
-                        render={(props) => (
-                            <CustomSoftwarePageCopy
                                 setValue={setValue}
                                 setSelectedIndex={setSelectedIndex}
                             />

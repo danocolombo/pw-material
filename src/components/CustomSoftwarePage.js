@@ -1,30 +1,10 @@
 import React, { useEffect } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-// import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
-
-import ButtonArrow from "./ui/ButtonArrow";
-import customSoftwareIcon from "../assets/customSoftwareIcon.svg";
-import AWSLogo from "../assets/AWS_Logo.svg";
-import AWS_SAA_Logo from "../assets/AWS-SolutionArchitect.png";
-import AWS_DA_Logo from "../assets/AWS-DeveloperAssociate.png";
-import AWS_CP_Logo from "../assets/AWS-CloudPractitioner.png";
-import AWS_Serverless from "../assets/AWS_Serverless.svg";
-import AWS_Amplify from "../assets/AWS_Amplify.svg";
-import AWS_APIGateway from "../assets/AWS_APIGateway.svg";
-import AWS_Lambda from "../assets/AWS_Lambda.svg";
-import AWS_RDS from "../assets/AWS_RDS.svg";
-import AWS_DynamoDB from "../assets/AWS_DynamoDB.svg";
-import P8RallySolution from "../assets/P8RallySolution.png";
-import MeeterSolution from "../assets/MeeterSolution.png";
-
-import mobileAppsIcon from "../assets/mobileIcon.svg";
-import websitesIcon from "../assets/websiteIcon.svg";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
@@ -62,8 +42,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paragraphOne: {
-    // border: '1px solid blue',
-    // backgroundColor: "#f1f1f1",
     marginTop: 0,
     marginBottom: 0,
     marginLeft: "1.2em",
@@ -75,11 +53,9 @@ const useStyles = makeStyles((theme) => ({
       marginTop: 0,
       marginBottom: 0,
       width: "80%",
-      // flex: "100%",
     },
   },
   bulletContainerOne: {
-    // border: "1px solid blue",
     marginTop: 0,
     marginRight: 0,
     marginBottom: 0,
@@ -88,29 +64,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "left",
     fontSize: "20px",
-    // justifyContent: "left",
-    // backgroundColor: "DodgerBlue",
     [theme.breakpoints.down("md")]: {
-      marginLeft: "50px",
-      // width: "80%",
+      marginLeft: "20px",
     },
-  },
-  bulletListOne: {
-    // border: '1px solid blue',
-    // backgroundColor: "#f1f1f1",
-    // marginTop: 0,
-    // marginBottom: 0,
-    // textAlign: "left",
-    // alignItems: "left"
-    // lineHeight: "75px",
-    // fontSize: "30px",
-    // flex: "35%",
-    // [theme.breakpoints.down("md")]: {
-    //   marginTop: 0,
-    //   marginBottom: 0,
-    //   width: "90%",
-    //   flex: "100%",
-    // },
   },
   sectionTitleTwo: {
     marginTop: 0,
@@ -121,6 +77,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.5rem",
     color: theme.palette.common.blue,
     fontWeight: 700,
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "1.5em",
+    },
   },
   flexContainerTwo: {
     marginTop: 0,
@@ -129,14 +88,11 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "5em",
     display: "flex",
     flexDirection: "row",
-    // alignItems: "center",
-    // [theme.breakpoints.down("md")]: {
-    //   flexDirection: "column",
-    // },
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "3em",
+    },
   },
   paragraphTwo: {
-    // border: '1px solid blue',
-    // backgroundColor: "#f1f1f1",
     marginTop: 0,
     marginBottom: 0,
     marginLeft: 0,
@@ -144,34 +100,16 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     lineHeight: "75px",
     fontSize: "25px",
-    [theme.breakpoints.down("md")]: {
-      // marginTop: 0,
-      // marginBottom: 0,
-      // width: "80%",
-      // flex: "100%",
-    },
   },
   customerNeed: {
-    // // border: '1px solid blue',
-    // // backgroundColor: "#f1f1f1",
-    // marginTop: 0,
     marginBottom: "1em",
-    // marginLeft: 0,
-    // marginRight: "1em",
-    // textAlign: "left",
-    // lineHeight: "75px",
-    // fontSize: "25px",
     fontWeight: "bold",
     paddingLeft: "25px",
     [theme.breakpoints.down("md")]: {
-      // marginTop: 0,
-      // marginBottom: 0,
-      // width: "80%",
-      // flex: "100%",
+      paddingLeft: "10px",
     },
   },
   bulletContainerTwo: {
-    // border: "1px solid blue",
     marginTop: 0,
     marginRight: 0,
     marginBottom: 0,
@@ -180,10 +118,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "left",
     fontSize: "20px",
-    // justifyContent: "left",
-    // backgroundColor: "DodgerBlue",
     [theme.breakpoints.down("md")]: {
-      marginLeft: "50px",
+      marginLeft: "25px",
+      paddingRight: "10px",
       // width: "80%",
     },
   },
@@ -196,6 +133,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.1rem",
     color: theme.palette.common.blue,
     fontWeight: 700,
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "3em",
+    },
   },
 }));
 
@@ -203,6 +143,7 @@ export default function EngineeringPage(props) {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   //   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   useEffect(() => {
@@ -226,7 +167,7 @@ export default function EngineeringPage(props) {
       {/* //   Paragraph 1                         */}
       {/* //   =================================== */}
       <Typography className={classes.sectionTitleOne}>
-        Custom Software Development
+        Custom Software {matchesMD ? null : "Development"}
       </Typography>
       <div className={classes.flexContainer}>
         <div className={classes.paragraphOne}>
@@ -369,22 +310,17 @@ export default function EngineeringPage(props) {
         Technical Challenges & Highlights
       </Typography>
       <div className={classes.bulletContainerTwo}>
-      <ul>
-                                <li>
-                                    Migrate MongoDB (Document Database) to AWS
-                                    DynamoDB (NOSQL Database)
-                                    <br />
-                                    This data conversion with done in Python.
-                                </li>
-                                <li>
-                                    All API entry points provided in AWS API
-                                    Gateway
-                                </li>
-                                <li>
-                                    Database interfaces and business logic moved
-                                    to AWS Lambda functions
-                                </li>
-                            </ul>
+        <ul>
+          <li>
+            Migrate MongoDB (Document Database) to AWS DynamoDB (NOSQL Database)
+            <br />
+            This data conversion with done in Python.
+          </li>
+          <li>All API entry points provided in AWS API Gateway</li>
+          <li>
+            Database interfaces and business logic moved to AWS Lambda functions
+          </li>
+        </ul>
       </div>
     </div>
   );
