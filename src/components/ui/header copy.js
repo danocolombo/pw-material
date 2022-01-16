@@ -44,19 +44,22 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       marginBottom: "1.25em"
-    }
+    },
+    [theme.breakpoints.down("lg")]: {
+      marginBottom: "1em"
+    },
   },
   logo: {
     height: "8em",
     [theme.breakpoints.down("md")]: {
-      height: "5em"
+      height: "7em"
     },
     [theme.breakpoints.down("xs")]: {
       height: "5.5em"
     },
-    [theme.breakpoints.down("sm")]: {
-      height: "6em",
-    }
+    [theme.breakpoints.down("lg")]: {
+      height: "4em"
+    },
   },
   logoContainer: {
     padding: 0,
@@ -70,7 +73,12 @@ const useStyles = makeStyles(theme => ({
   tab: {
     ...theme.typography.tab,
     minWidth: 10,
-    marginLeft: "25px"
+    marginLeft: "25px",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: 0,
+      paddingRight: ".5em",
+      paddingLeft: ".5em",
+    },
   },
   menu: {
     backgroundColor: theme.palette.common.blue,
@@ -86,13 +94,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawerIcon: {
     height: "50px",
-    width: "50px",
-    [theme.breakpoints.down("md")]: {
-      height: "40px",
-      width: "40px",
-      marginRight: "1rem",
-      marginLeft: "1rem",
-    },
+    width: "50px"
   },
   drawerIconContainer: {
     marginLeft: "auto",
