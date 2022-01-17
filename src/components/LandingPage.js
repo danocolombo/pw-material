@@ -9,8 +9,10 @@ import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import mobileBackground from "../assets/aci-terzza-sunset-mobile.png";
-import background from "../assets/aci-terzza-sunset.jpg";
+// import mobileBackground from "../assets/aci-terzza-sunset-mobile.png";
+// import background from "../assets/aci-terzza-sunset.jpg";
+import background from "../assets/creativeInspiration.jpg";
+import mobileBackground from "../assets/creativeInspiration.jpg";
 
 import KitchenDisplay from "./ui/Kitchen";
 import WoodshopDisplay from "./ui/Woodshop";
@@ -35,20 +37,38 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundAttachment: "fixed",
     backgroundRepeat: "no-repeat",
+    borderRadius: "15px",
     height: "40em",
     width: "100%",
     [theme.breakpoints.down("md")]: {
       backgroundImage: `url(${mobileBackground})`,
-      backgroundAttachment: "inherit", 
+      backgroundAttachment: "inherit",
       width: "100%",
       height: "25em",
-    }
+    },
+  },
+  introWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    height: "100%",
+    textAlign: "center",
+    paddingLeft: "2em",
+    paddingRight: "2em",
+    justifyContent: "center",
   },
   introductionParagraph: {
     color: theme.palette.common.white,
-    marginTop: "10em",
+    // marginTop: "10em",
+    width: "100%",
     [theme.breakpoints.down("md")]: {
-      marginTop: "6rem",
+      // marginTop: 0,
+      textAlign: "center",
+      alignContent: "center",
+      alignItems: "center",
+      justify: "center",
+      justifyContent: "center",
+      align: "center",
+      justifyItems: "center",
       width: "100%",
     },
   },
@@ -107,6 +127,20 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonContainer: {
     marginTop: "1em",
+  },
+  engineeringButton: {
+    ...theme.typography.learnButton,
+    fontSize: "0.9rem",
+    height: 45,
+    alignContent: "center",
+    backgroundColor: "white",
+    padding: 5,
+    "&:hover": {
+      backgroundColor: theme.palette.common.orange,
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "2em",
+    },
   },
   learnButtonHero: {
     ...theme.typography.learnButton,
@@ -167,7 +201,7 @@ const useStyles = makeStyles((theme) => ({
       padding: 25,
     },
   },
-  
+
   revolutionBackground: {
     backgroundImage: `url(${recoveryBackground})`,
     backgroundPosition: "center",
@@ -176,7 +210,6 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
   },
-  
 }));
 
 export default function LandingPage(props) {
@@ -200,29 +233,33 @@ export default function LandingPage(props) {
 
   return (
     <Grid container direction="column" className={classes.mainContainer}>
-      <Grid item className={classes.background}>
-        {" "}
-        {/*-----Hero Block-----*/}
-        <Grid
-          container
-          justifyContent="space-around"
-          alignItems="center"
-          direction="row"
-        >
-          <Grid sm item className={classes.heroTextContainer}>
-            <Typography variant="h4" align="center" className={classes.introductionParagraph}>
-              “Strive for perfection in everything you do. Take the best that
-              exists and make it better. When it does not exist, design it.”
-            </Typography>
-            <Typography variant="subtitle1" className={classes.quoter}>
-              Sir Henry Royce
-            </Typography>
-          </Grid>
-          <Grid sm item className={classes.animation}>
-            {/* <Lottie options={defaultOptions} height={"50%"} width={"50%"} /> */}
-          </Grid>
-        </Grid>
-      </Grid>
+      <div className={classes.background}>
+        <div className={classes.introWrapper}>
+          <Typography variant="h4" className={classes.introductionParagraph}>
+            to contribute to something that makes a real difference in other
+            people's lives
+          </Typography>
+          <div align="center">
+            <div className={classes.buttonContainer}>
+              <Button
+                component={Link}
+                to="/engineering"
+                className={classes.engineeringButton}
+                variant="outlined"
+                align="center"
+                onClick={() => props.setValue(2)}
+              >
+                <span style={{ marginRight: 10 }}>Difference</span>
+                <ButtonArrow
+                  width={15}
+                  height={15}
+                  fill={theme.palette.common.blue}
+                />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <Grid item>
         {/*-----The Recovery Block-----*/}
@@ -246,9 +283,14 @@ export default function LandingPage(props) {
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <Typography variant="subtitle1" className={classes.recoveryQutote}>
-                    I understood myself only after I destroyed myself; and only<br/>
-                    in the process of healing, have I come to know who I really am.
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.recoveryQutote}
+                  >
+                    I understood myself only after I destroyed myself; and only
+                    <br />
+                    in the process of healing, have I come to know who I really
+                    am.
                   </Typography>
                   <Button
                     component={Link}

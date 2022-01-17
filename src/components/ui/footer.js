@@ -6,6 +6,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import footerAdornment from "../../assets/FooterGraphic.svg";
 import linkedIn from "../../assets/LinkedInLogo.png";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -13,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     zIndex: 1302,
     position: "relative",
+    [theme.breakpoints.down("md")]: {
+      height: "75px",
+    },
   },
   adornment: {
     width: "25em",
@@ -54,7 +58,14 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       height: "70%",
     },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "1em",
+    },
   },
+  email: {
+    fontSize: "1em",
+    color: "white",
+  }
 }));
 
 export default function Footer(props) {
@@ -112,10 +123,10 @@ export default function Footer(props) {
                   props.setValue(1);
                   props.setSelectedIndex(2);
                 }}
-                to="/integrations"
+                to="/customsoftware"
                 className={classes.link}
               >
-                Integrations
+                Custom Software
               </Grid>
               <Grid
                 item
@@ -142,15 +153,6 @@ export default function Footer(props) {
               >
                 Recovery
               </Grid>
-              {/* <Grid
-                item
-                component={Link}
-                onClick={() => props.setValue(2)}
-                to="/cr"
-                className={classes.link}
-              >
-                Celebrate Recovery
-              </Grid> */}
             </Grid>
           </Grid>
           <Grid item className={classes.gridItem}>
@@ -199,14 +201,14 @@ export default function Footer(props) {
           </Grid>
         </Grid>
       )}
-
+      {matchesMD ? null :
       <img
         alt="black decorative slash"
         src={footerAdornment}
         className={classes.adornment}
       />
-
-      <Grid container justify="flex-start" className={classes.socialContainer}>
+      }
+      <Grid container direction="column" justify="flex-start" className={classes.socialContainer}>
         <Grid
           item
           component={"a"}
@@ -220,7 +222,10 @@ export default function Footer(props) {
             className={classes.linkedInIcon}
           />
         </Grid>
+        {matchesMD ? <Grid item><Typography className={classes.email}>danocolombo@gmail.com</Typography></Grid> : null}
       </Grid>
+        
+        
     </footer>
   );
 }
