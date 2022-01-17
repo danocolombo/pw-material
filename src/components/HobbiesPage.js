@@ -50,6 +50,8 @@ import { autocompleteClasses } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
     mainContainer: {
+        display: "flex",
+        flexDirection: "column",
         marginTop: '1em',
         alignItems: 'left',
         width: '100%',
@@ -244,26 +246,7 @@ export default function LandingPage(props) {
     //   },
     // };
     return (
-        <Grid container direction='column' className={classes.mainContainer}>
-            <Grid item>
-                <Typography variant='subtitle1'>
-                    {matchesXS
-                        ? 'XS    ' + window.innerWidth
-                        : matchesSM
-                        ? 'SM    ' + window.innerWidth
-                        : matchesMD
-                        ? 'MD    ' + window.innerWidth
-                        : matchesLG
-                        ? 'LG    ' + window.innerWidth
-                        : matchesXL
-                        ? 'XL    ' + window.innerWidth
-                        : matchesXXL
-                        ? 'XXL ' + window.innerWidth
-                        : 'NADA'}
-                    <br />
-                    {/* width: {window.innerWidth} */}
-                </Typography>
-            </Grid>
+        <div className={classes.mainContainer}>
             <Grid item className={classes.breadcrumbsContainer}>
                 <Breadcrumbs aria-label='breadcrumb'>
                     <Link underline='hover' color='inherit' href='/'>
@@ -431,7 +414,7 @@ export default function LandingPage(props) {
                     </Card>
                 ))}
             </Grid>
-        </Grid>
+        </div>
     );
 }
 //woodshop projects

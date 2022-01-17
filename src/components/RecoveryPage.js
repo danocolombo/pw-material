@@ -18,11 +18,14 @@ import recoveryBackground from "../assets/repeatingBackground.svg";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
-    marginTop: "1em",
+    display: "flex",
+    flexDirection: "column",
+    marginTop: 0,
     alignItems: "left",
   },
   breadcrumbsContainer: {
     marginLeft: "2em",
+    marginTop: 0,
     [theme.breakpoints.down("sm")]: {
       marginLeft: 0,
     },
@@ -31,10 +34,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   recoveryBlock: {
-    // height: "30em",
+    display: "flex",
+    flexDirection: "column",
     marginTop: "1em",
+    marginBottom: "2em",
     width: "100%",
     alignItems: "center",
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "1em",
+    },
   },
   recoveryCard: {
     // position: "absolute",
@@ -75,11 +83,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   introParagraph: {
-    // alignItems: "center",
-    // paddingTop: "1rem",
-    // paddingRight: "15rem",
-    // paddingBottom: "1rem",
-    // paddingLeft: "15rem",
+    marginLeft: "5%",
+    marginRight: "5%",
     [theme.breakpoints.down("sm")]: {
       marginTop: "1em",
       paddingRight: "1em",
@@ -98,11 +103,18 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "5px",
     marginBottom: "5px",
     // fontWeight: 600,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       marginTop: "1em",
       paddingRight: 0,
       paddingLeft: 0,
     },
+  },
+  topics: {
+    display: "flex",
+    flexDirection: "column",
+    marginTop: "1em",
+    marginBottom: "1em",
+    alignItems: "center",
   },
   recoveryTerm: {
     fontWeight: 600,
@@ -110,7 +122,16 @@ const useStyles = makeStyles((theme) => ({
   recoveryDef: {
     fontWeight: "normal",
   },
-
+  buttonWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    marginTop: "2em",
+    marginBottom: "2em",
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "white",
+  },
   heroTextContainer: {
     minWidth: "21.5em",
     marginLeft: "1em",
@@ -121,7 +142,8 @@ const useStyles = makeStyles((theme) => ({
 
   findGroupButtom: {
     ...theme.typography.goButton,
-    backgroundColor: theme.palette.common.red,
+    backgroundColor: theme.palette.common.blue,
+    color: "white",
     fontSize: "0.7rem",
     height: 35,
     width: 200,
@@ -155,25 +177,6 @@ export default function LandingPage(props) {
 
   return (
     <Grid container direction="column" className={classes.mainContainer}>
-      <Grid item>
-        <Typography variant="subtitle1">
-          {matchesXS
-            ? "XS    " + window.innerWidth
-            : matchesSM
-            ? "SM    " + window.innerWidth
-            : matchesMD
-            ? "MD    " + window.innerWidth
-            : matchesLG
-            ? "LG    " + window.innerWidth
-            : matchesXL
-            ? "XL    " + window.innerWidth
-            : matchesXXL
-            ? "XXL " + window.innerWidth
-            : "NADA"}
-          <br />
-          {/* width: {window.innerWidth} */}
-        </Typography>
-      </Grid>
       <Grid item className={classes.breadcrumbsContainer}>
         <Breadcrumbs aria-label="breadcrumb">
           <Link underline="hover" color="inherit" href="/">
@@ -182,7 +185,7 @@ export default function LandingPage(props) {
           <Typography color="text.primary">Recovery</Typography>
         </Breadcrumbs>
       </Grid>
-      <Grid container direction="column" className={classes.recoveryBlock}>
+      <div className={classes.recoveryBlock}>
         {/*-----The Recovery Block-----*/}
 
         <Card className={classes.recoveryCard}>
@@ -215,8 +218,8 @@ export default function LandingPage(props) {
             </Grid>
           </CardContent>
         </Card>
-      </Grid>
-      <Grid item className={classes.introParagraph}>
+      </div>
+      <div className={classes.introParagraph}>
           <Typography variant="bodyPlain" >
             Life has been a challenge and my childhood was difficult, but I
             never knew. We only know what we know. Our only reference we have
@@ -232,21 +235,26 @@ export default function LandingPage(props) {
             came to understand that my tendency to self-medicate was not the
             problem, but just a symptom of something bigger going on.
           </Typography>
-        
-          <Typography
+      </div>
+      <div className={classes.topics}>
+          {/* <Typography
             variant="subtitle1"
             className={classes.SobrietyRecoveryDefs}
-          >
+          > */}
             <span className={classes.recoveryTerm}>Sobriety: </span>
+            {/* {matchesMD ? <br/> : null } */}
             <span className={classes.recoveryDef}>
               the state of not being intoxicated.
             </span>
             <br />
             <span className={classes.recoveryTerm}>Recovery: </span>
+            {/* {matchesMD ? <br/> : null } */}
             <span className={classes.recoveryDef}>
               return to a normal state of health, mind or strength.
             </span>
-          </Typography>
+          {/* </Typography> */}
+        </div>
+        <div className={classes.introParagraph}>
           <Typography variant="bodyPlain" className={classes.introParagraph}>
             Through years of striving and trying, I finally found a program
             called Celebrate Recovery (CR), that helped me get past my
@@ -259,16 +267,11 @@ export default function LandingPage(props) {
             Contact me if you want some more information, or click the "Find a
             Group" link below.
           </Typography>
-        </Grid>
+        </div>
       
 
-      <Grid item>
-        <Grid
-          container
-          justifyContent="space-around"
-          alignItems="center"
-          direction="row"
-        >
+      <div>
+        <div className={classes.buttonWrapper}>
           <Button
             component={Link}
             to="https://locator.crgroups.info/"
@@ -276,15 +279,15 @@ export default function LandingPage(props) {
             variant="outlined"
             // onClick={() => props.setValue(2)}
           >
-            <span style={{ marginRight: 10 }}>Find A Group</span>
+            <div className={classes.buttonText}>Find A Group</div>
             <ButtonArrow
               width={15}
               height={15}
               fill={theme.palette.common.white}
             />
           </Button>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </Grid>
   );
 }
