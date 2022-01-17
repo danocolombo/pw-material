@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "5px",
     marginBottom: "5px",
     // fontWeight: 600,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       marginTop: "1em",
       paddingRight: 0,
       paddingLeft: 0,
@@ -129,6 +129,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "2em",
     alignItems: "center",
   },
+  buttonText: {
+    color: "white",
+  },
   heroTextContainer: {
     minWidth: "21.5em",
     marginLeft: "1em",
@@ -139,7 +142,8 @@ const useStyles = makeStyles((theme) => ({
 
   findGroupButtom: {
     ...theme.typography.goButton,
-    backgroundColor: theme.palette.common.red,
+    backgroundColor: theme.palette.common.blue,
+    color: "white",
     fontSize: "0.7rem",
     height: 35,
     width: 200,
@@ -233,20 +237,22 @@ export default function LandingPage(props) {
           </Typography>
       </div>
       <div className={classes.topics}>
-          <Typography
+          {/* <Typography
             variant="subtitle1"
             className={classes.SobrietyRecoveryDefs}
-          >
+          > */}
             <span className={classes.recoveryTerm}>Sobriety: </span>
+            {/* {matchesMD ? <br/> : null } */}
             <span className={classes.recoveryDef}>
               the state of not being intoxicated.
             </span>
             <br />
             <span className={classes.recoveryTerm}>Recovery: </span>
+            {/* {matchesMD ? <br/> : null } */}
             <span className={classes.recoveryDef}>
               return to a normal state of health, mind or strength.
             </span>
-          </Typography>
+          {/* </Typography> */}
         </div>
         <div className={classes.introParagraph}>
           <Typography variant="bodyPlain" className={classes.introParagraph}>
@@ -273,7 +279,7 @@ export default function LandingPage(props) {
             variant="outlined"
             // onClick={() => props.setValue(2)}
           >
-            <span style={{ marginRight: 10 }}>Find A Group</span>
+            <div className={classes.buttonText}>Find A Group</div>
             <ButtonArrow
               width={15}
               height={15}
