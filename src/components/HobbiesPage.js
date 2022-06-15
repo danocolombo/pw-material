@@ -39,6 +39,7 @@ import Desk from '../assets/WS-Desk.svg';
 //kitchen images
 import SalsaPic from '../assets/kitchen/salsa.svg';
 import GuacPic from '../assets/kitchen/guac-square.png';
+import BBQChickenMarinade from '../assets/kitchen/marinaded-chicken.png';
 import { autocompleteClasses } from '@mui/material';
 
 //========================================
@@ -50,8 +51,8 @@ import { autocompleteClasses } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
     mainContainer: {
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
         marginTop: '1em',
         alignItems: 'left',
         width: '100%',
@@ -477,5 +478,25 @@ const recipes = [
     salt<br/>
     pepper<br/>
     1/8 t cayanne pepper powder</Typography>`,
+    },
+    {
+        title: 'BBQ Chicken Marinade',
+        picture: BBQChickenMarinade,
+        origin: 'https://www.momontimeout.com/the-best-chicken-marinade-recipe/',
+        overview: `<Typography className={classes.sectionParagraph}>A delicious new marinade that we tried and immediately everyone said, "It's a keeper", Enjoy!!</Typography>`,
+        description: `<Typography className={classes.sectionParagraph}>
+        Mix all ingredients in dish or ziplock and marinade chicken, then grill.
+    <B>INGREDIENTS</B><br/>
+    1/2 C olive oil<br/>
+    1/2 C balsamic vinegar<br/>
+    3/4 C brown sugar<br/>
+    1/4 C low sodium soy sauce<br/>
+    1/4 C worchestershire sauce<br/>
+    2 tbls lemon juice<br/>
+    2 tbls brown/spicy mustard<br/>
+    2 tsp dried rosemary<br/>
+    2 tsp garlic powder<br/>
+    1.5 tsp salt<br/>
+    1 tsp pepper</Typography>`,
     },
 ];
