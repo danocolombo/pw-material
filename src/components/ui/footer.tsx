@@ -1,4 +1,4 @@
-import React from 'react';
+import type { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import { useTheme } from '@mui/material/styles';
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme: any) => ({
     },
 }));
 
-export default function Footer(props: NavigationProps): JSX.Element {
+export default function Footer(props: NavigationProps): ReactElement {
     const classes = useStyles();
     const theme = useTheme();
 

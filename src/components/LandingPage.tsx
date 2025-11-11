@@ -273,7 +273,7 @@ export default function LandingPage(props) {
                     container
                     // style={{ height: "40em", marginTop: "0em" }}
                     // alignItems="center"
-                    justify='center'
+                    justifyContent='center'
                     className={classes.recoveryContainer}
                 >
                     <Card className={classes.recoveryCard}>

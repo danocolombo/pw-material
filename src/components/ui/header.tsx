@@ -138,7 +138,7 @@ interface Route {
     selectedIndex?: number;
 }
 
-export default function Header(props: NavigationProps): JSX.Element {
+export default function Header(props: NavigationProps): React.ReactElement {
     const classes = useStyles();
     const theme = useTheme();
     const iOS =

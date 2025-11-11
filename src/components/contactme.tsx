@@ -194,7 +194,7 @@ export default function Contact(props) {
                                 ? '5em'
                                 : 0,
                         }}
-                        justify='center'
+                        justifyContent='center'
                         alignItems='center'
                         lg={4}
                         xl={3}

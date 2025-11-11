@@ -1,16 +1,16 @@
-import React from 'react';
+import type { ReactElement } from 'react';
 
 interface ButtonArrowProps {
-    class?: string;
+    className?: string;
     width?: string | number;
     height?: string | number;
     fill?: string;
 }
 
-export default function ButtonArrow(props: ButtonArrowProps): JSX.Element {
+export default function ButtonArrow(props: ButtonArrowProps): ReactElement {
     return (
         <svg
-            className={props.class}
+            className={props.className}
             xmlns='http://www.w3.org/2000/svg'
             width={props.width}
             height={props.height}

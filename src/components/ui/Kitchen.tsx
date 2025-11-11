@@ -83,7 +83,7 @@ export default function KitchenDisplay(props) {
         <Grid
             container
             alignItems='center'
-            justify={matchesSM ? 'center' : 'space-between'}
+            justifyContent={matchesSM ? 'center' : 'space-between'}
             className={classes.background}
             direction={matchesSM ? 'column' : 'row'}
         >
@@ -130,7 +130,7 @@ export default function KitchenDisplay(props) {
                         </Button>
                         <Grid
                             container
-                            justify={matchesSM ? 'center' : undefined}
+                            justifyContent={matchesSM ? 'center' : undefined}
                             item
                         ></Grid>
                     </Grid>

@@ -195,7 +195,7 @@ export default function LandingPage(props) {
                             container
                             direction='column'
                             alignContent='center'
-                            justify='center'
+                            justifyContent='center'
                             style={{ textAlign: 'center' }}
                         >
                             <Grid item>
