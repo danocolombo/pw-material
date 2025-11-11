@@ -9,7 +9,7 @@ const fortsonBlue = '#0B72B9';
 const fortsonBlack = '#000000';
 const fortsonGrey = '#868686';
 
-// Define custom breakpoint types
+// Define custom breakpoint types and extend palette with navigation colors
 declare module '@mui/material/styles' {
     interface BreakpointOverrides {
         xs: true;
@@ -18,6 +18,18 @@ declare module '@mui/material/styles' {
         lg: true;
         xl: true;
         xxl: true;
+    }
+    interface Palette {
+        navigation?: {
+            activeText: string;
+            nonActiveText: string;
+        };
+    }
+    interface PaletteOptions {
+        navigation?: {
+            activeText?: string;
+            nonActiveText?: string;
+        };
     }
 }
 
@@ -36,6 +48,10 @@ const theme = createTheme({
         secondary: {
             main: arcOrange,
         },
+        navigation: {
+            activeText: '#ffffff',
+            nonActiveText: '#000000',
+        } as any,
     },
     typography: {
         tab: {
@@ -157,5 +173,22 @@ const theme = createTheme({
         },
     },
 });
+
+/**
+ * Helper to update navigation colors at runtime.
+ * Call `setNavigationColors({ activeText, nonActiveText })` before rendering
+ * to change the navigation text colors application-wide.
+ */
+export function setNavigationColors(colors: {
+    activeText?: string;
+    nonActiveText?: string;
+}) {
+    if (!theme.palette) theme.palette = {} as any;
+    theme.palette.navigation = {
+        ...(theme.palette.navigation as any),
+        ...(colors as any),
+    } as any;
+    return theme;
+}
 
 export default theme;

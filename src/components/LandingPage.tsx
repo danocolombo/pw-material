@@ -1,5 +1,3 @@
-import React from 'react';
-import Lottie from 'react-lottie';
 import useLandingStyles from './ui/landingStyles';
 import { useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
@@ -10,15 +8,12 @@ import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-// import mobileBackground from "../assets/aci-terzza-sunset-mobile.png";
-// import background from "../assets/aci-terzza-sunset.jpg";
 import background from '../assets/creativeInspiration.jpg';
 import mobileBackground from '../assets/creativeInspiration.jpg';
 
 import KitchenDisplay from './ui/Kitchen';
 import WoodshopDisplay from './ui/Woodshop';
 
-//import animationData from "../animations/landinganimation/data";
 import animationData from '../animations/developer/developer.json';
 import recoveryBackground from '../assets/repeatingBackground.svg';
 

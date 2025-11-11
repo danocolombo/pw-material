@@ -17,6 +17,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import ListItemButton from '@mui/material/ListItemButton';
 import { NavigationProps } from '../../types';
 
 import logo from '../../assets/dcLogo.png';
@@ -33,7 +34,7 @@ function ElevationScroll(props: ElevationScrollProps): React.ReactElement {
         threshold: 0,
     });
 
-    return React.cloneElement(children, {
+    return React.cloneElement(children as any, {
         elevation: trigger ? 4 : 0,
     });
 }
@@ -74,6 +75,21 @@ const useStyles = makeStyles((theme: any) => ({
         ...theme.typography.tab,
         minWidth: 10,
         marginLeft: '25px',
+        color: theme.palette.navigation?.nonActiveText || 'black',
+        // The visible label sits inside .MuiTab-wrapper — make sure it inherits the color
+        '& .MuiTab-wrapper': {
+            color: `${
+                theme.palette.navigation?.nonActiveText || 'black'
+            } !important`,
+        },
+        '&.Mui-selected': {
+            color: theme.palette.navigation?.activeText || 'white',
+        },
+        '&.Mui-selected .MuiTab-wrapper': {
+            color: `${
+                theme.palette.navigation?.activeText || 'white'
+            } !important`,
+        },
     },
     menu: {
         backgroundColor: theme.palette.common.blue,
@@ -82,8 +98,13 @@ const useStyles = makeStyles((theme: any) => ({
     },
     menuItem: {
         ...theme.typography.tab,
+        color: theme.palette.navigation?.nonActiveText || 'black',
         opacity: 0.7,
         '&:hover': {
+            opacity: 1,
+        },
+        '&.Mui-selected': {
+            color: theme.palette.navigation?.activeText || 'white',
             opacity: 1,
         },
     },
@@ -108,12 +129,13 @@ const useStyles = makeStyles((theme: any) => ({
     },
     drawerItem: {
         ...theme.typography.tab,
-        color: 'white',
+        color: theme.palette.navigation?.nonActiveText || 'black',
         opacity: 0.7,
     },
     drawerItemSelected: {
         '& .MuiListItemText-root': {
             opacity: 1,
+            color: theme.palette.navigation?.activeText || 'white',
         },
     },
     appbar: {
@@ -133,7 +155,7 @@ interface Route {
     link: string;
     activeIndex: number;
     ariaOwns?: string;
-    ariaPopup?: string;
+    ariaPopup?: boolean;
     mouseOver?: (event: React.MouseEvent<HTMLElement>) => void;
     selectedIndex?: number;
 }
@@ -210,7 +232,7 @@ export default function Header(props: NavigationProps): React.ReactElement {
             link: '/engineering',
             activeIndex: 1,
             ariaOwns: anchorEl ? 'simple-menu' : undefined,
-            ariaPopup: anchorEl ? 'true' : undefined,
+            ariaPopup: anchorEl ? true : undefined,
             mouseOver: (event: React.MouseEvent<HTMLElement>) =>
                 handleClick(event),
         },
@@ -255,7 +277,7 @@ export default function Header(props: NavigationProps): React.ReactElement {
                     <Tab
                         key={`${route.name}${index}`}
                         className={classes.tab}
-                        component={Link}
+                        component={Link as any}
                         to={route.link}
                         label={route.name}
                         aria-owns={route.ariaOwns}
@@ -315,22 +337,29 @@ export default function Header(props: NavigationProps): React.ReactElement {
                         <ListItem
                             divider
                             key={`${route.name}${route.activeIndex}`}
-                            button
-                            component={Link}
-                            to={route.link}
-                            selected={props.value === route.activeIndex}
-                            classes={{ selected: classes.drawerItemSelected }}
-                            onClick={() => {
-                                setOpenDrawer(false);
-                                props.setValue(route.activeIndex);
-                            }}
+                            disablePadding
                         >
-                            <ListItemText
-                                className={classes.drawerItem}
-                                disableTypography
+                            <ListItemButton
+                                component={Link as any}
+                                to={route.link}
+                                selected={props.value === route.activeIndex}
+                                classes={
+                                    {
+                                        selected: classes.drawerItemSelected,
+                                    } as any
+                                }
+                                onClick={() => {
+                                    setOpenDrawer(false);
+                                    props.setValue(route.activeIndex);
+                                }}
                             >
-                                {route.name}
-                            </ListItemText>
+                                <ListItemText
+                                    className={classes.drawerItem}
+                                    disableTypography
+                                >
+                                    {route.name}
+                                </ListItemText>
+                            </ListItemButton>
                         </ListItem>
                     ))}
                 </List>

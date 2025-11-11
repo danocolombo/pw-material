@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import Header from './ui/header';
 // import Footer from "./ui/footer";
 import Footer from './ui/footer';
-import theme from './ui/theme';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme, { setNavigationColors } from './ui/theme';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import EngineeringPage from './EngineeringPage';
@@ -20,8 +21,12 @@ import P8Rally from './P8ProjectPage';
 function App() {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [value, setValue] = useState(0);
+    // If you want to override navigation colors, change the values below.
+    // Example: setNavigationColors({ activeText: '#fff', nonActiveText: '#000' })
+    setNavigationColors({ activeText: '#ffffff', nonActiveText: '#000000' });
     return (
         <ThemeProvider theme={theme}>
+            <CssBaseline />
             <BrowserRouter>
                 <Header
                     value={value}
