@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
-import { makeStyles } from '@mui/styles';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import MenuIcon from '@mui/icons-material/Menu';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { NavigationProps } from '../../types';
 
 import logo from '../../assets/dcLogo.png';
@@ -26,377 +27,329 @@ interface ElevationScrollProps {
     children: React.ReactElement;
 }
 
-function ElevationScroll(props: ElevationScrollProps): React.ReactElement {
-    const { children } = props;
-
-    const trigger = useScrollTrigger({
-        disableHysteresis: true,
-        threshold: 0,
-    });
-
-    return React.cloneElement(children as any, {
-        elevation: trigger ? 4 : 0,
-    });
+function ElevationScroll({ children }: ElevationScrollProps) {
+    const trigger = useScrollTrigger({ disableHysteresis: true, threshold: 0 });
+    return React.cloneElement(children as any, { elevation: trigger ? 4 : 0 });
 }
 
-const useStyles = makeStyles((theme: any) => ({
-    toolbarMargin: {
-        ...theme.mixins.toolbar,
-        marginBottom: '3em',
-        [theme.breakpoints.down('md')]: {
-            marginBottom: '2em',
-        },
-        [theme.breakpoints.down('xs')]: {
-            marginBottom: '1.25em',
-        },
-    },
-    logo: {
-        height: '8em',
-        [theme.breakpoints.down('md')]: {
-            height: '5em',
-        },
-        [theme.breakpoints.down('xs')]: {
-            height: '5.5em',
-        },
-        [theme.breakpoints.down('sm')]: {
-            height: '6em',
-        },
-    },
-    logoContainer: {
-        padding: 0,
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
-    },
-    tabContainer: {
-        marginLeft: 'auto',
-    },
-    tab: {
-        ...theme.typography.tab,
-        minWidth: 10,
-        marginLeft: '25px',
-        color: theme.palette.navigation?.nonActiveText || 'black',
-        // The visible label sits inside .MuiTab-wrapper — make sure it inherits the color
-        '& .MuiTab-wrapper': {
-            color: `${
-                theme.palette.navigation?.nonActiveText || 'black'
-            } !important`,
-        },
-        '&.Mui-selected': {
-            color: theme.palette.navigation?.activeText || 'white',
-        },
-        '&.Mui-selected .MuiTab-wrapper': {
-            color: `${
-                theme.palette.navigation?.activeText || 'white'
-            } !important`,
-        },
-    },
-    menu: {
-        backgroundColor: theme.palette.common.blue,
-        color: 'white',
-        borderRadius: '0px',
-    },
-    menuItem: {
-        ...theme.typography.tab,
-        color: theme.palette.navigation?.nonActiveText || 'black',
-        opacity: 0.7,
-        '&:hover': {
-            opacity: 1,
-        },
-        '&.Mui-selected': {
-            color: theme.palette.navigation?.activeText || 'white',
-            opacity: 1,
-        },
-    },
-    drawerIcon: {
-        height: '50px',
-        width: '50px',
-        [theme.breakpoints.down('md')]: {
-            height: '40px',
-            width: '40px',
-            marginRight: '1rem',
-            marginLeft: '1rem',
-        },
-    },
-    drawerIconContainer: {
-        marginLeft: 'auto',
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
-    },
-    drawer: {
-        backgroundColor: theme.palette.common.blue,
-    },
-    drawerItem: {
-        ...theme.typography.tab,
-        color: theme.palette.navigation?.nonActiveText || 'black',
-        opacity: 0.7,
-    },
-    drawerItemSelected: {
-        '& .MuiListItemText-root': {
-            opacity: 1,
-            color: theme.palette.navigation?.activeText || 'white',
-        },
-    },
-    appbar: {
-        zIndex: theme.zIndex.modal + 1,
-    },
-}));
+type NavChild = { label: string; to: string; selectedIndex: number };
+type NavItem = {
+    label: string;
+    to: string;
+    valueIndex: number;
+    children?: NavChild[];
+};
 
-interface MenuOption {
-    name: string;
-    link: string;
-    activeIndex: number;
-    selectedIndex: number;
-}
-
-interface Route {
-    name: string;
-    link: string;
-    activeIndex: number;
-    ariaOwns?: string;
-    ariaPopup?: boolean;
-    mouseOver?: (event: React.MouseEvent<HTMLElement>) => void;
-    selectedIndex?: number;
-}
-
-export default function Header(props: NavigationProps): React.ReactElement {
-    const classes = useStyles();
+export default function Header({
+    value,
+    setValue,
+    selectedIndex,
+    setSelectedIndex,
+}: NavigationProps) {
     const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    const location = useLocation();
     const iOS =
         typeof window !== 'undefined' &&
         /iPad|iPhone|iPod/.test(navigator.userAgent);
-    const matches = useMediaQuery(theme.breakpoints.down('md'));
 
-    const [openDrawer, setOpenDrawer] = useState(false);
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const [openMenu, setOpenMenu] = useState(false);
-
-    const handleChange = (
-        _e: React.ChangeEvent<{}>,
-        newValue: number
-    ): void => {
-        props.setValue(newValue);
-    };
-
-    const handleClick = (e: React.MouseEvent<HTMLElement>): void => {
-        setAnchorEl(e.currentTarget);
-        setOpenMenu(true);
-    };
-
-    const handleMenuItemClick = (
-        _e: React.MouseEvent<HTMLElement>,
-        i: number
-    ): void => {
-        setAnchorEl(null);
-        setOpenMenu(false);
-        props.setSelectedIndex(i);
-    };
-
-    const handleClose = (_e: React.MouseEvent<HTMLElement>): void => {
-        setAnchorEl(null);
-        setOpenMenu(false);
-    };
-
-    const menuOptions: MenuOption[] = [
-        {
-            name: 'Engineering',
-            link: '/engineering',
-            activeIndex: 1,
-            selectedIndex: 0,
-        },
-        {
-            name: 'AWS Cloud',
-            link: '/aws',
-            activeIndex: 1,
-            selectedIndex: 1,
-        },
-        {
-            name: 'Custom Software',
-            link: '/customsoftware',
-            activeIndex: 1,
-            selectedIndex: 2,
-        },
-        {
-            name: 'Enterprise',
-            link: '/enterprise',
-            activeIndex: 1,
-            selectedIndex: 3,
-        },
-    ];
-
-    const routes: Route[] = [
-        { name: 'Home', link: '/', activeIndex: 0 },
-        {
-            name: 'Engineering',
-            link: '/engineering',
-            activeIndex: 1,
-            ariaOwns: anchorEl ? 'simple-menu' : undefined,
-            ariaPopup: anchorEl ? true : undefined,
-            mouseOver: (event: React.MouseEvent<HTMLElement>) =>
-                handleClick(event),
-        },
-        { name: 'Recovery', link: '/recovery', activeIndex: 2 },
-        { name: 'Hobbies', link: '/hobbies', activeIndex: 3 },
-        { name: 'Contact Me', link: '/contact', activeIndex: 4 },
-    ];
-
-    useEffect(() => {
-        [...menuOptions, ...routes].forEach((route: Route | MenuOption) => {
-            switch (window.location.pathname) {
-                case `${route.link}`:
-                    if (props.value !== route.activeIndex) {
-                        props.setValue(route.activeIndex);
-                        if (
-                            'selectedIndex' in route &&
-                            route.selectedIndex &&
-                            route.selectedIndex !== props.selectedIndex
-                        ) {
-                            props.setSelectedIndex(route.selectedIndex);
-                        }
-                    }
-                    break;
-                case '/estimate':
-                    props.setValue(5);
-                    break;
-                default:
-                    break;
-            }
-        });
-    }, [props.value, menuOptions, props.selectedIndex, routes, props]);
-
-    const tabs = (
-        <React.Fragment>
-            <Tabs
-                value={props.value}
-                onChange={handleChange}
-                className={classes.tabContainer}
-                indicatorColor='primary'
-            >
-                {routes.map((route, index) => (
-                    <Tab
-                        key={`${route.name}${index}`}
-                        className={classes.tab}
-                        component={Link as any}
-                        to={route.link}
-                        label={route.name}
-                        aria-owns={route.ariaOwns}
-                        aria-haspopup={route.ariaPopup}
-                        onMouseOver={route.mouseOver}
-                    />
-                ))}
-            </Tabs>
-            <Menu
-                id='simple-menu'
-                anchorEl={anchorEl}
-                open={openMenu}
-                onClose={handleClose}
-                classes={{ paper: classes.menu }}
-                MenuListProps={{
-                    onMouseLeave: handleClose,
-                }}
-                elevation={0}
-                style={{ zIndex: 1302 }}
-                keepMounted
-            >
-                {menuOptions.map((option, i) => (
-                    <MenuItem
-                        key={`${option.name}${i}`}
-                        component={Link}
-                        to={option.link}
-                        classes={{ root: classes.menuItem }}
-                        onClick={(event: React.MouseEvent<HTMLElement>) => {
-                            handleMenuItemClick(event, i);
-                            props.setValue(1);
-                            handleClose(event);
-                        }}
-                        selected={
-                            i === props.selectedIndex && props.value === 1
-                        }
-                    >
-                        {option.name}
-                    </MenuItem>
-                ))}
-            </Menu>
-        </React.Fragment>
+    const nav: NavItem[] = useMemo(
+        () => [
+            { label: 'Home', to: '/', valueIndex: 0 },
+            {
+                label: 'Engineering',
+                to: '/engineering',
+                valueIndex: 1,
+                children: [
+                    {
+                        label: 'Engineering',
+                        to: '/engineering',
+                        selectedIndex: 0,
+                    },
+                    { label: 'AWS Cloud', to: '/aws', selectedIndex: 1 },
+                    {
+                        label: 'Custom Software',
+                        to: '/customsoftware',
+                        selectedIndex: 2,
+                    },
+                    {
+                        label: 'Enterprise',
+                        to: '/enterprise',
+                        selectedIndex: 3,
+                    },
+                ],
+            },
+            { label: 'Recovery', to: '/recovery', valueIndex: 2 },
+            { label: 'Hobbies', to: '/hobbies', valueIndex: 3 },
+            { label: 'Contact Me', to: '/contact', valueIndex: 4 },
+        ],
+        []
     );
 
-    const drawer = (
-        <React.Fragment>
+    // Keep external value/selectedIndex in sync with current location
+    useEffect(() => {
+        const pathname = location.pathname;
+        const engineeringChild = nav[1].children?.find(
+            (c) => c.to === pathname
+        );
+        if (engineeringChild) {
+            if (value !== 1) setValue(1);
+            if (selectedIndex !== engineeringChild.selectedIndex)
+                setSelectedIndex(engineeringChild.selectedIndex);
+            return;
+        }
+        const top = nav.find((n) => n.to === pathname);
+        if (top && value !== top.valueIndex) setValue(top.valueIndex);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [location.pathname]);
+
+    // Menu state for the Engineering dropdown
+    const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
+    const menuOpen = Boolean(menuAnchor);
+
+    // Drawer state
+    const [drawerOpen, setDrawerOpen] = useState(false);
+
+    const linkColor = theme.palette.navigation?.nonActiveText || 'black';
+    const activeTextColor = theme.palette.navigation?.activeText || 'white';
+    const linkActiveColor =
+        (activeTextColor || '').toLowerCase() === '#ffffff'
+            ? theme.palette.primary.main
+            : activeTextColor;
+
+    const isActive = (to: string, exact = false) => {
+        const pathname = location.pathname;
+        return exact ? pathname === to : pathname.startsWith(to);
+    };
+
+    const Brand = (
+        <Button
+            component={RouterLink as any}
+            to='/'
+            aria-label='Go to home'
+            disableRipple
+            sx={{
+                p: 0,
+                m: 0,
+                minWidth: 0,
+                gap: 1.5,
+                '&:hover': { backgroundColor: 'transparent' },
+            }}
+            onClick={() => setValue(0)}
+        >
+            <Box
+                component='img'
+                src={logo}
+                alt='Dano Colombo logo'
+                sx={{
+                    height: { xs: 48, sm: 56, md: 64 },
+                    width: 'auto',
+                    display: 'block',
+                }}
+            />
+        </Button>
+    );
+
+    const DesktopNav = (
+        <Box sx={{ ml: 'auto', display: 'flex', alignItems: 'center', gap: 1 }}>
+            {nav.map((item) => {
+                const hasChildren = !!item.children?.length;
+                if (hasChildren) {
+                    return (
+                        <React.Fragment key={item.label}>
+                            <Button
+                                color='inherit'
+                                aria-controls={
+                                    menuOpen
+                                        ? 'nav-engineering-menu'
+                                        : undefined
+                                }
+                                aria-haspopup='true'
+                                aria-expanded={menuOpen ? 'true' : undefined}
+                                onMouseEnter={(e) =>
+                                    setMenuAnchor(e.currentTarget)
+                                }
+                                onClick={(e) => setMenuAnchor(e.currentTarget)}
+                                endIcon={<KeyboardArrowDownIcon />}
+                                sx={{
+                                    textTransform: 'none',
+                                    fontWeight: 600,
+                                    color:
+                                        isActive(item.to, true) ||
+                                        value === item.valueIndex
+                                            ? linkActiveColor
+                                            : linkColor,
+                                }}
+                            >
+                                {item.label}
+                            </Button>
+                            <Menu
+                                id='nav-engineering-menu'
+                                anchorEl={menuAnchor}
+                                open={menuOpen}
+                                onClose={() => setMenuAnchor(null)}
+                                MenuListProps={{
+                                    onMouseLeave: () => setMenuAnchor(null),
+                                    'aria-label': 'Engineering',
+                                }}
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'left',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'left',
+                                }}
+                            >
+                                {item.children!.map((child) => (
+                                    <MenuItem
+                                        key={child.to}
+                                        component={RouterLink as any}
+                                        to={child.to}
+                                        onClick={() => {
+                                            setValue(1);
+                                            setSelectedIndex(
+                                                child.selectedIndex
+                                            );
+                                            setMenuAnchor(null);
+                                        }}
+                                        selected={isActive(child.to, true)}
+                                    >
+                                        {child.label}
+                                    </MenuItem>
+                                ))}
+                            </Menu>
+                        </React.Fragment>
+                    );
+                }
+                return (
+                    <Button
+                        key={item.label}
+                        component={RouterLink as any}
+                        to={item.to}
+                        sx={{
+                            textTransform: 'none',
+                            fontWeight: 600,
+                            color:
+                                isActive(item.to, true) ||
+                                value === item.valueIndex
+                                    ? linkActiveColor
+                                    : linkColor,
+                        }}
+                        onClick={() => setValue(item.valueIndex)}
+                    >
+                        {item.label}
+                    </Button>
+                );
+            })}
+        </Box>
+    );
+
+    const MobileNav = (
+        <>
+            <IconButton
+                aria-label='Open navigation menu'
+                sx={{ ml: 'auto', color: linkColor }}
+                onClick={() => setDrawerOpen(true)}
+            >
+                <MenuIcon sx={{ fontSize: 32 }} />
+            </IconButton>
             <SwipeableDrawer
                 disableBackdropTransition={!iOS}
                 disableDiscovery={iOS}
-                open={openDrawer}
-                onClose={() => setOpenDrawer(false)}
-                onOpen={() => setOpenDrawer(true)}
-                classes={{ paper: classes.drawer }}
+                anchor='right'
+                open={drawerOpen}
+                onOpen={() => setDrawerOpen(true)}
+                onClose={() => setDrawerOpen(false)}
             >
-                <div className={classes.toolbarMargin} />
-                <List disablePadding>
-                    {routes.map((route) => (
-                        <ListItem
-                            divider
-                            key={`${route.name}${route.activeIndex}`}
-                            disablePadding
-                        >
-                            <ListItemButton
-                                component={Link as any}
-                                to={route.link}
-                                selected={props.value === route.activeIndex}
-                                classes={
-                                    {
-                                        selected: classes.drawerItemSelected,
-                                    } as any
-                                }
-                                onClick={() => {
-                                    setOpenDrawer(false);
-                                    props.setValue(route.activeIndex);
-                                }}
-                            >
-                                <ListItemText
-                                    className={classes.drawerItem}
-                                    disableTypography
-                                >
-                                    {route.name}
-                                </ListItemText>
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
+                <Box sx={{ ...theme.mixins.toolbar, width: 280 }} />
+                <List>
+                    {nav.map((item) => {
+                        const hasChildren = !!item.children?.length;
+                        if (!hasChildren) {
+                            return (
+                                <ListItem key={item.label} disablePadding>
+                                    <ListItemButton
+                                        component={RouterLink as any}
+                                        to={item.to}
+                                        selected={isActive(item.to, true)}
+                                        onClick={() => {
+                                            setValue(item.valueIndex);
+                                            setDrawerOpen(false);
+                                        }}
+                                    >
+                                        <ListItemText primary={item.label} />
+                                    </ListItemButton>
+                                </ListItem>
+                            );
+                        }
+                        return (
+                            <React.Fragment key={item.label}>
+                                <ListItem disablePadding>
+                                    <ListItemButton
+                                        component={RouterLink as any}
+                                        to={item.to}
+                                        selected={
+                                            value === item.valueIndex &&
+                                            isActive(item.to)
+                                        }
+                                        onClick={() => {
+                                            setValue(item.valueIndex);
+                                            setDrawerOpen(false);
+                                        }}
+                                    >
+                                        <ListItemText primary={item.label} />
+                                    </ListItemButton>
+                                </ListItem>
+                                <Divider />
+                                {item.children!.map((child) => (
+                                    <ListItem key={child.to} disablePadding>
+                                        <ListItemButton
+                                            sx={{ pl: 4 }}
+                                            component={RouterLink as any}
+                                            to={child.to}
+                                            selected={isActive(child.to, true)}
+                                            onClick={() => {
+                                                setValue(1);
+                                                setSelectedIndex(
+                                                    child.selectedIndex
+                                                );
+                                                setDrawerOpen(false);
+                                            }}
+                                        >
+                                            <ListItemText
+                                                primary={child.label}
+                                            />
+                                        </ListItemButton>
+                                    </ListItem>
+                                ))}
+                                <Divider />
+                            </React.Fragment>
+                        );
+                    })}
                 </List>
             </SwipeableDrawer>
-            <IconButton
-                className={classes.drawerIconContainer}
-                onClick={() => setOpenDrawer(!openDrawer)}
-                disableRipple
-            >
-                <MenuIcon className={classes.drawerIcon} />
-            </IconButton>
-        </React.Fragment>
+        </>
     );
 
     return (
-        <React.Fragment>
+        <>
             <ElevationScroll>
-                <AppBar position='fixed' className={classes.appbar}>
-                    <Toolbar disableGutters>
-                        <Button
-                            component={Link}
-                            to='/'
-                            disableRipple
-                            onClick={() => props.setValue(0)}
-                            className={classes.logoContainer}
-                        >
-                            <img
-                                alt='company logo'
-                                className={classes.logo}
-                                src={logo}
-                            />
-                        </Button>
-                        {matches ? drawer : tabs}
+                <AppBar
+                    position='fixed'
+                    sx={{
+                        zIndex: (t) => t.zIndex.modal + 1,
+                        bgcolor: 'background.paper',
+                    }}
+                >
+                    <Toolbar disableGutters sx={{ px: 0 }}>
+                        {Brand}
+                        {isMobile ? MobileNav : DesktopNav}
                     </Toolbar>
                 </AppBar>
             </ElevationScroll>
-            <div className={classes.toolbarMargin} />
-        </React.Fragment>
+            {/* Toolbar spacer to push content below fixed AppBar */}
+            <Box sx={{ ...theme.mixins.toolbar, mb: { xs: 2, md: 3 } }} />
+        </>
     );
 }
