@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import { makeStyles } from '@mui/styles';
+import useLandingStyles from './ui/landingStyles';
 import { useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
@@ -22,199 +22,8 @@ import WoodshopDisplay from './ui/Woodshop';
 import animationData from '../animations/developer/developer.json';
 import recoveryBackground from '../assets/repeatingBackground.svg';
 
-const useStyles = makeStyles((theme) => ({
-    animation: {
-        maxWidth: '50em',
-        minWidth: '21em',
-        marginTop: '2em',
-        marginLeft: '10%',
-        [theme.breakpoints.down('sm')]: {
-            maxWidth: '30em',
-        },
-    },
-    background: {
-        backgroundImage: `url(${background})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat',
-        borderRadius: '15px',
-        height: '40em',
-        width: '100%',
-        [theme.breakpoints.down('md')]: {
-            backgroundImage: `url(${mobileBackground})`,
-            backgroundAttachment: 'inherit',
-            width: '100%',
-            height: '25em',
-        },
-    },
-    introWrapper: {
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-        textAlign: 'center',
-        paddingLeft: '2em',
-        paddingRight: '2em',
-        justifyContent: 'center',
-    },
-    introductionParagraph: {
-        color: theme.palette.common.white,
-        // marginTop: "10em",
-        width: '100%',
-        [theme.breakpoints.down('md')]: {
-            // marginTop: 0,
-            textAlign: 'center',
-            alignContent: 'center',
-            alignItems: 'center',
-            justify: 'center',
-            justifyContent: 'center',
-            align: 'center',
-            justifyItems: 'center',
-            width: '100%',
-        },
-    },
-    quoter: {
-        alignItems: 'center',
-        marginLeft: '15rem',
-        fontStyle: 'italic',
-        fontSize: '2em',
-        [theme.breakpoints.down('md')]: {
-            marginLeft: 0,
-            color: theme.palette.common.white,
-            textAlign: 'center',
-        },
-    },
-    recoveryContainer: {
-        height: '30em',
-        marginTop: '0em',
-        alignItems: 'center',
-        justify: 'center',
-    },
-    recoveryCard: {
-        position: 'absolute',
-        boxShadow: theme.shadows[10],
-        borderRadius: 15,
-        padding: '1em',
-        [theme.breakpoints.down('md')]: {
-            paddingTop: '1em',
-            paddingBottom: '1em',
-            paddingLeft: 0,
-            paddingRight: 0,
-            borderRadius: 0,
-            width: '100%',
-        },
-    },
-    recoveryBackground: {
-        backgroundImage: `url(${recoveryBackground})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        height: '100%',
-        width: '100%',
-    },
-    recoveryQutote: {
-        marginBottom: '1em',
-    },
-    estimateButton: {
-        ...theme.typography.estimate,
-        backgroundColor: theme.palette.common.orange,
-        borderRadius: 50,
-        height: 45,
-        width: 145,
-        marginRight: 40,
-        '&:hover': {
-            backgroundColor: theme.palette.secondary.light,
-        },
-    },
-    buttonContainer: {
-        marginTop: '1em',
-    },
-    engineeringButton: {
-        ...theme.typography.learnButton,
-        fontSize: '0.9rem',
-        height: 45,
-        alignContent: 'center',
-        backgroundColor: 'white',
-        padding: 5,
-        '&:hover': {
-            backgroundColor: theme.palette.common.orange,
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginBottom: '2em',
-        },
-    },
-    learnButtonHero: {
-        ...theme.typography.learnButton,
-        fontSize: '0.9rem',
-        height: 45,
-        width: 145,
-    },
-    learnButtonRecovery: {
-        ...theme.typography.learnButton,
-        fontSize: '0.9rem',
-        height: 45,
-        width: 145,
-        topMargin: '5em',
-    },
-    learnButton: {
-        ...theme.typography.learnButton,
-        fontSize: '0.7rem',
-        height: 35,
-        padding: 5,
-        [theme.breakpoints.down('sm')]: {
-            marginBottom: '2em',
-        },
-    },
-    mainContainer: {
-        marginTop: '1em',
-        [theme.breakpoints.down('md')]: {
-            marginTop: '3em',
-        },
-        [theme.breakpoints.down('xs')]: {
-            marginTop: '2em',
-        },
-    },
-    // heroTextContainer: {
-    //   minWidth: "21.5em",
-    //   marginLeft: "4em",
-    //   alignItems: "center",
-    //   color: theme.palette.common.orange,
-    //   [theme.breakpoints.down("xs")]: {
-    //     marginLeft: 0,
-    //   },
-    // },
-    specialText: {
-        fontFamily: 'Pacifico',
-        color: theme.palette.common.orange,
-    },
-    subtitle: {
-        marginBottom: '1em',
-    },
-    icon: {
-        marginLeft: '2em',
-        [theme.breakpoints.down('xs')]: {
-            marginLeft: 0,
-        },
-    },
-    serviceContainer: {
-        marginTop: '12em',
-        [theme.breakpoints.down('sm')]: {
-            padding: 25,
-        },
-    },
-
-    revolutionBackground: {
-        backgroundImage: `url(${recoveryBackground})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        height: '100%',
-        width: '100%',
-    },
-}));
-
 export default function LandingPage(props) {
-    const classes = useStyles();
+    const classes = useLandingStyles();
     const theme = useTheme();
     const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
     const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
@@ -234,7 +43,14 @@ export default function LandingPage(props) {
 
     return (
         <Grid container direction='column' className={classes.mainContainer}>
-            <div className={classes.background}>
+            <div
+                className={classes.background}
+                style={{
+                    backgroundImage: `url(${
+                        matchesMD ? mobileBackground : background
+                    })`,
+                }}
+            >
                 <div className={classes.introWrapper}>
                     <Typography
                         variant='h4'
@@ -319,7 +135,12 @@ export default function LandingPage(props) {
                             </Grid>
                         </CardContent>
                     </Card>
-                    <div className={classes.recoveryBackground} />
+                    <div
+                        className={classes.recoveryBackground}
+                        style={{
+                            backgroundImage: `url(${recoveryBackground})`,
+                        }}
+                    />
                 </Grid>
             </Grid>
             <Grid item>
