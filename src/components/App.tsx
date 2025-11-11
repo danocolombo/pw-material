@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import Header from './ui/header';
 // import Footer from "./ui/footer";
 import Footer from './ui/footer';
 import theme from './ui/theme';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import EngineeringPage from './EngineeringPage';
 import CustomSoftwarePage from './CustomSoftwarePage';
@@ -29,138 +29,98 @@ function App() {
                     selectedIndex={selectedIndex}
                     setSelectedIndex={setSelectedIndex}
                 />
-                <Switch>
-                    {/* <Route exact path="/" component={() => <div style={{height: "500px"}}>HOME</div>}/> */}
+                <Routes>
                     <Route
-                        exact
                         path='/'
-                        render={(props) => (
+                        element={
                             <LandingPage
                                 setValue={setValue}
                                 setSelectedIndex={setSelectedIndex}
                             />
-                        )}
+                        }
                     />
                     <Route
-                        exact
                         path='/p8RallyProject'
-                        render={(props) => (
+                        element={
                             <P8Rally
                                 setValue={setValue}
                                 setSelectedIndex={setSelectedIndex}
                             />
-                        )}
+                        }
                     />
                     <Route
-                        exact
                         path='/customsoftware'
-                        render={(props) => (
+                        element={
                             <CustomSoftwarePage
                                 setValue={setValue}
                                 setSelectedIndex={setSelectedIndex}
                             />
-                        )}
+                        }
                     />
                     <Route
-                        exact
                         path='/engineering'
-                        render={(props) => (
+                        element={
                             <EngineeringPage
                                 setValue={setValue}
                                 setSelectedIndex={setSelectedIndex}
                             />
-                        )}
+                        }
                     />
                     <Route
-                        exact
                         path='/enterprise'
-                        render={(props) => (
+                        element={
                             <EnterprisePage
                                 setValue={setValue}
                                 setSelectedIndex={setSelectedIndex}
                             />
-                        )}
+                        }
                     />
                     <Route
-                        exact
                         path='/recovery'
-                        render={(props) => (
+                        element={
                             <RecoveryPage
                                 setValue={setValue}
                                 setSelectedIndex={setSelectedIndex}
                             />
-                        )}
+                        }
                     />
                     <Route
-                        exact
                         path='/hobbies'
-                        render={(props) => (
+                        element={
                             <HobbiesPage
                                 setValue={setValue}
                                 setSelectedIndex={setSelectedIndex}
                             />
-                        )}
+                        }
                     />
                     <Route
-                        exact
                         path='/aws'
-                        render={(props) => (
+                        element={
                             <AWS
-                                {...props}
                                 setValue={setValue}
                                 setSelectedIndex={setSelectedIndex}
                             />
-                        )}
+                        }
                     />
                     <Route
-                        exact
                         path='/contact'
-                        render={(props) => (
+                        element={
                             <Contact
-                                {...props}
                                 setValue={setValue}
                                 setSelectedIndex={setSelectedIndex}
                             />
-                        )}
+                        }
                     />
                     <Route
-                        exact
                         path='/integrations'
-                        component={() => <div>Integrations</div>}
+                        element={<div>Integrations</div>}
                     />
-                    <Route
-                        exact
-                        path='/enterprise'
-                        component={() => <div>Enterprise</div>}
-                    />
-                    {/* <Route exact path="/recovery" component={() => <div>Recovery</div>} /> */}
-                    <Route
-                        exact
-                        path='/cr'
-                        component={() => <div>Celebrate Recovery</div>}
-                    />
-                    <Route
-                        exact
-                        path='/hobbies'
-                        component={() => <div>Hobbies</div>}
-                    />
-                    <Route
-                        exact
-                        path='/woodshop'
-                        component={() => <div>Woodshop</div>}
-                    />
-                    <Route
-                        exact
-                        path='/kitchen'
-                        component={() => <div>Kitchen</div>}
-                    />
-                    <Route
-                        exact
-                        path='/404'
-                        render={(props) => <NotFoundPage />}
-                    />
-                    <Redirect to='/404' />
-                </Switch>
+                    <Route path='/cr' element={<div>Celebrate Recovery</div>} />
+                    <Route path='/woodshop' element={<div>Woodshop</div>} />
+                    <Route path='/kitchen' element={<div>Kitchen</div>} />
+                    <Route path='/404' element={<NotFoundPage />} />
+                    <Route path='*' element={<Navigate to='/404' replace />} />
+                </Routes>
                 <Footer
                     value={value}
                     setValue={setValue}

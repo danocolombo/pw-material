@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import Lottie from 'react-lottie';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { styled } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
+import { useTheme, styled } from '@mui/material/styles';
 // import { Link } from "react-router-dom";
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 import ButtonArrow from './ui/ButtonArrow';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
@@ -27,10 +27,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
-
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
 import TechSledPic from '../assets/TechSled.svg';
 import CoatRack from '../assets/WS-Coat-Rack.svg';
@@ -50,8 +49,8 @@ import { autocompleteClasses } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
     mainContainer: {
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
         marginTop: '1em',
         alignItems: 'left',
         width: '100%',
