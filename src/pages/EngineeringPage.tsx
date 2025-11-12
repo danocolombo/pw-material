@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { PageProps } from '../types';
+import { PageProps } from '@/types';
 import { makeStyles } from '@mui/styles';
 import { useTheme, Theme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
@@ -9,10 +9,10 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import MuiLink from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 
-import ButtonArrow from '../components/ui/ButtonArrow';
-import engineeringPic from '../assets/computer_glasses.jpg';
-import customSoftwareIcon from '../assets/customSoftwareIcon.svg';
-import AWSLogo from '../assets/AWS_Logo.svg';
+import ButtonArrow from '@components/ui/ButtonArrow';
+import engineeringPic from '@assets/computer_glasses.jpg';
+import customSoftwareIcon from '@assets/customSoftwareIcon.svg';
+import AWSLogo from '@assets/AWS_Logo.svg';
 
 const useStyles = makeStyles<Theme>((theme: Theme) => ({
   mainContainer: {

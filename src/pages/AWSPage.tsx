@@ -7,16 +7,16 @@ import { Grid, useMediaQuery } from '@mui/material';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 
-import AWS_SAA_Logo from '../assets/AWS-SolutionArchitect.png';
-import AWS_DA_Logo from '../assets/AWS-DeveloperAssociate.png';
-import AWS_CP_Logo from '../assets/AWS-CloudPractitioner.png';
-import AWS_Serverless from '../assets/AWS_Serverless.svg';
-import AWS_Amplify from '../assets/AWS_Amplify.svg';
-import AWS_APIGateway from '../assets/AWS_APIGateway.svg';
-import AWS_Lambda from '../assets/AWS_Lambda.svg';
-import AWS_RDS from '../assets/AWS_RDS.svg';
-import AWS_DynamoDB from '../assets/AWS_DynamoDB.svg';
-import customSoftwareIcon from '../assets/customSoftwareIcon.svg';
+import AWS_SAA_Logo from '@assets/AWS-SolutionArchitect.png';
+import AWS_DA_Logo from '@assets/AWS-DeveloperAssociate.png';
+import AWS_CP_Logo from '@assets/AWS-CloudPractitioner.png';
+import AWS_Serverless from '@assets/AWS_Serverless.svg';
+import AWS_Amplify from '@assets/AWS_Amplify.svg';
+import AWS_APIGateway from '@assets/AWS_APIGateway.svg';
+import AWS_Lambda from '@assets/AWS_Lambda.svg';
+import AWS_RDS from '@assets/AWS_RDS.svg';
+import AWS_DynamoDB from '@assets/AWS_DynamoDB.svg';
+import customSoftwareIcon from '@assets/customSoftwareIcon.svg';
 // Button import removed (unused)
 // ButtonArrow removed (unused)
 // AWSLogo and typography imports removed (unused)

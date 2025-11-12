@@ -6,17 +6,17 @@ import Footer from './ui/footer';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme, { setNavigationColors } from './ui/theme';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import LandingPage from '../pages/LandingPage';
-import EngineeringPage from '../pages/EngineeringPage';
-import CustomSoftwarePage from '../pages/CustomSoftwarePage';
-import EnterprisePage from '../pages/EnterprisePage';
-import RecoveryPage from '../pages/RecoveryPage';
-import HobbiesPage from '../pages/HobbiesPage';
-import AWS from '../pages/AWSPage';
-import Contact from '../pages/contactme';
-import NotFoundPage from '../pages/NotFoundPage';
+import LandingPage from '@pages/LandingPage';
+import EngineeringPage from '@pages/EngineeringPage';
+import CustomSoftwarePage from '@pages/CustomSoftwarePage';
+import EnterprisePage from '@pages/EnterprisePage';
+import RecoveryPage from '@pages/RecoveryPage';
+import HobbiesPage from '@pages/HobbiesPage';
+import AWS from '@pages/AWSPage';
+import Contact from '@pages/contactme';
+import NotFoundPage from '@pages/NotFoundPage';
 
-import P8Rally from '../pages/P8ProjectPage';
+import P8Rally from '@pages/P8ProjectPage';
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
