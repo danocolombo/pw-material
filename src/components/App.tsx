@@ -44,23 +44,10 @@ function App() {
                             />
                         }
                     />
-                    <Route
-                        path='/p8RallyProject'
-                        element={
-                            <P8Rally
-                                setValue={setValue}
-                                setSelectedIndex={setSelectedIndex}
-                            />
-                        }
-                    />
+                    <Route path='/p8RallyProject' element={<P8Rally />} />
                     <Route
                         path='/customsoftware'
-                        element={
-                            <CustomSoftwarePage
-                                setValue={setValue}
-                                setSelectedIndex={setSelectedIndex}
-                            />
-                        }
+                        element={<CustomSoftwarePage />}
                     />
                     <Route
                         path='/engineering'
@@ -71,51 +58,11 @@ function App() {
                             />
                         }
                     />
-                    <Route
-                        path='/enterprise'
-                        element={
-                            <EnterprisePage
-                                setValue={setValue}
-                                setSelectedIndex={setSelectedIndex}
-                            />
-                        }
-                    />
-                    <Route
-                        path='/recovery'
-                        element={
-                            <RecoveryPage
-                                setValue={setValue}
-                                setSelectedIndex={setSelectedIndex}
-                            />
-                        }
-                    />
-                    <Route
-                        path='/hobbies'
-                        element={
-                            <HobbiesPage
-                                setValue={setValue}
-                                setSelectedIndex={setSelectedIndex}
-                            />
-                        }
-                    />
-                    <Route
-                        path='/aws'
-                        element={
-                            <AWS
-                                setValue={setValue}
-                                setSelectedIndex={setSelectedIndex}
-                            />
-                        }
-                    />
-                    <Route
-                        path='/contact'
-                        element={
-                            <Contact
-                                setValue={setValue}
-                                setSelectedIndex={setSelectedIndex}
-                            />
-                        }
-                    />
+                    <Route path='/enterprise' element={<EnterprisePage />} />
+                    <Route path='/recovery' element={<RecoveryPage />} />
+                    <Route path='/hobbies' element={<HobbiesPage />} />
+                    <Route path='/aws' element={<AWS />} />
+                    <Route path='/contact' element={<Contact />} />
                     <Route
                         path='/integrations'
                         element={<div>Integrations</div>}

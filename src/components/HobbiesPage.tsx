@@ -1,17 +1,14 @@
-import React, { useEffect } from 'react';
-import Lottie from 'react-lottie';
+import { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
-import { useTheme, styled } from '@mui/material/styles';
+import { styled, Theme } from '@mui/material/styles';
 // import { Link } from "react-router-dom";
 import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
-import ButtonArrow from './ui/ButtonArrow';
 import Typography from '@mui/material/Typography';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
-import IconButton from '@mui/material/IconButton';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
@@ -21,15 +18,13 @@ import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
 import { red } from '@mui/material/colors';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
-import useMediaQuery from '@mui/material/useMediaQuery';
+// useMediaQuery removed (not needed after cleanup)
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+// PageProps not used in this page
 
 import TechSledPic from '../assets/TechSled.svg';
 import CoatRack from '../assets/WS-Coat-Rack.svg';
@@ -38,7 +33,7 @@ import Desk from '../assets/WS-Desk.svg';
 //kitchen images
 import SalsaPic from '../assets/kitchen/salsa.svg';
 import GuacPic from '../assets/kitchen/guac-square.png';
-import { autocompleteClasses } from '@mui/material';
+// cleaned unused autocompleteClasses import
 
 //========================================
 // * Don' forget this
@@ -47,7 +42,7 @@ import { autocompleteClasses } from '@mui/material';
 //   if you use 3 spaces you get YELLOW
 //+++++++++++++++++++++++++++++++++++++++++
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<Theme>((theme: Theme) => ({
     mainContainer: {
         display: 'flex',
         flexDirection: 'column',
@@ -206,10 +201,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ExpandMore = styled((props) => {
+type ExpandMoreProps = IconButtonProps & { expand?: boolean };
+
+const ExpandMore = styled((props: ExpandMoreProps) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
-})(({ theme, expand }) => ({
+})<ExpandMoreProps>(({ theme, expand }) => ({
     transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
     marginLeft: 'auto',
     transition: theme.transitions.create('transform', {
@@ -217,16 +214,9 @@ const ExpandMore = styled((props) => {
     }),
 }));
 
-export default function LandingPage(props) {
-    const [expanded, setExpanded] = React.useState(false);
+export default function LandingPage() {
+    const [expanded, setExpanded] = useState(false);
     const classes = useStyles();
-    const theme = useTheme();
-    const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
-    const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
-    const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
-    const matchesLG = useMediaQuery(theme.breakpoints.down('lg'));
-    const matchesXL = useMediaQuery(theme.breakpoints.down('xl'));
-    const matchesXXL = useMediaQuery(theme.breakpoints.down('xxl'));
 
     const handleExpandClick = () => {
         setExpanded(!expanded);

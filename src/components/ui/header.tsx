@@ -4,7 +4,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+// Typography import removed (not used)
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
@@ -123,31 +123,35 @@ export default function Header({
     };
 
     const Brand = (
-        <Button
-            component={RouterLink as any}
+        <RouterLink
             to='/'
-            aria-label='Go to home'
-            disableRipple
-            sx={{
-                p: 0,
-                m: 0,
-                minWidth: 0,
-                gap: 1.5,
-                '&:hover': { backgroundColor: 'transparent' },
-            }}
+            style={{ textDecoration: 'none' }}
             onClick={() => setValue(0)}
         >
-            <Box
-                component='img'
-                src={logo}
-                alt='Dano Colombo logo'
+            <Button
+                component='span'
+                aria-label='Go to home'
+                disableRipple
                 sx={{
-                    height: { xs: 48, sm: 56, md: 64 },
-                    width: 'auto',
-                    display: 'block',
+                    p: 0,
+                    m: 0,
+                    minWidth: 0,
+                    gap: 1.5,
+                    '&:hover': { backgroundColor: 'transparent' },
                 }}
-            />
-        </Button>
+            >
+                <Box
+                    component='img'
+                    src={logo}
+                    alt='Dano Colombo logo'
+                    sx={{
+                        height: { xs: 48, sm: 56, md: 64 },
+                        width: 'auto',
+                        display: 'block',
+                    }}
+                />
+            </Button>
+        </RouterLink>
     );
 
     const DesktopNav = (
@@ -157,32 +161,42 @@ export default function Header({
                 if (hasChildren) {
                     return (
                         <React.Fragment key={item.label}>
-                            <Button
-                                color='inherit'
-                                aria-controls={
-                                    menuOpen
-                                        ? 'nav-engineering-menu'
-                                        : undefined
-                                }
-                                aria-haspopup='true'
-                                aria-expanded={menuOpen ? 'true' : undefined}
-                                onMouseEnter={(e) =>
-                                    setMenuAnchor(e.currentTarget)
-                                }
-                                onClick={(e) => setMenuAnchor(e.currentTarget)}
-                                endIcon={<KeyboardArrowDownIcon />}
-                                sx={{
-                                    textTransform: 'none',
-                                    fontWeight: 600,
-                                    color:
-                                        isActive(item.to, true) ||
-                                        value === item.valueIndex
-                                            ? linkActiveColor
-                                            : linkColor,
-                                }}
+                            <RouterLink
+                                to={item.to}
+                                style={{ textDecoration: 'none' }}
                             >
-                                {item.label}
-                            </Button>
+                                <Button
+                                    color='inherit'
+                                    aria-controls={
+                                        menuOpen
+                                            ? 'nav-engineering-menu'
+                                            : undefined
+                                    }
+                                    aria-haspopup='true'
+                                    aria-expanded={
+                                        menuOpen ? 'true' : undefined
+                                    }
+                                    onMouseEnter={(e) =>
+                                        setMenuAnchor(e.currentTarget)
+                                    }
+                                    onClick={(e) =>
+                                        setMenuAnchor(e.currentTarget)
+                                    }
+                                    endIcon={<KeyboardArrowDownIcon />}
+                                    component='span'
+                                    sx={{
+                                        textTransform: 'none',
+                                        fontWeight: 600,
+                                        color:
+                                            isActive(item.to, true) ||
+                                            value === item.valueIndex
+                                                ? linkActiveColor
+                                                : linkColor,
+                                    }}
+                                >
+                                    {item.label}
+                                </Button>
+                            </RouterLink>
                             <Menu
                                 id='nav-engineering-menu'
                                 anchorEl={menuAnchor}
@@ -204,8 +218,6 @@ export default function Header({
                                 {item.children!.map((child) => (
                                     <MenuItem
                                         key={child.to}
-                                        component={RouterLink as any}
-                                        to={child.to}
                                         onClick={() => {
                                             setValue(1);
                                             setSelectedIndex(
@@ -215,7 +227,15 @@ export default function Header({
                                         }}
                                         selected={isActive(child.to, true)}
                                     >
-                                        {child.label}
+                                        <RouterLink
+                                            to={child.to}
+                                            style={{
+                                                textDecoration: 'none',
+                                                color: 'inherit',
+                                            }}
+                                        >
+                                            {child.label}
+                                        </RouterLink>
                                     </MenuItem>
                                 ))}
                             </Menu>
@@ -223,23 +243,27 @@ export default function Header({
                     );
                 }
                 return (
-                    <Button
+                    <RouterLink
                         key={item.label}
-                        component={RouterLink as any}
                         to={item.to}
-                        sx={{
-                            textTransform: 'none',
-                            fontWeight: 600,
-                            color:
-                                isActive(item.to, true) ||
-                                value === item.valueIndex
-                                    ? linkActiveColor
-                                    : linkColor,
-                        }}
+                        style={{ textDecoration: 'none' }}
                         onClick={() => setValue(item.valueIndex)}
                     >
-                        {item.label}
-                    </Button>
+                        <Button
+                            component='span'
+                            sx={{
+                                textTransform: 'none',
+                                fontWeight: 600,
+                                color:
+                                    isActive(item.to, true) ||
+                                    value === item.valueIndex
+                                        ? linkActiveColor
+                                        : linkColor,
+                            }}
+                        >
+                            {item.label}
+                        </Button>
+                    </RouterLink>
                 );
             })}
         </Box>
@@ -269,46 +293,65 @@ export default function Header({
                         if (!hasChildren) {
                             return (
                                 <ListItem key={item.label} disablePadding>
-                                    <ListItemButton
-                                        component={RouterLink as any}
+                                    <RouterLink
                                         to={item.to}
-                                        selected={isActive(item.to, true)}
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: 'inherit',
+                                        }}
                                         onClick={() => {
                                             setValue(item.valueIndex);
                                             setDrawerOpen(false);
                                         }}
                                     >
-                                        <ListItemText primary={item.label} />
-                                    </ListItemButton>
+                                        <ListItemButton
+                                            component='div'
+                                            selected={isActive(item.to, true)}
+                                        >
+                                            <ListItemText
+                                                primary={item.label}
+                                            />
+                                        </ListItemButton>
+                                    </RouterLink>
                                 </ListItem>
                             );
                         }
                         return (
                             <React.Fragment key={item.label}>
                                 <ListItem disablePadding>
-                                    <ListItemButton
-                                        component={RouterLink as any}
+                                    <RouterLink
                                         to={item.to}
-                                        selected={
-                                            value === item.valueIndex &&
-                                            isActive(item.to)
-                                        }
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: 'inherit',
+                                        }}
                                         onClick={() => {
                                             setValue(item.valueIndex);
                                             setDrawerOpen(false);
                                         }}
                                     >
-                                        <ListItemText primary={item.label} />
-                                    </ListItemButton>
+                                        <ListItemButton
+                                            component='div'
+                                            selected={
+                                                value === item.valueIndex &&
+                                                isActive(item.to)
+                                            }
+                                        >
+                                            <ListItemText
+                                                primary={item.label}
+                                            />
+                                        </ListItemButton>
+                                    </RouterLink>
                                 </ListItem>
                                 <Divider />
                                 {item.children!.map((child) => (
                                     <ListItem key={child.to} disablePadding>
-                                        <ListItemButton
-                                            sx={{ pl: 4 }}
-                                            component={RouterLink as any}
+                                        <RouterLink
                                             to={child.to}
-                                            selected={isActive(child.to, true)}
+                                            style={{
+                                                textDecoration: 'none',
+                                                color: 'inherit',
+                                            }}
                                             onClick={() => {
                                                 setValue(1);
                                                 setSelectedIndex(
@@ -317,10 +360,19 @@ export default function Header({
                                                 setDrawerOpen(false);
                                             }}
                                         >
-                                            <ListItemText
-                                                primary={child.label}
-                                            />
-                                        </ListItemButton>
+                                            <ListItemButton
+                                                sx={{ pl: 4 }}
+                                                component='div'
+                                                selected={isActive(
+                                                    child.to,
+                                                    true
+                                                )}
+                                            >
+                                                <ListItemText
+                                                    primary={child.label}
+                                                />
+                                            </ListItemButton>
+                                        </RouterLink>
                                     </ListItem>
                                 ))}
                                 <Divider />

@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles';
+import { useTheme, Theme } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Typography } from '@mui/material';
@@ -10,7 +10,7 @@ import { NavigationProps } from '../../types';
 import footerAdornment from '../../assets/FooterGraphic.svg';
 import linkedIn from '../../assets/LinkedInLogo.png';
 
-const useStyles = makeStyles((theme: any) => ({
+const useStyles = makeStyles<Theme>((theme: Theme) => ({
     footer: {
         backgroundColor: theme.palette.common.blue,
         width: '100%',
@@ -84,123 +84,123 @@ export default function Footer(props: NavigationProps): ReactElement {
                 >
                     <Grid item className={classes.gridItem}>
                         <Grid container direction='column' spacing={2}>
-                            <Grid
-                                item
-                                component={Link}
-                                onClick={() => props.setValue(0)}
-                                to='/'
-                                className={classes.link}
-                            >
-                                HOME
+                            <Grid item>
+                                <Link
+                                    to='/'
+                                    onClick={() => props.setValue(0)}
+                                    className={classes.link}
+                                >
+                                    HOME
+                                </Link>
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid item className={classes.gridItem}>
                         <Grid container direction='column' spacing={2}>
-                            <Grid
-                                item
-                                component={Link}
-                                onClick={() => {
-                                    props.setValue(1);
-                                    props.setSelectedIndex(0);
-                                }}
-                                to='/engineering'
-                                className={classes.link}
-                            >
-                                Engineering
+                            <Grid item>
+                                <Link
+                                    to='/engineering'
+                                    onClick={() => {
+                                        props.setValue(1);
+                                        props.setSelectedIndex(0);
+                                    }}
+                                    className={classes.link}
+                                >
+                                    Engineering
+                                </Link>
                             </Grid>
-                            <Grid
-                                item
-                                component={Link}
-                                onClick={() => {
-                                    props.setValue(1);
-                                    props.setSelectedIndex(1);
-                                }}
-                                to='/aws'
-                                className={classes.link}
-                            >
-                                Amazon Web Services (AWS)
+                            <Grid item>
+                                <Link
+                                    to='/aws'
+                                    onClick={() => {
+                                        props.setValue(1);
+                                        props.setSelectedIndex(1);
+                                    }}
+                                    className={classes.link}
+                                >
+                                    Amazon Web Services (AWS)
+                                </Link>
                             </Grid>
-                            <Grid
-                                item
-                                component={Link}
-                                onClick={() => {
-                                    props.setValue(1);
-                                    props.setSelectedIndex(2);
-                                }}
-                                to='/customsoftware'
-                                className={classes.link}
-                            >
-                                Custom Software
+                            <Grid item>
+                                <Link
+                                    to='/customsoftware'
+                                    onClick={() => {
+                                        props.setValue(1);
+                                        props.setSelectedIndex(2);
+                                    }}
+                                    className={classes.link}
+                                >
+                                    Custom Software
+                                </Link>
                             </Grid>
-                            <Grid
-                                item
-                                component={Link}
-                                onClick={() => {
-                                    props.setValue(1);
-                                    props.setSelectedIndex(3);
-                                }}
-                                to='/enterprise'
-                                className={classes.link}
-                            >
-                                Enterprise & Beyond
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid item className={classes.gridItem}>
-                        <Grid container direction='column' spacing={2}>
-                            <Grid
-                                item
-                                component={Link}
-                                onClick={() => props.setValue(2)}
-                                to='/recovery'
-                                className={classes.link}
-                            >
-                                Recovery
+                            <Grid item>
+                                <Link
+                                    to='/enterprise'
+                                    onClick={() => {
+                                        props.setValue(1);
+                                        props.setSelectedIndex(3);
+                                    }}
+                                    className={classes.link}
+                                >
+                                    Enterprise & Beyond
+                                </Link>
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid item className={classes.gridItem}>
                         <Grid container direction='column' spacing={2}>
-                            <Grid
-                                item
-                                component={Link}
-                                onClick={() => props.setValue(3)}
-                                to='/hobbies'
-                                className={classes.link}
-                            >
-                                Hobbies
-                            </Grid>
-                            <Grid
-                                item
-                                component={Link}
-                                onClick={() => props.setValue(3)}
-                                to='/woodshop'
-                                className={classes.link}
-                            >
-                                Woodshop
-                            </Grid>
-                            <Grid
-                                item
-                                component={Link}
-                                onClick={() => props.setValue(3)}
-                                to='/kitchen'
-                                className={classes.link}
-                            >
-                                Kitchen & Grill
+                            <Grid item>
+                                <Link
+                                    to='/recovery'
+                                    onClick={() => props.setValue(2)}
+                                    className={classes.link}
+                                >
+                                    Recovery
+                                </Link>
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid item className={classes.gridItem}>
                         <Grid container direction='column' spacing={2}>
-                            <Grid
-                                item
-                                component={Link}
-                                onClick={() => props.setValue(4)}
-                                to='/contact'
-                                className={classes.link}
-                            >
-                                Contact Me
+                            <Grid item>
+                                <Link
+                                    to='/hobbies'
+                                    onClick={() => props.setValue(3)}
+                                    className={classes.link}
+                                >
+                                    Hobbies
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                                <Link
+                                    to='/woodshop'
+                                    onClick={() => props.setValue(3)}
+                                    className={classes.link}
+                                >
+                                    Woodshop
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                                <Link
+                                    to='/kitchen'
+                                    onClick={() => props.setValue(3)}
+                                    className={classes.link}
+                                >
+                                    Kitchen & Grill
+                                </Link>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid item className={classes.gridItem}>
+                        <Grid container direction='column' spacing={2}>
+                            <Grid item>
+                                <Link
+                                    to='/contact'
+                                    onClick={() => props.setValue(4)}
+                                    className={classes.link}
+                                >
+                                    Contact Me
+                                </Link>
                             </Grid>
                         </Grid>
                     </Grid>

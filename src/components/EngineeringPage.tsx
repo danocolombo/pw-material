@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import { PageProps } from '../types';
 import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles';
+import { useTheme, Theme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Grid } from '@mui/material';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
+import MuiLink from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
 import { useMediaQuery } from '@mui/material';
 
 import ButtonArrow from './ui/ButtonArrow';
@@ -13,7 +15,7 @@ import engineeringPic from '../assets/computer_glasses.jpg';
 import customSoftwareIcon from '../assets/customSoftwareIcon.svg';
 import AWSLogo from '../assets/AWS_Logo.svg';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<Theme>((theme: Theme) => ({
     mainContainer: {
         marginTop: '2em',
         [theme.breakpoints.down('md')]: {
@@ -101,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function EngineeringPage(props) {
+export default function EngineeringPage(props: PageProps) {
     const classes = useStyles();
     const theme = useTheme();
 
@@ -114,9 +116,9 @@ export default function EngineeringPage(props) {
         <div className={classes.mainContainer}>
             <Grid item className={classes.breadcrumbsContainer}>
                 <Breadcrumbs aria-label='breadcrumb'>
-                    <Link underline='hover' color='inherit' href='/'>
+                    <MuiLink underline='hover' color='inherit' href='/'>
                         Main
-                    </Link>
+                    </MuiLink>
                     <Typography color='text.primary'>Engineering</Typography>
                 </Breadcrumbs>
             </Grid>
@@ -158,25 +160,30 @@ export default function EngineeringPage(props) {
                         Design, architecture, development and delivery.
                         {matchesSM ? null : <br />}Not just training.
                     </Typography>
-                    <Button
-                        component={Link}
-                        href='/aws'
+                    <RouterLink
                         to='/aws'
-                        variant='outlined'
-                        className={classes.learnMoreButton}
                         onClick={() => {
                             props.setValue(1);
                             props.setSelectedIndex(2);
                         }}
+                        style={{
+                            textDecoration: 'none',
+                            display: 'inline-block',
+                        }}
                     >
-                        <span style={{ marginRight: 10 }}>Learn More</span>
-                        {/* <span>Learn More</span> */}
-                        <ButtonArrow
-                            width={10}
-                            height={10}
-                            fill={theme.palette.common.blue}
-                        />
-                    </Button>
+                        <Button
+                            variant='outlined'
+                            className={classes.learnMoreButton}
+                            component='span'
+                        >
+                            <span style={{ marginRight: 10 }}>Learn More</span>
+                            <ButtonArrow
+                                width={10}
+                                height={10}
+                                fill={theme.palette.common.blue}
+                            />
+                        </Button>
+                    </RouterLink>
                 </div>
                 <div className={classes.flexRight}>
                     {/* {matchesMD ? null : ( */}
@@ -207,24 +214,30 @@ export default function EngineeringPage(props) {
                             celebration.
                         </span>
                     </Typography>
-                    <Button
-                        component={Link}
+                    <RouterLink
                         to='/customsoftware'
-                        href='/customsoftware'
-                        variant='outlined'
-                        className={classes.learnButton}
                         onClick={() => {
                             props.setValue(1);
                             props.setSelectedIndex(1);
                         }}
+                        style={{
+                            textDecoration: 'none',
+                            display: 'inline-block',
+                        }}
                     >
-                        <span style={{ marginRight: 10 }}>Learn More</span>
-                        <ButtonArrow
-                            width={10}
-                            height={10}
-                            fill={theme.palette.common.blue}
-                        />
-                    </Button>
+                        <Button
+                            variant='outlined'
+                            className={classes.learnButton}
+                            component='span'
+                        >
+                            <span style={{ marginRight: 10 }}>Learn More</span>
+                            <ButtonArrow
+                                width={10}
+                                height={10}
+                                fill={theme.palette.common.blue}
+                            />
+                        </Button>
+                    </RouterLink>
                 </div>
                 <div className={classes.flexRight}>
                     <img

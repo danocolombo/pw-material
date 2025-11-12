@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles';
+import { useTheme, Theme } from '@mui/material/styles';
+// PageProps not used in this page
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import { Grid } from '@mui/material';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 import { useMediaQuery } from '@mui/material';
 
-import ButtonArrow from './ui/ButtonArrow';
 import AWS_SAA_Logo from '../assets/AWS-SolutionArchitect.png';
 import AWS_DA_Logo from '../assets/AWS-DeveloperAssociate.png';
 import AWS_CP_Logo from '../assets/AWS-CloudPractitioner.png';
@@ -19,10 +18,11 @@ import AWS_Lambda from '../assets/AWS_Lambda.svg';
 import AWS_RDS from '../assets/AWS_RDS.svg';
 import AWS_DynamoDB from '../assets/AWS_DynamoDB.svg';
 import customSoftwareIcon from '../assets/customSoftwareIcon.svg';
-import AWSLogo from '../assets/AWS_Logo.svg';
-import { typography } from '@mui/system';
+// Button import removed (unused)
+// ButtonArrow removed (unused)
+// AWSLogo and typography imports removed (unused)
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<Theme>((theme: Theme) => ({
     mainContainer: {
         marginTop: '2em',
         [theme.breakpoints.down('md')]: {
@@ -179,7 +179,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function EngineeringPage(props) {
+export default function EngineeringPage() {
     const classes = useStyles();
     const theme = useTheme();
 

@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+// PageProps not used in this page
 import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles';
+import { useTheme, Theme } from '@mui/material/styles';
 import Lottie from 'react-lottie';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
 
 import NotFoundAnimation from '../animations/404pageNotFound/data.json';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<Theme>((theme: Theme) => ({
     breadcrumbsContainer: {
         marginLeft: '2em',
     },
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function NotFoundPage(props) {
+export default function NotFoundPage() {
     const classes = useStyles();
     const theme = useTheme();
     const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
@@ -56,30 +57,28 @@ export default function NotFoundPage(props) {
     };
 
     return (
-        <Grid
-            container
-            spacing={0}
-            direction='column'
-            alignItems='center'
-            justifyContent='top'
-            // style={{ minHeight: "100vh" }}
-        >
-            <Grid item>
-                <Grid item xs={8}>
-                    <Lottie
-                        options={defaultOptions}
-                        height='200px'
-                        width='300px'
-                        className={classes.lottieProgrammer}
-                    />
-                    <Typography
-                        variant={matchesMD ? 'h4' : matchesXL ? 'h2' : 'h1'}
-                        className={classes.errorMessage}
-                    >
-                        FILE NOT FOUND
-                    </Typography>
-                </Grid>
-            </Grid>
-        </Grid>
+        <Stack direction='column' alignItems='center' sx={{ width: '100%' }}>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+            >
+                <Lottie
+                    options={defaultOptions}
+                    height='200px'
+                    width='300px'
+                    className={classes.lottieProgrammer}
+                />
+
+                <Typography
+                    variant={matchesMD ? 'h4' : matchesXL ? 'h2' : 'h1'}
+                    className={classes.errorMessage}
+                >
+                    FILE NOT FOUND
+                </Typography>
+            </Box>
+        </Stack>
     );
 }

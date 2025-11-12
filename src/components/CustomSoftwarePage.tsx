@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+// PageProps not used in this page
 import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles';
+import { useTheme, Theme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<Theme>((theme: Theme) => ({
     mainContainer: {
         marginTop: '2em',
         [theme.breakpoints.down('md')]: {
@@ -140,10 +141,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function EngineeringPage(props) {
+export default function EngineeringPage() {
     const classes = useStyles();
     const theme = useTheme();
-    const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
     const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
     //   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 

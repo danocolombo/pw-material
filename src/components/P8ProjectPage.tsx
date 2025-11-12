@@ -1,12 +1,12 @@
 // Ex 1: Normal Flexbox
 // https://react.school/material-ui/grid
-import React from 'react';
 import { useMediaQuery } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 import { useTheme } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<Theme>((theme: Theme) => ({
     container: {
         display: 'flex',
     },

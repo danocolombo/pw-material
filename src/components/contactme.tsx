@@ -1,7 +1,8 @@
-import { React, useState, Fragment } from 'react';
+import { useState, Fragment, type ChangeEvent } from 'react';
+// PageProps not used in this page
 // import { Link } from "react-router-dom";
 import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles';
+import { useTheme, Theme } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -19,10 +20,9 @@ import background from '../assets/programmingScreens.png';
 import mobileBackground from '../assets/mobileBackground.jpg';
 import emailIcon from '../assets/email.svg';
 import paperAirplane from '../assets/send.svg';
-import ButtonArrow from '../components/ui/ButtonArrow';
-import { blue } from '@mui/material/colors';
+// ButtonArrow and color import removed (unused)
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<Theme>((theme: Theme) => ({
     background: {
         backgroundImage: `url(${background})`,
         opacity: '60%',
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Contact(props) {
+export default function Contact() {
     const classes = useStyles();
     const theme = useTheme();
 
@@ -115,7 +115,7 @@ export default function Contact(props) {
     const [alert, setAlert] = useState({ open: false, color: '' });
     const [alertMessage, setAlertMesssage] = useState('');
 
-    const onChange = (event) => {
+    const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         let valid;
         switch (event.target.id) {
             case 'email':
@@ -344,7 +344,7 @@ export default function Contact(props) {
                                 <Grid
                                     item
                                     container
-                                    justify='center'
+                                    justifyContent='center'
                                     style={{ marginTop: '2em' }}
                                 >
                                     <Button
@@ -503,7 +503,7 @@ export default function Contact(props) {
                         open={alert.open}
                         message={alertMessage}
                         ContentProps={{
-                            style: { backgroundColor: alert.backgroundColor },
+                            style: { backgroundColor: alert.color },
                         }}
                         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                         onClose={() => setAlert({ ...alert, open: false })}
@@ -515,7 +515,7 @@ export default function Contact(props) {
                         direction={matchesMD ? 'column' : 'row'}
                         className={classes.background}
                         alignItems='center'
-                        justify={matchesMD ? 'center' : undefined}
+                        justifyContent={matchesMD ? 'center' : undefined}
                         lg={8}
                         xl={9}
                     >
@@ -548,39 +548,40 @@ export default function Contact(props) {
                                     </Typography>
                                     <Grid
                                         container
-                                        justify={
+                                        justifyContent={
                                             matchesMD ? 'center' : undefined
                                         }
                                         item
                                     >
-                                        {/* <Button
-                      component={Link}
-                      to="/revolution"
-                      variant="outlined"
-                      className={classes.learnButton}
-                      onClick={() => props.setValue(2)}
-                    >
-                      <span style={{ marginRight: 5 }}>Learn More</span>
-                      <ButtonArrow
-                        width={10}
-                        height={10}
-                        fill={theme.palette.common.blue}
-                      />
-                    </Button> */}
+                                        {/*
+                                                                                    Example (safe pattern): wrap a MUI Button inside a react-router Link
+                                                                                    instead of using `component={Link}` on the Button.
+
+                                                                                    <RouterLink to="/revolution" style={{ textDecoration: 'none' }}>
+                                                                                        <Button variant="outlined" className={classes.learnButton} component="span">
+                                                                                            <span style={{ marginRight: 5 }}>Learn More</span>
+                                                                                        </Button>
+                                                                                    </RouterLink>
+
+                                                                                    (This is a comment/sample only.)
+                                                                                */}
                                     </Grid>
                                 </Grid>
                             </Grid>
                         </Grid>
                         <Grid item>
-                            {/* <Button
-                component={Link}
-                to="/estimate"
-                variant="contained"
-                className={classes.estimateButton}
-                onClick={() => props.setValue(5)}
-              >
-                Free Estimate
-              </Button> */}
+                            {/*
+                                                                                        Example (safe pattern): wrap a MUI Button inside a react-router Link
+                                                                                        instead of using `component={Link}` on the Button.
+
+                                                                                        <RouterLink to="/estimate" style={{ textDecoration: 'none' }}>
+                                                                                            <Button variant="contained" className={classes.estimateButton} component="span">
+                                                                                                Free Estimate
+                                                                                            </Button>
+                                                                                        </RouterLink>
+
+                                                                                        (This is a comment/sample only.)
+                                                                                    */}
                         </Grid>
                     </Grid>
                 </Grid>

@@ -1,25 +1,20 @@
-import React, { useEffect } from 'react';
-import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles';
+import { useEffect } from 'react';
+// makeStyles and theme imports removed for this example file
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { useMediaQuery } from '@mui/material';
+// useMediaQuery removed for this example file
 
-const useStyles = makeStyles((theme) => ({
-    breadcrumbsContainer: {
-        marginLeft: '2em',
-    },
-}));
-
-export default function P8Rally(props) {
-    const classes = useStyles();
-    const theme = useTheme();
-    const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
-    const matchesXL = useMediaQuery(theme.breakpoints.down('xl'));
+// PageProps not used in this example copy
+export default function P8Rally() {
+    // suppress unused style/media variables in this example file
+    // const classes = useStyles();
+    // const theme = useTheme();
+    // const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+    // const matchesXL = useMediaQuery(theme.breakpoints.down('xl'));
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

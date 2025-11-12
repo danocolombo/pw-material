@@ -1,33 +1,18 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+// PageProps not used in this page
 import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles';
+import { useTheme, Theme } from '@mui/material/styles';
 // import { Link } from "react-router-dom";
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 
-import ButtonArrow from './ui/ButtonArrow';
-import customSoftwareIcon from '../assets/customSoftwareIcon.svg';
-import AWSLogo from '../assets/AWS_Logo.svg';
-import AWS_SAA_Logo from '../assets/AWS-SolutionArchitect.png';
-import AWS_DA_Logo from '../assets/AWS-DeveloperAssociate.png';
-import AWS_CP_Logo from '../assets/AWS-CloudPractitioner.png';
-import AWS_Serverless from '../assets/AWS_Serverless.svg';
-import AWS_Amplify from '../assets/AWS_Amplify.svg';
-import AWS_APIGateway from '../assets/AWS_APIGateway.svg';
-import AWS_Lambda from '../assets/AWS_Lambda.svg';
-import AWS_RDS from '../assets/AWS_RDS.svg';
-import AWS_DynamoDB from '../assets/AWS_DynamoDB.svg';
-import P8RallySolution from '../assets/P8RallySolution.png';
-import MeeterSolution from '../assets/MeeterSolution.png';
+// imports cleaned: removed unused Button, ButtonArrow and several asset imports flagged as unused
+// imports cleaned: removed unused Button, ButtonArrow and several asset imports flagged as unused
 
-import mobileAppsIcon from '../assets/mobileIcon.svg';
-import websitesIcon from '../assets/websiteIcon.svg';
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<Theme>((theme: Theme) => ({
     breadcrumbsContainer: {
         marginLeft: '2em',
     },
@@ -102,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function EngineeringPage(props) {
+export default function EngineeringPage() {
     const classes = useStyles();
     const theme = useTheme();
     const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));

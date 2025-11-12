@@ -1,8 +1,8 @@
-import React from 'react';
-import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles';
+import { useTheme, Theme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import ButtonArrow from './ButtonArrow';
@@ -11,7 +11,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import background from '../../assets/woodshop.svg';
 import mobileBackground from '../../assets/shoptoolsMobile.png';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<Theme>((theme: Theme) => ({
     hobbyButton: {
         ...theme.typography.learnButton,
         fontSize: '1em',
@@ -76,67 +76,80 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function WoodshopDisplay(props) {
+export default function WoodshopDisplay(props: {
+    setValue: (v: number) => void;
+}) {
     const classes = useStyles();
     const theme = useTheme();
     const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
     const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
     return (
-        <Grid
-            container
-            alignItems='center'
-            justifyContent={matchesSM ? 'center' : 'space-between'}
-            className={classes.background}
-            direction={matchesSM ? 'column' : 'row'}
-        >
-            <Grid
-                item
-                style={{
-                    marginLeft: matchesSM ? 0 : '5em',
-                    textAlign: matchesSM ? 'center' : 'inherit',
+        <Box>
+            <Box
+                className={classes.background}
+                sx={{
+                    display: 'flex',
+                    flexDirection: matchesSM ? 'column' : 'row',
+                    alignItems: 'center',
+                    justifyContent: matchesSM ? 'center' : 'space-between',
                 }}
             >
-                <Grid container direction='column'>
-                    <Grid item>
-                        <Typography variant='h2' className={classes.titleText}>
-                            There is a time for everything...
-                        </Typography>
-                        {matchesMD ? null : (
+                <Box
+                    sx={{
+                        marginLeft: matchesSM ? 0 : '5em',
+                        textAlign: matchesSM ? 'center' : 'inherit',
+                        width: '100%',
+                    }}
+                >
+                    <Stack direction='column'>
+                        <Box>
                             <Typography
-                                variant='h1'
-                                className={classes.supportText}
+                                variant='h2'
+                                className={classes.titleText}
                             >
-                                It is just real pleasing to take a mental break
-                                and do something physical.
-                                <br />I find a peaceful place in the woodshop
+                                There is a time for everything...
                             </Typography>
-                        )}
-                        <Button
-                            component={Link}
-                            to='/hobbies'
-                            className={classes.hobbyButton}
-                            variant='outlined'
-                            onClick={() => props.setValue(2)}
-                        >
-                            <span style={{ marginRight: 10 }}>
-                                Check it out
-                            </span>
-                            <ButtonArrow
-                                className={classes.buttonArrow}
-                                width={15}
-                                height={15}
-                                fill={theme.palette.common.black}
-                            />
-                        </Button>
-                        <Grid
-                            container
-                            justifyContent={matchesSM ? 'center' : undefined}
-                            item
-                        ></Grid>
-                    </Grid>
-                </Grid>
-            </Grid>
-            <Grid item></Grid>
-        </Grid>
+                            {matchesMD ? null : (
+                                <Typography
+                                    variant='h1'
+                                    className={classes.supportText}
+                                >
+                                    It is just real pleasing to take a mental
+                                    break and do something physical.
+                                    <br />I find a peaceful place in the
+                                    woodshop
+                                </Typography>
+                            )}
+                            <Link
+                                to='/hobbies'
+                                onClick={() => props.setValue(2)}
+                                style={{
+                                    textDecoration: 'none',
+                                    display: 'inline-block',
+                                }}
+                            >
+                                <Button
+                                    className={classes.hobbyButton}
+                                    variant='outlined'
+                                    component='span'
+                                >
+                                    <span style={{ marginRight: 10 }}>
+                                        Check it out
+                                    </span>
+                                    <ButtonArrow
+                                        className={classes.buttonArrow}
+                                        width={15}
+                                        height={15}
+                                        fill={theme.palette.common.black}
+                                    />
+                                </Button>
+                            </Link>
+                            <Box sx={{ height: 0 }} />
+                        </Box>
+                    </Stack>
+                </Box>
+                <Box />
+            </Box>
+        </Box>
     );
 }

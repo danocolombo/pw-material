@@ -1,6 +1,7 @@
 import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 
-const useLandingStyles = makeStyles((theme) => ({
+const useLandingStyles = makeStyles<Theme>((theme: Theme) => ({
     animation: {
         maxWidth: '50em',
         minWidth: '21em',
@@ -85,7 +86,7 @@ const useLandingStyles = makeStyles((theme) => ({
         height: '100%',
         width: '100%',
     },
-    recoveryQutote: {
+    recoveryQuote: {
         marginBottom: '1em',
     },
     estimateButton: {

@@ -1,23 +1,21 @@
-import React from 'react';
-import Lottie from 'react-lottie';
+import {} from 'react';
+// PageProps not used in this page
 import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles';
+import { useTheme, Theme } from '@mui/material/styles';
 // import { Link } from "react-router-dom";
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import ButtonArrow from './ui/ButtonArrow';
 import Typography from '@mui/material/Typography';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 
 //import animationData from "../animations/landinganimation/data";
-import animationData from '../animations/developer/developer.json';
-import recoveryBackground from '../assets/repeatingBackground.svg';
+// animationData removed (not used in this file)
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<Theme>((theme: Theme) => ({
     mainContainer: {
         display: 'flex',
         flexDirection: 'column',
@@ -67,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
             marginBottom: 0,
             width: '90%',
             alignItems: 'center',
-            justify: 'center',
+            justifyContent: 'center',
         },
     },
     cardTitle: {
@@ -157,24 +155,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function LandingPage(props) {
+export default function RecoveryPage() {
     const classes = useStyles();
     const theme = useTheme();
-    const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
-    const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
-    const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
-    const matchesLG = useMediaQuery(theme.breakpoints.down('lg'));
-    const matchesXL = useMediaQuery(theme.breakpoints.down('xl'));
-    const matchesXXL = useMediaQuery(theme.breakpoints.down('xxl'));
-
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: animationData,
-        rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice',
-        },
-    };
 
     return (
         <Grid container direction='column' className={classes.mainContainer}>
@@ -279,20 +262,23 @@ export default function LandingPage(props) {
 
             <div>
                 <div className={classes.buttonWrapper}>
-                    <Button
-                        component={Link}
-                        to='https://locator.crgroups.info/'
+                    <a
+                        href='https://locator.crgroups.info/'
+                        target='_blank'
+                        rel='noopener noreferrer'
                         className={classes.findGroupButtom}
-                        variant='outlined'
-                        // onClick={() => props.setValue(2)}
                     >
-                        <div className={classes.buttonText}>Find A Group</div>
-                        <ButtonArrow
-                            width={15}
-                            height={15}
-                            fill={theme.palette.common.white}
-                        />
-                    </Button>
+                        <Button component='span' variant='outlined'>
+                            <div className={classes.buttonText}>
+                                Find A Group
+                            </div>
+                            <ButtonArrow
+                                width={15}
+                                height={15}
+                                fill={theme.palette.common.white}
+                            />
+                        </Button>
+                    </a>
                 </div>
             </div>
         </Grid>
