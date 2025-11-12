@@ -6,10 +6,10 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
-import useLandingStyles from './landingStyles';
-import ButtonArrow from './ButtonArrow';
+import useLandingStyles from '../landingStyles';
+import ButtonArrow from '../ButtonArrow';
 
-import recoveryBackground from '../../assets/repeatingBackground.svg';
+import recoveryBackground from '../../../assets/repeatingBackground.svg';
 
 type Props = { setValue: (v: number) => void };
 

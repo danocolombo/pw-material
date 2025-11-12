@@ -5,10 +5,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import useLandingStyles from './landingStyles';
-import ButtonArrow from './ButtonArrow';
+import useLandingStyles from '../landingStyles';
+import ButtonArrow from '../ButtonArrow';
 
-import background from '../../assets/creativeInspiration.jpg';
+import background from '../../../assets/creativeInspiration.jpg';
 const mobileBackground = background;
 
 type Props = { setValue: (v: number) => void };

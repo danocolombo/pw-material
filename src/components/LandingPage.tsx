@@ -1,10 +1,10 @@
 import useLandingStyles from './ui/landingStyles';
 import Stack from '@mui/material/Stack';
 
-import KitchenDisplay from './ui/KitchenDisplay';
-import WoodshopDisplay from './ui/Woodshop';
-import EngineeringDisplay from './ui/Engineering';
-import RecoveryDisplayed from './ui/Recovery';
+import KitchenDisplay from './ui/landing/KitchenDisplay';
+import WoodshopDisplay from './ui/landing/Woodshop';
+import EngineeringDisplay from './ui/landing/Engineering';
+import RecoveryDisplayed from './ui/landing/Recovery';
 
 type LandingPageProps = {
   setValue: (v: number) => void;
