@@ -1,16 +1,11 @@
 import { useEffect } from 'react';
-// PageProps not used in this page
 import { makeStyles } from '@mui/styles';
 import { useTheme, Theme } from '@mui/material/styles';
-// import { Link } from "react-router-dom";
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
-
-// imports cleaned: removed unused Button, ButtonArrow and several asset imports flagged as unused
-// imports cleaned: removed unused Button, ButtonArrow and several asset imports flagged as unused
 
 const useStyles = makeStyles<Theme>((theme: Theme) => ({
   breadcrumbsContainer: {

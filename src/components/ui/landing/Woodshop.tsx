@@ -5,11 +5,11 @@ import { makeStyles } from '@mui/styles';
 import { useTheme, Theme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import ButtonArrow from '../ButtonArrow';
+import ButtonArrow from '@components/ui/ButtonArrow';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import background from '../../../assets/woodshop.svg';
-import mobileBackground from '../../../assets/shoptoolsMobile.png';
+import background from '@assets/woodshop.svg';
+import mobileBackground from '@assets/shoptoolsMobile.png';
 
 const useStyles = makeStyles<Theme>((theme: Theme) => ({
   hobbyButton: {

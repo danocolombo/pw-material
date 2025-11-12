@@ -20,7 +20,6 @@ import background from '@assets/programmingScreens.png';
 import mobileBackground from '@assets/mobileBackground.jpg';
 import emailIcon from '@assets/email.svg';
 import paperAirplane from '@assets/send.svg';
-// ButtonArrow and color import removed (unused)
 
 const useStyles = makeStyles<Theme>((theme: Theme) => ({
   background: {

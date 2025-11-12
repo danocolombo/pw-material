@@ -17,9 +17,6 @@ import AWS_Lambda from '@assets/AWS_Lambda.svg';
 import AWS_RDS from '@assets/AWS_RDS.svg';
 import AWS_DynamoDB from '@assets/AWS_DynamoDB.svg';
 import customSoftwareIcon from '@assets/customSoftwareIcon.svg';
-// Button import removed (unused)
-// ButtonArrow removed (unused)
-// AWSLogo and typography imports removed (unused)
 
 const useStyles = makeStyles<Theme>((theme: Theme) => ({
   mainContainer: {
