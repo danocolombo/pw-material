@@ -20,8 +20,11 @@ export default defineConfig({
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
+      '@types': path.resolve(__dirname, 'src/types'),
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@assets': path.resolve(__dirname, 'src/assets'),
+      '@animations': path.resolve(__dirname, 'src/animations'),
+      '@styles': path.resolve(__dirname, 'src/styles'),
       '@': path.resolve(__dirname, 'src'),
     },
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],

@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import NotFoundAnimation from '../animations/404pageNotFound/data.json';
+import NotFoundAnimation from '@animations/404pageNotFound/data.json';
 
 const useStyles = makeStyles<Theme>((theme: Theme) => ({
   breadcrumbsContainer: {

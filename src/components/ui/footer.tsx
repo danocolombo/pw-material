@@ -5,10 +5,10 @@ import { useTheme, Theme } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Typography } from '@mui/material';
-import { NavigationProps } from '../../types';
+import { NavigationProps } from '@types';
 
-import footerAdornment from '../../assets/FooterGraphic.svg';
-import linkedIn from '../../assets/LinkedInLogo.png';
+import footerAdornment from '@assets/FooterGraphic.svg';
+import linkedIn from '@assets/LinkedInLogo.png';
 
 const useStyles = makeStyles<Theme>((theme: Theme) => ({
   footer: {

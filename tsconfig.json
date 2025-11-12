@@ -17,10 +17,16 @@
     /* Resolve aliases from src/ */
     "baseUrl": "src",
     "paths": {
-      "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"],
-      "@assets/*": ["assets/*"],
-      "@/*": ["*"]
+  "@types": ["types"],
+  "@components/*": ["components/*"],
+  "@pages/*": ["pages/*"],
+  "@types/*": ["types/*"],
+  "@assets/*": ["assets/*"],
+  "@animations/*": ["animations/*"],
+  "@animations": ["animations"],
+  "@styles/*": ["styles/*"],
+  "@styles": ["styles"],
+  "@/*": ["*"]
     },
 
     /* Linting */

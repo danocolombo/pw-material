@@ -15,7 +15,6 @@ import Snackbar from '@mui/material/Snackbar';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 
-// import background from "../assets/background.jpg";
 import background from '@assets/programmingScreens.png';
 import mobileBackground from '@assets/mobileBackground.jpg';
 import emailIcon from '@assets/email.svg';

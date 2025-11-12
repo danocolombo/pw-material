@@ -21,7 +21,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { NavigationProps } from '../../types';
 
-import logo from '../../assets/dcLogo.png';
+import logo from '@assets/dcLogo.png';
 
 interface ElevationScrollProps {
   children: React.ReactElement;

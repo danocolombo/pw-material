@@ -1,6 +1,6 @@
 import img0 from './img_0.png';
 import img1 from './img_1.png';
-import { LottieAnimationData } from '../../types';
+import { LottieAnimationData } from '@types';
 
 const documentsAnimationData: LottieAnimationData = {
   v: '5.5.9',
@@ -9,7 +9,7 @@ const documentsAnimationData: LottieAnimationData = {
   op: 180.00000733155,
   w: 636,
   h: 646,
-  nm: 'Digitail Documents and Data Animation',
+  nm: 'Digital Documents and Data Animation',
   ddd: 0,
   assets: [
     { id: 'image_0', w: 372, h: 492, u: '', p: img0, e: 0 },

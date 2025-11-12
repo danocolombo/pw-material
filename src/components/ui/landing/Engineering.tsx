@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import useLandingStyles from '../landingStyles';
+import useLandingStyles from '@components/ui/landingStyles';
 import ButtonArrow from '@/components/ui/ButtonArrow';
 
 import background from '@assets/creativeInspiration.jpg';
