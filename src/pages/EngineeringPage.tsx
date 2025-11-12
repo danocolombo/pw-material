@@ -9,7 +9,7 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import MuiLink from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 
-import ButtonArrow from './ui/ButtonArrow';
+import ButtonArrow from '../components/ui/ButtonArrow';
 import engineeringPic from '../assets/computer_glasses.jpg';
 import customSoftwareIcon from '../assets/customSoftwareIcon.svg';
 import AWSLogo from '../assets/AWS_Logo.svg';

@@ -5,7 +5,7 @@ import { useTheme, Theme } from '@mui/material/styles';
 // import { Link } from "react-router-dom";
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-import ButtonArrow from './ui/ButtonArrow';
+import ButtonArrow from '../components/ui/ButtonArrow';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
