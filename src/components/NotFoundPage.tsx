@@ -11,74 +11,74 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import NotFoundAnimation from '../animations/404pageNotFound/data.json';
 
 const useStyles = makeStyles<Theme>((theme: Theme) => ({
-    breadcrumbsContainer: {
-        marginLeft: '2em',
+  breadcrumbsContainer: {
+    marginLeft: '2em',
+  },
+  errorMessage: {
+    textAlign: 'center',
+    marginBottom: '1em',
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.down('md')]: {
+      width: '300px',
     },
-    errorMessage: {
-        textAlign: 'center',
-        marginBottom: '1em',
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.down('md')]: {
-            width: '300px',
-        },
-        [theme.breakpoints.down('xl')]: {
-            width: '500px',
-        },
+    [theme.breakpoints.down('xl')]: {
+      width: '500px',
     },
-    lottieProgrammer: {
-        // textAlign: "center",
-        // height: "50%",
-        // width: "50%",
-        // align: "center",
-        // alignItems: "center",
-        // alignSelf: "center",
-        // justifyContent: "center",
-        // textAlign: "center",
-    },
+  },
+  lottieProgrammer: {
+    // textAlign: "center",
+    // height: "50%",
+    // width: "50%",
+    // align: "center",
+    // alignItems: "center",
+    // alignSelf: "center",
+    // justifyContent: "center",
+    // textAlign: "center",
+  },
 }));
 
 export default function NotFoundPage() {
-    const classes = useStyles();
-    const theme = useTheme();
-    const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
-    const matchesXL = useMediaQuery(theme.breakpoints.down('xl'));
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+  const classes = useStyles();
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+  const matchesXL = useMediaQuery(theme.breakpoints.down('xl'));
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: NotFoundAnimation,
-        rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice',
-        },
-    };
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: NotFoundAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
 
-    return (
-        <Stack direction='column' alignItems='center' sx={{ width: '100%' }}>
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                }}
-            >
-                <Lottie
-                    options={defaultOptions}
-                    height='200px'
-                    width='300px'
-                    className={classes.lottieProgrammer}
-                />
+  return (
+    <Stack direction="column" alignItems="center" sx={{ width: '100%' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Lottie
+          options={defaultOptions}
+          height="200px"
+          width="300px"
+          className={classes.lottieProgrammer}
+        />
 
-                <Typography
-                    variant={matchesMD ? 'h4' : matchesXL ? 'h2' : 'h1'}
-                    className={classes.errorMessage}
-                >
-                    FILE NOT FOUND
-                </Typography>
-            </Box>
-        </Stack>
-    );
+        <Typography
+          variant={matchesMD ? 'h4' : matchesXL ? 'h2' : 'h1'}
+          className={classes.errorMessage}
+        >
+          FILE NOT FOUND
+        </Typography>
+      </Box>
+    </Stack>
+  );
 }

@@ -7,22 +7,22 @@ import EngineeringDisplay from './ui/Engineering';
 import RecoveryDisplayed from './ui/Recovery';
 
 type LandingPageProps = {
-    setValue: (v: number) => void;
-    setSelectedIndex?: (i: number) => void;
+  setValue: (v: number) => void;
+  setSelectedIndex?: (i: number) => void;
 };
 
 export default function LandingPage(props: LandingPageProps) {
-    const classes = useLandingStyles();
-    // No local media queries needed here; EngineeringDisplay handles its own responsive checks
+  const classes = useLandingStyles();
+  // No local media queries needed here; EngineeringDisplay handles its own responsive checks
 
-    return (
-        <Stack direction='column' className={classes.mainContainer}>
-            <EngineeringDisplay setValue={props.setValue} />
+  return (
+    <Stack direction="column" className={classes.mainContainer}>
+      <EngineeringDisplay setValue={props.setValue} />
 
-            <RecoveryDisplayed setValue={props.setValue} />
+      <RecoveryDisplayed setValue={props.setValue} />
 
-            <WoodshopDisplay setValue={props.setValue} />
-            <KitchenDisplay setValue={props.setValue} />
-        </Stack>
-    );
+      <WoodshopDisplay setValue={props.setValue} />
+      <KitchenDisplay setValue={props.setValue} />
+    </Stack>
+  );
 }
