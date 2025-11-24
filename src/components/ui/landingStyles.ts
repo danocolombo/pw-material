@@ -16,7 +16,7 @@ const useLandingStyles = makeStyles<Theme>((theme: Theme) => ({
     backgroundSize: 'cover',
     backgroundAttachment: 'fixed',
     backgroundRepeat: 'no-repeat',
-    borderRadius: '15px',
+    borderRadius: 0,
     height: '40em',
     width: '100%',
     [theme.breakpoints.down('md')]: {
@@ -48,6 +48,20 @@ const useLandingStyles = makeStyles<Theme>((theme: Theme) => ({
       width: '100%',
     },
   },
+  engineeringParagraph: {
+    color: '#ffffff !important',
+    width: '100%',
+    [theme.breakpoints.down('md')]: {
+      textAlign: 'center',
+      alignContent: 'center',
+      alignItems: 'center',
+      justify: 'center',
+      justifyContent: 'center',
+      align: 'center',
+      justifyItems: 'center',
+      width: '100%',
+    },
+  },
   quoter: {
     alignItems: 'center',
     marginLeft: '15rem',
@@ -60,16 +74,24 @@ const useLandingStyles = makeStyles<Theme>((theme: Theme) => ({
     },
   },
   recoveryContainer: {
-    height: '30em',
     marginTop: '0em',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justify: 'center',
+    paddingTop: '1em',
+    paddingBottom: '1em',
   },
   recoveryCard: {
-    position: 'absolute',
+    position: 'relative',
+    zIndex: 1,
     boxShadow: theme.shadows[10],
     borderRadius: 15,
     padding: '1em',
+    paddingBottom: '2em',
+    flex: '1 1 auto',
+    maxWidth: '500px',
+    minHeight: '300px',
+    display: 'flex',
+    flexDirection: 'column',
     [theme.breakpoints.down('md')]: {
       paddingTop: '1em',
       paddingBottom: '1em',
@@ -77,6 +99,7 @@ const useLandingStyles = makeStyles<Theme>((theme: Theme) => ({
       paddingRight: 0,
       borderRadius: 0,
       width: '100%',
+      minHeight: 'auto',
     },
   },
   recoveryBackground: {
@@ -108,10 +131,12 @@ const useLandingStyles = makeStyles<Theme>((theme: Theme) => ({
     fontSize: '0.9rem',
     height: 45,
     alignContent: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
+    color: '#ffffff !important',
+    borderColor: '#ffffff !important',
     padding: 5,
     '&:hover': {
-      backgroundColor: theme.palette.common.orange,
+      backgroundColor: 'rgba(255, 255, 255, 0.1)',
     },
     [theme.breakpoints.down('sm')]: {
       marginBottom: '2em',
@@ -140,13 +165,7 @@ const useLandingStyles = makeStyles<Theme>((theme: Theme) => ({
     },
   },
   mainContainer: {
-    marginTop: '1em',
-    [theme.breakpoints.down('md')]: {
-      marginTop: '3em',
-    },
-    [theme.breakpoints.down('xs')]: {
-      marginTop: '2em',
-    },
+    marginTop: 0,
   },
   specialText: {
     fontFamily: 'Pacifico',

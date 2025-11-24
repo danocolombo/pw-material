@@ -359,7 +359,7 @@ export default function Header({
         </AppBar>
       </ElevationScroll>
       {/* Toolbar spacer to push content below fixed AppBar */}
-      <Box sx={{ ...theme.mixins.toolbar, mb: { xs: 2, md: 3 } }} />
+      <Box sx={{ ...theme.mixins.toolbar }} />
     </>
   );
 }

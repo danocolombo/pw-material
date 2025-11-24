@@ -26,7 +26,7 @@ export default function EngineeringDisplay({ setValue }: Props) {
       }}
     >
       <Box className={classes.introWrapper}>
-        <Typography variant="h4" className={classes.introductionParagraph}>
+        <Typography variant="h4" className={classes.engineeringParagraph}>
           to contribute to something that makes a real difference in other people's lives
         </Typography>
         <Box alignItems="center" display="flex" justifyContent="center">
